@@ -1,2 +1,6 @@
 Documentation/doc files
 Documentation/drawio
+Documentation/newItems
+
+backEnd/node_modules
+backEnd/.env
