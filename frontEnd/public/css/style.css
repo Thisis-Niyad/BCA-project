@@ -1029,6 +1029,7 @@ textarea#comment::placeholder {
     width: 100%;
     float: left;
     padding: 40px 0px;
+    background-color: #141414;
 }
 
 .input_bt {
