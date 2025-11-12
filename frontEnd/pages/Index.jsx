@@ -1,31 +1,33 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import img1 from "../src/assets/img-3.jpg";
 import img2 from "../src/assets/img-6.jpg";
 import img3 from "../src/assets/img-9.png";
 import img4 from "../src/assets/img-11.jpg";
+import img5 from "../src/assets/img-16.jpg";
+import clientimg1  from '../src/assets/client-img1.png';
+import clientimg2  from '../src/assets/client-img2.png';
 import Cardimg from '../components/Cardimg';
+import ArtistSlide from '../components/ArtistSlide';
 
 function Index() {
   return (
       <div>
-        <Navbar />
-      <div classNameName="banner_section layout_padding">
-        <div classNameName="container-fluid">
-          <div id="main_slider" classNameName="carousel slide" data-ride="carousel">
-            <div classNameName="carousel-inner">
+      <div className="banner_section layout_padding">
+        <div className="container-fluid">
+          <div id="main_slider" className="carousel slide" data-ride="carousel">
+            <div className="carousel-inner">
 
-              <div classNameName="carousel-item active">
-                <div classNameName="row">
-                  <div classNameName="col-sm-2">
-                    <h1 classNameName="banner_taital">
+              <div className="carousel-item active">
+                <div className="row">
+                  <div className="col-sm-2">
+                    <h1 className="banner_taital">
                       Design For <span style={{ color: "#343535" }}>Your House</span>
                     </h1>
                   </div>
-                  <div classNameName="col-sm-10">
-                    <div classNameName="images_main">
-                      <div classNameName="banner_img"><img src="/images/banner-img1.png" /></div>
-                      <div classNameName="banner_img"><img src="/images/banner-img2.png" /></div>
+                  <div className="col-sm-10">
+                    <div className="images_main">
+                      <div className="banner_img"><img src={img5} /></div>
+                      <div className="banner_img"><img src={img2} /></div>
                     </div>
                   </div>
                 </div>
@@ -35,16 +37,42 @@ function Index() {
               
             </div>
 
-            <a classNameName="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-              <i classNameName="fa fa-arrow-left"></i>
+            {/* <a className="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+              <i className="fa fa-arrow-left"></i>
             </a>
-            <a classNameName="carousel-control-next" href="#main_slider" role="button" data-slide="next">
-              <i classNameName="fa fa-arrow-right"></i>
-            </a>
+            <a className="carousel-control-next" href="#main_slider" role="button" data-slide="next">
+              <i className="fa fa-arrow-right"></i>
+            </a> */}
 
           </div>
         </div>
       </div>
+      {/* <!-- about section start --> */}
+    <div className="about_section layout_padding">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6">
+            <div className="about_taital">
+              About <span style={{ color: "#f7f6f6" }}>Company</span>
+            </div>
+            <p className="about_text">
+              there isn't anything embarrassing hidden in the middle of text. All
+              the Lorem Ipsum generators on the Internet tend to repeat
+              predefined. there isn't anything embarrassing hidden in the middle
+              of text. All the Lorem Ipsum generators on the Internet tend to
+              repeat predefined.
+            </p>
+          </div>
+
+          <div className="col-md-6">
+            <div className="about_img">
+              <img src="" alt="About Company" />
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+   {/* <!-- about section end --> */}
       {/* <!-- design section start --> */}
   <div className="design_section layout_padding">
       <div className="container">
@@ -68,9 +96,13 @@ function Index() {
 
               {/* Column 2 */}
               <div className="col-md-4">
+                <div>
                 <Cardimg img={img2} url={"login"}/>
+                </div>
+                <div>
                 <div className="margin_top_30">
                   <Cardimg img={img3} url={"login"}/>
+                </div>
                 </div>
               </div>
 
@@ -89,6 +121,51 @@ function Index() {
       </div>
     </div>
    {/* <!-- design section end --> */}
+   <div className="client_section layout_padding">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <h3 className="client_taital">
+              Artist <span style={{ color: "#2ea0f8" }}>Says</span>
+            </h3>
+          </div>
+        </div>
+
+          <div className="client_section_2">
+          <div id="my_slider" className="carousel slide" data-ride="carousel">
+            <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <div className="row">
+          <ArtistSlide img={clientimg1}/>
+          <ArtistSlide img={clientimg2}/>
+          </div></div>
+            <div className="carousel-item "> 
+              <div className="row">
+          <ArtistSlide img={clientimg1}/>
+          <ArtistSlide img={clientimg2}/>
+          </div></div>
+      </div>
+
+            <a
+              className="carousel-control-prev"
+              href="#my_slider"
+              role="button"
+              data-slide="prev"
+            >
+              <i className="fa fa-angle-left"></i>
+            </a>
+            <a
+              className="carousel-control-next"
+              href="#my_slider"
+              role="button"
+              data-slide="next"
+            >
+              <i className="fa fa-angle-right"></i>
+            </a>
+          </div>
+        </div>
+     </div>
+    </div>
     </div>
   )
 }

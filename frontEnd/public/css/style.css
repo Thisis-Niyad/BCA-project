@@ -511,7 +511,8 @@ input.form-control::placeholder {
 .image {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
 }
 
 .overlay {

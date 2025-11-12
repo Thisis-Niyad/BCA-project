@@ -1,7 +1,8 @@
 // import { useState } from 'react'
 import {Route,Routes,Link} from 'react-router-dom'
-import Footer from "../components/Footer"
-import Index from '../pages/Index'
+import Home from './Home'
+import Contact from '../pages/contact'
+import Index from '../pages'
 
 function App() {
   
@@ -9,9 +10,12 @@ function App() {
   return (
     <>
      <Routes> 
-      <Route path="/" element={<Index hideFooter/>}/>
+      <Route path="/" element={<Home />}>
+          <Route path="" element={<Index/>}/>
+          <Route path="contact" element={<Contact/>}/>
+      </Route>
     </Routes>
-     <Footer/>
+  
     </>
   )
 }
