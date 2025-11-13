@@ -4,38 +4,36 @@ import img2 from "../src/assets/img-6.jpg";
 import img3 from "../src/assets/img-9.png";
 import img4 from "../src/assets/img-11.jpg";
 import img5 from "../src/assets/img-16.jpg";
+import img6 from "../src/assets/img-17.png";
 import clientimg1  from '../src/assets/client-img1.png';
 import clientimg2  from '../src/assets/client-img2.png';
 import Cardimg from '../components/Cardimg';
 import ArtistSlide from '../components/ArtistSlide';
+
+
 
 function Index() {
   return (
       <div>
       <div className="banner_section layout_padding">
         <div className="container-fluid">
-          <div id="main_slider" className="carousel slide" data-ride="carousel">
-            <div className="carousel-inner">
-
-              <div className="carousel-item active">
-                <div className="row">
+        
+               <div className="row" style={{ justifyContent: "flex-end" }}>
                   <div className="col-sm-2">
                     <h1 className="banner_taital">
                       Design For <span style={{ color: "#343535" }}>Your House</span>
                     </h1>
                   </div>
-                  <div className="col-sm-10">
+                  <div className="col-sm-9">
                     <div className="images_main">
-                      <div className="banner_img"><img src={img5} /></div>
-                      <div className="banner_img"><img src={img2} /></div>
+                      <div className="banner_img"><img className="img1"src={img5} /></div>
+                      <div className="banner_img"><img className="img1"src={img2} /></div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* other carousel-items same change */}
               
-            </div>
+              {/* other carousel-items same change */}
+            
 
             {/* <a className="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
               <i className="fa fa-arrow-left"></i>
@@ -43,12 +41,10 @@ function Index() {
             <a className="carousel-control-next" href="#main_slider" role="button" data-slide="next">
               <i className="fa fa-arrow-right"></i>
             </a> */}
-
-          </div>
         </div>
       </div>
       {/* <!-- about section start --> */}
-    <div className="about_section layout_padding">
+    <div id="about" className="about_section layout_padding">
       <div className="container">
         <div className="row">
           <div className="col-md-6">
@@ -66,7 +62,7 @@ function Index() {
 
           <div className="col-md-6">
             <div className="about_img">
-              <img src="" alt="About Company" />
+              <img src={img6} alt="About Company" />
             </div>
           </div> 
         </div>

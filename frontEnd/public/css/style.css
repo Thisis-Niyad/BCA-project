@@ -149,6 +149,12 @@ img {
     max-width: 100%;
     height: auto;
 }
+.img1 {
+    max-width: 100%;
+    height: auto;
+    height: 480px;
+    width: 480px;
+}
 
  :focus {
     outline: 0;
@@ -333,7 +339,7 @@ input.form-control::placeholder {
 .banner_section {
     width: 100%;
     float: left;
-    padding: 90px 15px 0px 15px;
+    padding: 55px 15px 0px 15px;
 }
 
 .banner_taital {
@@ -346,7 +352,7 @@ input.form-control::placeholder {
 }
 
 .images_main {
-    width: 100%;
+    width: fit-content;
     display: flex;
     background-color: rgb(138, 186, 222, 0.8);
     padding: 10px;

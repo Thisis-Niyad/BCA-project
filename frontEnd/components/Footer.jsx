@@ -57,8 +57,7 @@ function Footer() {
             <div class="row">
                <div class="col-md-6">
                   <div class="input_bt">
-                     <input type="text" class="mail_bt" placeholder="Enter Your Email" name="Enter your email"/>
-                     <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscribe</a></span>
+                    
                   </div>
                </div>
                <div class="col-md-6">
