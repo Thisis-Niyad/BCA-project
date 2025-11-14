@@ -58,9 +58,9 @@ function Navbar() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#company" onClick={() => setIsOpen(false)}>
-                  Company
-                </a>
+                <Link className="nav-link" to="registeration" onClick={() => setIsOpen(false)}>
+                  Artist register
+                </Link>
               </li>
               <li className="nav-item">
                 <Link

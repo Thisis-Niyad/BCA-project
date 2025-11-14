@@ -5,7 +5,7 @@ import Contact from '../pages/contact'
 import Index from '../pages'
 import SignUp from '../pages/SignUp'
 import SignIn from '../pages/SignIn'
-
+import Registeration from '../pages/Registeration'
 function App() {
   
 
@@ -18,6 +18,7 @@ function App() {
       </Route>
        <Route path="signup" element={<SignUp/>}/>
           <Route path="signin" element={<SignIn/>}/>
+          <Route path="registeration" element={<Registeration/>}/>
     </Routes>
   
     </>
