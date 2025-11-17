@@ -6,6 +6,8 @@
     justify-content: center;
     padding: 20px;
     line-height: 1.5;
+    background-image: url(https://weblium.com/blog/wp-content/uploads/2019/10/photo-1495085461086-ae0ad0a8fd74-1344x734.jpeg);
+    background-size: cover;
 }
 .login-container {
     width: 100%;
@@ -15,8 +17,11 @@
 .login-card {
     background: #ffffff;
     border-radius: 12px;
+    background-image: url(https://weblium.com/blog/wp-content/uploads/2019/10/photo-1495085461086-ae0ad0a8fd74-1344x734.jpeg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     padding: 48px 40px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02), 0 8px 16px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 20px rgb(0 0 0 / 70%), 0 8px 16px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
 }

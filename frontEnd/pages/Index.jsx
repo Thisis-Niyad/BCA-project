@@ -14,7 +14,7 @@ import ArtistSlide from '../components/ArtistSlide';
 
 function Index() {
   return (
-      <div>
+      <div >
       <div className="banner_section layout_padding">
         <div className="container-fluid">
         

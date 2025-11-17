@@ -6,6 +6,7 @@ import Index from '../pages'
 import SignUp from '../pages/SignUp'
 import SignIn from '../pages/SignIn'
 import Registeration from '../pages/Registeration'
+import Admin from './Admin'
 function App() {
   
 
@@ -16,9 +17,10 @@ function App() {
           <Route path="" element={<Index/>}/>
           <Route path="contact" element={<Contact/>}/>
       </Route>
-       <Route path="signup" element={<SignUp/>}/>
-          <Route path="signin" element={<SignIn/>}/>
-          <Route path="registeration" element={<Registeration/>}/>
+      <Route path="/signup" element={<SignUp/>}/>
+      <Route path="/signin" element={<SignIn/>}/>
+      <Route path="/registeration" element={<Registeration/>}/>
+      <Route path="/admin" element={<Admin/>}/>
     </Routes>
   
     </>
