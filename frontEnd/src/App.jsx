@@ -7,6 +7,7 @@ import SignUp from '../pages/SignUp'
 import SignIn from '../pages/SignIn'
 import Registeration from '../pages/Registeration'
 import Admin from './Admin'
+import Artist from './Artist'
 function App() {
   
 
@@ -21,6 +22,7 @@ function App() {
       <Route path="/signin" element={<SignIn/>}/>
       <Route path="/registeration" element={<Registeration/>}/>
       <Route path="/admin" element={<Admin/>}/>
+      <Route path="/artist" element={<Artist/>}/>
     </Routes>
   
     </>

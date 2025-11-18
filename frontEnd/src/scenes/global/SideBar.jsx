@@ -9,13 +9,14 @@ import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 import { Typography } from "@mui/material";
 
-const Item=({title, to, selected , setSelected})=>{
+const Item=({title, to,Icon, selected , setSelected})=>{
     const theme =useTheme();
     const colors =tokens(theme.palette.mode);
     return (
         <MenuItem
+        icon={Icon}
             active={selected === title}
-            style={{ color: colors.grey[100] }}
+            style={{ color: colors.grey[300] }}
             onClick={() => setSelected(title)}
             component={<Link to={to} />}
             >
@@ -46,6 +47,7 @@ const SideBar = ({list}) => {
     ".ps-menu-button": {
       padding: "8px 20px !important",
       height:"65px !important", 
+          justifyContent: "center",
     },
     ".ps-menu-button:hover": {
        backgroundColor: `${colors.grey[700]} !important`,
@@ -54,8 +56,11 @@ const SideBar = ({list}) => {
       color: "#6870fa !important",
     },
     ".ps-collapsed":{  
-    border:" none",
-    height:" fit-content",
+    width:"55px !important",
+    minWidth:"55px !important",
+    },
+    ".ps-menu-icon":{
+      margin:"0",
     },
   }}
 >
@@ -67,6 +72,7 @@ const SideBar = ({list}) => {
                     icon={isCollapsed ? <MenuOutlinedIcon sx={{fontSize:"30px"}}/>:undefined}
                       style={{
               color: colors.grey[100] ,
+              margin:"0",
               padding: "20px",
               height:"65px !important",
           }}
@@ -84,10 +90,11 @@ const SideBar = ({list}) => {
                             </Box>
                         )}
                     </MenuItem>
-                    <Box display={isCollapsed?"none":"block"}>
+                    <Box padding={isCollapsed?undefined:"5px"}>
                            { list.map((prop, key) => (
                                 <Item
                                     key={key}
+                                    Icon={prop.Icon}
                                     title={prop.title}
                                     to={prop.to}
                                     selected={selected}
