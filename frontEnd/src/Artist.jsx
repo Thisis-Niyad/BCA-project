@@ -1,10 +1,11 @@
 import React from 'react'
 import { ColorModeContext,useMode } from './Theme'
 import { CssBaseline, ThemeProvider }from "@mui/material"
+import {Outlet} from 'react-router-dom'
 import './sass/main.css'
 import Topbar from './scenes/global/Topbar'
 import SideBar from './scenes/global/SideBar'
-import Index from './scenes/dasboard'
+
 // Icons
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import CommentIcon from '@mui/icons-material/Comment';
@@ -19,37 +20,37 @@ function Artist() {
     var list = [
   {
     title: "Home",
-     to: "/",
+     to: "",
      Icon:<SpaceDashboardIcon/>
   },
   {
     title: "Chat",
-     to: "/Chats",
+     to: "Chats",
      Icon:<CommentIcon/>
   },
   {
     title: "Gallery",
-     to: "/gallery",
+     to: "gallery",
      Icon:<PhotoLibraryIcon/>
   },
   {
     title: "Add Post",
-     to: "/addpost",
+     to: "addpost",
      Icon:<AddPhotoAlternateIcon/>
   },
   {
     title: "Requests",
-     to: "/request",
+     to: "request",
      Icon:<WorkIcon/>
   },
   {
     title: "Payments",
-     to: "/payments",
+     to: "payments",
      Icon:<PaidIcon/>
   },
   {
-    title: "Comlpaints",
-     to: "/complaints",
+    title: "Report",
+     to: "report",
      Icon:<FeedOutlinedIcon/>
   },
     {
@@ -68,7 +69,7 @@ function Artist() {
                    <SideBar list={list}/>
                      <main className="content">
                        <Topbar />
-                       <Index/>
+                       <Outlet />
                      </main>
                  </div>
              </ThemeProvider>

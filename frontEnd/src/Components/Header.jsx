@@ -8,13 +8,13 @@ function Header({title, subtitle}) {
 
   return (
     <Box mb="30px">
-        <Typography varient="h2" 
+        <Typography variant="h3" 
         color={colors.grey[100]}
-        fontWeight="bolid"
+        fontWeight="bold"
         sx={{mb:"5px"}}
         >{title}</Typography>
         <Typography
-        varient="h5" 
+        variant="h6" 
         color={colors.greenAccent[400]}
         >{subtitle}</Typography>
     </Box>

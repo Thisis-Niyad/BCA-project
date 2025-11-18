@@ -41,7 +41,7 @@ function SignUp() {
               value={Name}
               onChange={(e) => setName(e.target.value)}
             />
-            <label htmlFor="Name">Email address</label>
+            <label htmlFor="Name">Name</label>
             <span className="input-border"></span>
           </div>
           <div className="input-group">

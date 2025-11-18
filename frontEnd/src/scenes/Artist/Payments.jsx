@@ -1,14 +1,14 @@
 import React from 'react'
 import Header from '../../Components/Header'
 import {Box} from '@mui/material'
-function index() {
+function Payments() {
   return (
     <Box m="20px">
         <Box display="flex" justifyContent="space-between" alginItems="center">
-            <Header title="DASHBOARD" subtitle="welcome to dashboard" /> 
+            <Header title="Artist Payment Transactions" subtitle="Analyze transactions and financial activity across the platform" /> 
         </Box>
     </Box>
   )
 }
 
-export default index
+export default Payments

@@ -8,14 +8,17 @@ import SideBar from './scenes/global/SideBar'
 
 // Icons
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
-import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import RecentActorsOutlinedIcon from '@mui/icons-material/RecentActorsOutlined';
-import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
+import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined';
+import CommentIcon from '@mui/icons-material/Comment';
+import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+
 import PaidIcon from '@mui/icons-material/Paid';
-import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
+import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
-function Admin() {
-    const [theme,colorMode]=useMode();
+function User() {
+  const [theme,colorMode]=useMode();
     var list = [
   {
     title: "Home",
@@ -28,24 +31,34 @@ function Admin() {
      Icon:<RecentActorsOutlinedIcon/>
   },
   {
-    title: "New Artist",
-     to: "newartist",
-     Icon:<PersonAddAltOutlinedIcon/>
+    title: "Image Generation",
+     to: "imagegeneration",
+     Icon:<SmartToyOutlinedIcon/>
   },
   {
-    title: "Comlpaints",
-     to: "complaints",
+    title: "Chats",
+     to: "chats",
+     Icon:<CommentIcon/>
+  },
+  {
+    title: "Order Details",
+     to: "orders",
+     Icon:<LocalShippingOutlinedIcon/>
+  },
+  {
+    title: "Cart",
+     to: "carts",
+     Icon:<AddShoppingCartOutlinedIcon/>
+  },
+  {
+    title: "Payments",
+     to: "payments",
+     Icon:<PaidIcon/>
+  },
+  {
+    title: "Report Issue",
+     to: "report",
      Icon:<FeedOutlinedIcon/>
-  },
-    {
-      title: "Payments",
-       to: "payments",
-       Icon:<PaidIcon/>
-    },
-  {
-    title: "Veiw User",
-     to: "viewuser",
-     Icon:<Groups2OutlinedIcon/>
   },
     {
     title: "LogOut",
@@ -63,7 +76,7 @@ function Admin() {
                 <SideBar list={list}/>
                   <main className="content">
                     <Topbar />
-                   <Outlet />
+                    <Outlet />              
                   </main>
               </div>
           </ThemeProvider>
@@ -73,4 +86,4 @@ function Admin() {
   )
 }
 
-export default Admin
+export default User
