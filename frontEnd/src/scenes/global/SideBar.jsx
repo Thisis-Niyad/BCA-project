@@ -1,6 +1,6 @@
 import React ,{useState} from 'react'
 import {  Sidebar, Menu, MenuItem} from 'react-pro-sidebar'
-// import 'react-pro-sidebar/dist/styles/'
+import unknownImg from "../../assets/unknown.jpg";
 import {Box,IconButton,Select,useTheme} from '@mui/material'
 import {Link} from 'react-router-dom'
 import {tokens} from '../../Theme'
@@ -83,13 +83,37 @@ const SideBar = ({list}) => {
                                style={{ color: colors.grey[100] }}
                                 alignItems="center"
                                 ml='15px'>
-                                    <Typography>Admins DashBoard</Typography>
+                                    <Typography>DashBoard</Typography>
                                     <IconButton onClick={()=> setIsCollapsed(!isCollapsed)}>
                                         <MenuOutlinedIcon />
                                     </IconButton>
                             </Box>
                         )}
                     </MenuItem>
+                    {/* profile img */}
+                    {!isCollapsed &&(
+                      <Box m="8px 0 0 0">
+                        <Box display="flex" justifyContent="center" alignItems='center'>
+                          <Link to='profile'>
+                            <img 
+                                alt="profile picture"
+                                width="100px"
+                                height="100px"
+                                src={unknownImg}
+                                style={{cursor:"pointer",borderRadius:"50%"}}
+                                />
+                            </Link>
+                        </Box>
+                        <Box  display="flex" justifyContent="center" alignItems='center'>
+                          <Typography
+                              variant='h4'
+                              color={colors.grey[100]} 
+                              fontWeight="bold"
+                              sx={{m:"8px 0 0 0"}}
+                          >hello</Typography>
+                        </Box>
+                      </Box>
+                    )}
                     <Box padding={isCollapsed?undefined:"5px"}>
                            { list.map((prop, key) => (
                                 <Item

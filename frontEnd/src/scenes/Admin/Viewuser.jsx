@@ -4,7 +4,7 @@ import {Box} from '@mui/material'
 function Viewuser() {
   return (
     <Box m="20px">
-        <Box display="flex" justifyContent="space-between" alginItems="center">
+        <Box display="flex" justifyContent="space-between" alignItems="center">
             <Header title="Users" subtitle="list of all regisered users" /> 
         </Box>
     </Box>

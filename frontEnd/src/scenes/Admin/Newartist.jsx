@@ -4,7 +4,7 @@ import {Box} from '@mui/material'
 function Newartist() {
   return (
     <Box m="20px">
-        <Box display="flex" justifyContent="space-between" alginItems="center">
+        <Box display="flex" justifyContent="space-between" alignItems="center">
             <Header title="Artist Verification" subtitle="Validates Talents Joining the Platform" /> 
         </Box>
     </Box>

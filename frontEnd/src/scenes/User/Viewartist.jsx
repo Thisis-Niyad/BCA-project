@@ -4,7 +4,7 @@ import {Box} from '@mui/material'
 function Viewartist() {
   return (
     <Box m="20px">
-        <Box display="flex" justifyContent="space-between" alginItems="center">
+        <Box display="flex" justifyContent="space-between" alignItems="center">
             <Header title="Artits" subtitle="Track, review, and resolve complaints" /> 
         </Box>
     </Box>

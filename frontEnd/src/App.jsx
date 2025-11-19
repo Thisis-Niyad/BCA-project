@@ -23,6 +23,7 @@ import Addpost from './scenes/Artist/Addpost'
 import Request from './scenes/Artist/Request'
 import ArtistPayments from './scenes/Artist/Payments'
 import ArtistReport from './scenes/Artist/Report'
+import ArtistProfile from './scenes/Artist/Profile'
 // User
 import UserViewartist from './scenes/User/Viewartist'
 import Imagegeneration from './scenes/User/Imagegeneration'
@@ -31,6 +32,8 @@ import Orderdetails from './scenes/User/Orderdetails'
 import Carts from './scenes/User/Carts'
 import UserPayments from './scenes/User/Payments'
 import Report from './scenes/User/Report'
+import UserProfile from './scenes/User/Profile'
+
 function App() {
   
 
@@ -59,6 +62,7 @@ function App() {
           <Route path="request" element={<Request/>}/>
           <Route path="payments" element={<ArtistPayments/>}/>
           <Route path="report" element={<ArtistReport/>}/>
+          <Route path="profile" element={<ArtistProfile/>}/>
       </Route>
       <Route path="/user" element={<User/>}>
           <Route path="viewartist" element={<UserViewartist/>}/>
@@ -68,9 +72,9 @@ function App() {
           <Route path="carts" element={<Carts/>}/>
           <Route path="payments" element={<UserPayments/>}/>
           <Route path="report" element={<Report/>}/>
+          <Route path="profile" element={<UserProfile/>}/>
       </Route>
     </Routes>
-  
     </>
   )
 }
