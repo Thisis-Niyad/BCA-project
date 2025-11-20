@@ -36,13 +36,20 @@ const SideBar = ({list}) => {
   return (
     <>
      <Box
-  sx={{
+  sx={{ 
     "& .ps-sidebar-root": {
       borderColor: "#777777",
       height:"100vh"     // <--- REMOVE BORDER
     },
     ".ps-sidebar-container": {
       backgroundColor: `${colors.primary[400]} !important`,
+      position: "fixed !important",
+      top: 0,
+      left: 0,
+      height: "100vh",
+      width:`${!isCollapsed?"250px !important":"55px"}`,
+      zIndex: 100,
+      transition: "width, left, right, 200ms"
     },
     ".ps-menu-button": {
       padding: "8px 20px !important",
@@ -98,9 +105,8 @@ const SideBar = ({list}) => {
                             <img 
                                 alt="profile picture"
                                 width="100px"
-                                height="100px"
                                 src={unknownImg}
-                                style={{cursor:"pointer",borderRadius:"50%"}}
+                                style={{cursor:"pointer",borderRadius:"50%",height:"100px"}}
                                 />
                             </Link>
                         </Box>

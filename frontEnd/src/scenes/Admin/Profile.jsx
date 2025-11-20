@@ -8,10 +8,11 @@ import * as yup from "yup"
 const initialValues={
   Name:"",
   email:"",
-  age:"",
+  DOB:"",
   gender:"",
   phone:"",
   address:"",
+  ProfileImg:"",
 }
 const phoneRegExp= /^(\+91|91|0)?[6-9]\d{9}$/;
 
@@ -40,9 +41,20 @@ function Profile() {
             initialValues={initialValues}
             validationSchema={ProfileSchema}
           >
-              <ProfileSection />
+             {({ values, errors, touched, handleBlur, handleChange, handleSubmit})=>(
+                <form onSubmit={handleSubmit}>
+              <ProfileSection 
+                      values={values} 
+                      errors={errors} 
+                      touched={touched} 
+                      handleBlur={handleBlur} 
+                      handleChange={handleChange}
+                      initialValues={initialValues}
+                  />
+              </form>
+              )}
         </Formik>
-      <ProfileSection />
+
     </Box>
       
     </>
