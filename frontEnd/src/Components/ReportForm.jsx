@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Button, TextField } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery'
 
-function ReportForm({values, errors, touched, handleBlur, handleChange,initialValues}) {
+function ReportForm({values, errors, touched, handleBlur, handleChange}) {
       const isNonMobile=useMediaQuery("min-width:600px");
   return (
     <>
@@ -28,7 +28,7 @@ function ReportForm({values, errors, touched, handleBlur, handleChange,initialVa
           label="Name"
           onBlur={handleBlur}
           onChange={handleChange}
-          value={initialValues.Name}
+          value={values.Name}
           name="Name"
           error={!!touched.Name && !!errors.Name}
           helperText={touched.Name && errors.Name}

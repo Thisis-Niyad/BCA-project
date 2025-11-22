@@ -10,7 +10,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import EditIcon from '@mui/icons-material/Edit';
 
-function ProfileSection({ errors, touched, handleBlur, handleChange,initialValues}) {
+function ProfileSection({ values,errors, touched, handleBlur, handleChange,initialValues}) {
       const theme =useTheme();
       const colors =tokens(theme.palette.mode);
       const isNonMobile=useMediaQuery("min-width:600px");
@@ -65,7 +65,7 @@ function ProfileSection({ errors, touched, handleBlur, handleChange,initialValue
             "& .MuiOutlinedInput-root": {
               "&.Mui-focused fieldset": {
                 borderColor: "#4cceac !important"
-              }               // Focused label color
+              }               
             },
             "& .MuiInputLabel-root.Mui-focused": {
               color: "#4cceac !important",  
@@ -79,7 +79,7 @@ function ProfileSection({ errors, touched, handleBlur, handleChange,initialValue
           label="Name"
           onBlur={handleBlur}
           onChange={handleChange}
-          value={initialValues.Name}
+          value={values.Name}
           name="Name"
           InputProps={{readOnly: edit,}}
           error={!!touched.Name && !!errors.Name}
@@ -99,7 +99,7 @@ function ProfileSection({ errors, touched, handleBlur, handleChange,initialValue
           label="Email"
           onBlur={handleBlur}
           onChange={handleChange}
-          value={initialValues.email}
+          value={values.email}
           name="email"
           error={!!touched.email && !!errors.email}
           helperText={touched.email && errors.email}
@@ -117,7 +117,7 @@ function ProfileSection({ errors, touched, handleBlur, handleChange,initialValue
             label="Contact Number"
             onBlur={handleBlur}
             onChange={handleChange}
-            value={initialValues.phone}
+            value={values.phone}
             name="phone"
             error={!!touched.phone && !!errors.phone}
             helperText={touched.phone && errors.phone}
@@ -133,6 +133,7 @@ function ProfileSection({ errors, touched, handleBlur, handleChange,initialValue
           onBlur={handleBlur}
           onChange={handleChange}
           value={DOB}
+          name="DOB"
           slotProps={{
             textField:{
         sx: {
@@ -152,7 +153,8 @@ function ProfileSection({ errors, touched, handleBlur, handleChange,initialValue
   <Select
     labelId="gender-label"
     label="Gender"
-    value={initialValues.Gender}
+    name="Gender"
+    value={values.Gender||""}
     onChange={handleChange}
     sx={{ width: "80%", marginLeft: "5px" }}
   >
@@ -172,7 +174,7 @@ function ProfileSection({ errors, touched, handleBlur, handleChange,initialValue
                   label="ADDRESS"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={initialValues.address}
+                  value={values.address}
                   name="address"
                   error={!!touched.address && !!errors.address}
                   helperText={touched.address && errors.address}

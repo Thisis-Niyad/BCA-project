@@ -50,8 +50,8 @@ export const tokens=(mode)=>({
                 900: "#2c100f"
             },
             blueAccent: {
-                100: "#e1e2fe",
-                200: "#c3c6fd",
+                100: "radial-gradient(at 50% 50%, hsla(210, 100%, 16%, 0.5), hsl(220, 30%, 5%))",
+                200: "#141b2d",
                 300: "#a4a9fc",
                 400: "#868dfb",
                 500: "#6870fa",
@@ -107,8 +107,8 @@ export const tokens=(mode)=>({
                 900: "#f8dcdb",
             },
             blueAccent: {
-                100: "#151632",
-                200: "#2a2d64",
+                100: "radial-gradient(ellipse at 50% 50%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))",
+                200: "#2ea0f8",
                 300: "#3e4396",
                 400: "#535ac8",
                 500: "#6870fa",

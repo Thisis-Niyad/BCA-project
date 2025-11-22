@@ -6,13 +6,23 @@ import Footer from "../components/Footer"
 import './css/bootstrap.min.css'
 import './css/responsive.css'
 import './css/style.css'
+import {Box ,useTheme} from '@mui/material'
+import { tokens} from './Theme'
+
 function Home() {
+    const theme =useTheme();
+    const colors =tokens(theme.palette.mode);
   return (
-    <div className='bodyindex'>
+    
+    <div >
+      <Box className='bodyindex' sx={{backgroundColor:colors.blueAccent[200]}}>
     <Navbar />
     <Outlet />
+    </Box>
     <Footer/>
+     
     </div>
+   
   )
 }
 

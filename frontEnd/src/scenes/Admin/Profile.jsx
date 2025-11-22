@@ -3,27 +3,19 @@ import Header from '../../Components/Header'
 import {Box} from '@mui/material'
 import ProfileSection from '../../Components/ProfileSection'
 import { Formik } from 'formik'
-import * as yup from "yup"
-
+import { ProfileSchema } from '../../schemas/validation'
+// import * as yup from "yup"
 const initialValues={
   Name:"",
   email:"",
   DOB:"",
-  gender:"",
+  Gender:"",
   phone:"",
   address:"",
   ProfileImg:"",
 }
-const phoneRegExp= /^(\+91|91|0)?[6-9]\d{9}$/;
 
-const ProfileSchema=yup.object().shape({
-  Name:yup.string().required("required"),
-  email:yup.string().email("invalid E-mail").required("required"),
-  DOB:yup.date().typeError("Invalid date").required("Date of birth is required"),
-  gender: yup.string().required("Gender is required"),
-  phone:yup.string().matches(phoneRegExp,"phone.no is not valid").required("required"),
-  address:yup.string().required("required"),
-})
+
 
 function Profile() {
       const handleFormSubmit=(values)=>{

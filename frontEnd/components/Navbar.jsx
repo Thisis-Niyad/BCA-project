@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import { Link, useLocation } from "react-router-dom";
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import {Box, IconButton,useTheme} from "@mui/material"
+import { ColorModeContext, } from '../src/Theme'
 
 function Navbar() {
+  const theme =useTheme();
+
+      const colorMode= useContext(ColorModeContext)
   const location = useLocation();
   const home = location.pathname === "/";
   const contact = location.pathname.startsWith("/contact");
@@ -53,11 +60,6 @@ function Navbar() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#services" onClick={() => setIsOpen(false)}>
-                  Service
-                </a>
-              </li>
-              <li className="nav-item">
                 <Link className="nav-link" to="registeration" onClick={() => setIsOpen(false)}>
                   Artist register
                 </Link>
@@ -85,7 +87,17 @@ function Navbar() {
           </div>
         </nav>
       </div>
-    </div>
+   
+     <Box display='flex' justifyContent="end" style={{padding:"0 10px 0 0 "}}>
+             <IconButton onClick={colorMode.toggleColorMode}>
+                {theme.palette.mode==='dark'?(
+                <DarkModeOutlinedIcon />
+                ):(
+                <LightModeOutlinedIcon />
+                )}
+            </IconButton>
+      </Box>
+       </div>
   );
 }
 

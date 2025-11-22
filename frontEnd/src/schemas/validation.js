@@ -1,0 +1,49 @@
+import * as yup from "yup"
+
+const phoneRegExp = /^(\+91|91|0)?[6-9]\d{9}$/;
+
+export const ProfileSchema = yup.object().shape({
+  Name: yup.string().required("required"),
+  email: yup.string().email("invalid E-mail").required("required"),
+  DOB: yup.date().typeError("Invalid date").required("Date of birth is required"),
+  gender: yup.string().required("Gender is required"),
+  phone: yup.string().matches(phoneRegExp, "phone.no is not valid").required("required"),
+  address: yup.string().required("required"),
+});
+
+export const reportSchema = yup.object().shape({
+  Name: yup.string().required("required"),
+  email: yup.string().email("invalid E-mail").required("required"),
+  phone: yup.string().matches(phoneRegExp, "phone.no is not valid").required("required"),
+  complaintDetails: yup.string().required("required")
+});
+
+export const loginSchema = yup.object().shape({
+  email: yup.string().email("invalid E-mail").required("required"),
+  password: yup
+    .string()
+    .required("Password is required")
+    .min(8, "Minimum 8 characters")
+    .matches(/[A-Z]/, "Must contain one uppercase letter")
+    .matches(/[a-z]/, "Must contain one lowercase letter")
+    .matches(/[0-9]/, "Must contain one number")
+    .matches(/[@$!%*?&]/, "Must contain one special character"),
+});
+
+export const SignupSchema = yup.object().shape({
+  Name: yup.string().required("required"),
+  email: yup.string().email("invalid E-mail").required("required"),
+  password: yup
+    .string()
+    .required("Password is required")
+    .min(8, "Minimum 8 characters")
+    .matches(/[A-Z]/, "Must contain one uppercase letter")
+    .matches(/[a-z]/, "Must contain one lowercase letter")
+    .matches(/[0-9]/, "Must contain one number")
+    .matches(/[@$!%*?&]/, "Must contain one special character"),
+
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .required("Confirm password is required"),
+});

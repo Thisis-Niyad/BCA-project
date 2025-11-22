@@ -40,9 +40,6 @@ const Topbar = () => {
              <IconButton>
                 <SettingsOutlinedIcon/>
             </IconButton>
-            <Link to="profile"> <IconButton>
-                <PersonOutlinedIcon />
-            </IconButton></Link>
         </Box>
       </Box>
 

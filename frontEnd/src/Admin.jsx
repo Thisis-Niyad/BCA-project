@@ -1,6 +1,5 @@
 import React from 'react'
-import { ColorModeContext,useMode } from './Theme'
-import { CssBaseline, ThemeProvider }from "@mui/material"
+
 import {Outlet} from 'react-router-dom'
 import './sass/main.css'
 import Topbar from './scenes/global/Topbar'
@@ -15,7 +14,6 @@ import PaidIcon from '@mui/icons-material/Paid';
 import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 function Admin() {
-    const [theme,colorMode]=useMode();
     var list = [
   {
     title: "Home",
@@ -55,10 +53,7 @@ function Admin() {
 ];
   return (
     <>
-    <div className="dashboardBody">
-        <ColorModeContext.Provider value={colorMode}>
-          <ThemeProvider theme={theme}>
-              <CssBaseline />
+   
               <div className="app">
                 <SideBar list={list}/>
                   <main className="content">
@@ -66,9 +61,7 @@ function Admin() {
                    <Outlet />
                   </main>
               </div>
-          </ThemeProvider>
-        </ColorModeContext.Provider>
-    </div>
+         
     </>
   )
 }

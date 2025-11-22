@@ -1,11 +1,13 @@
 // import { useState } from 'react'
 import {Route,Routes,Link} from 'react-router-dom'
+import { ColorModeContext,useMode } from './Theme'
+import { CssBaseline, ThemeProvider }from "@mui/material"
 import Home from './Home'
 import Contact from '../pages/contact'
 import Index from '../pages'
-import SignUp from '../pages/SignUp'
-import SignIn from '../pages/SignIn'
-import Registeration from '../pages/Registeration'
+import SignUp from './scenes/signup/signUp'
+import SignIn from './scenes/Login/SignIn'
+import RegisterationArtist from './scenes/Registeration/RegisterationArtist'
 import Admin from './Admin'
 import Artist from './Artist'
 import User from './User'
@@ -37,8 +39,13 @@ import UserProfile from './scenes/User/Profile'
 function App() {
   
 
+    const [theme,colorMode]=useMode();
   return (
     <>
+     <div className="dashboardBody">
+            <ColorModeContext.Provider value={colorMode}>
+              <ThemeProvider theme={theme}>
+                  <CssBaseline />
      <Routes> 
       <Route path="/" element={<Home />}>
           <Route path="" element={<Index/>}/>
@@ -46,7 +53,7 @@ function App() {
       </Route>
       <Route path="/signup" element={<SignUp/>}/>
       <Route path="/signin" element={<SignIn/>}/>
-      <Route path="/registeration" element={<Registeration/>}/>
+      <Route path="/registeration" element={<RegisterationArtist/>}/>
       <Route path="/admin" element={<Admin/>}>
           <Route path="viewartist" element={<AdminViewartist/>}/>
           <Route path="complaints" element={<Complaints/>}/>
@@ -75,6 +82,9 @@ function App() {
           <Route path="profile" element={<UserProfile/>}/>
       </Route>
     </Routes>
+     </ThemeProvider>
+            </ColorModeContext.Provider>
+        </div>
     </>
   )
 }

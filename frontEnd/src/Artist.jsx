@@ -1,6 +1,4 @@
 import React from 'react'
-import { ColorModeContext,useMode } from './Theme'
-import { CssBaseline, ThemeProvider }from "@mui/material"
 import {Outlet} from 'react-router-dom'
 import './sass/main.css'
 import Topbar from './scenes/global/Topbar'
@@ -16,7 +14,6 @@ import WorkIcon from '@mui/icons-material/Work';
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 function Artist() {
-     const [theme,colorMode]=useMode();
     var list = [
   {
     title: "Home",
@@ -61,10 +58,7 @@ function Artist() {
 ];
   return (
      <>
-       <div className="dashboardBody">
-           <ColorModeContext.Provider value={colorMode}>
-             <ThemeProvider theme={theme}>
-                 <CssBaseline />
+      
                  <div className="app">
                    <SideBar list={list}/>
                      <main className="content">
@@ -72,9 +66,7 @@ function Artist() {
                        <Outlet />
                      </main>
                  </div>
-             </ThemeProvider>
-           </ColorModeContext.Provider>
-       </div>
+             
        </>
   )
 }

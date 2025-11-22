@@ -32,10 +32,9 @@ html {
   line-height: 1.80857;
   font-weight: normal;
   overflow-x: hidden;
-  background-color: #2ea0f8;
   border: 15px solid #ffffff;
   display: flow-root;
-  height: 100%;
+  
 }
 
 a {
@@ -223,7 +222,7 @@ button {
 .header_section {
   width: 100%;
   float: left;
-  background-color: #2ea0f8;
+  
 }
 
 .header_bg {
@@ -350,7 +349,7 @@ input.form-control::placeholder {
 .images_main {
   width: fit-content;
   display: flex;
-  background-color: rgb(138, 186, 222, 0.8);
+  background-color: rgb(217 217 217 / 78%);
   padding: 10px;
   border-radius: 20px;
 }

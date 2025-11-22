@@ -2,8 +2,9 @@ import React from 'react'
 import Header from '../../Components/Header'
 import {Box} from '@mui/material'
 import { Formik } from 'formik'
-import * as yup from "yup"
+// import * as yup from "yup"
 import ReportForm from '../../Components/ReportForm'
+import { reportSchema } from '../../schemas/validation' 
 
 const initialValues={
   Name:"",
@@ -12,14 +13,8 @@ const initialValues={
   complaintDetails:""
 }
 
-const phoneRegExp= /^(\+91|91|0)?[6-9]\d{9}$/;
 
-const reportSchema=yup.object().shape({
-  Name:yup.string().required("required"),
-  email:yup.string().email("invalid E-mail").required("required"),
-  phone:yup.string().matches(phoneRegExp,"phone.no is not valid").required("required"),
-  complaintDetails:yup.string().required("required")
-})
+
 function Report() {
         const handleFormSubmit=(values)=>{
           console.log(values);
