@@ -16,6 +16,7 @@
     "@mui/material": "^7.3.5",
     "@mui/x-data-grid": "^8.18.0",
     "@mui/x-date-pickers": "^8.19.0",
+    "axios": "^1.13.2",
     "bootstrap": "^5.3.8",
     "dayjs": "^1.11.19",
     "formik": "^2.4.9",

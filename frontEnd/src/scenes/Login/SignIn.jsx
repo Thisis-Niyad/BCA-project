@@ -1,7 +1,14 @@
-import React,{ useState } from 'react'
+import React,{ useState, } from 'react'
+import {useNavigate} from 'react-router-dom'
 import Topbar from '../global/Topbar'
 import { tokens } from '../../Theme'
-import {Box ,Typography,useTheme,TextField,Button, IconButton, InputAdornment}from "@mui/material"
+import {  Box,
+          Typography,
+          useTheme,
+          TextField,
+          Button, 
+          IconButton, 
+          InputAdornment  }from "@mui/material"
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -9,21 +16,40 @@ import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import { Formik } from 'formik'
 import { loginSchema } from '../../schemas/validation';
+import Api from '../../Api'
+import AlertPopup from '../../Components/AlertPopup';
 
 function SignIn() {
+
     const [showPassword, setShowPassword] = useState(false);
+    const navigate=useNavigate();
     const theme =useTheme();
     const colors =tokens(theme.palette.mode);
+    const [alert, setAlert] = useState({
+    show: false,
+    msg: "",
+    severity: "error",
+  });
     const initialValues={
         email:"",
         password:"",
     }
-    const handleSubmit = (event) => {
-      const data = new FormData(event.currentTarget);
-      console.log({
-        email: data.get('email'),
-        password: data.get('password'),
+
+    const handleSubmit = async (values) => {
+    try {
+      const response= await Api.post('/signin',values)
+      if (response.status===200) {
+        navigate(response.data.path)
+      }
+    } catch (err) {
+          setAlert({
+        show: true,
+        msg:err.status +" : "+ err.response?.data?.msg || "Login failed",
+        severity: "warning",
       });
+      
+    }
+      
     };
   return (
     <>
@@ -97,7 +123,7 @@ function SignIn() {
             <form onSubmit={handleSubmit}>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <FormControl>
-                  <FormLabel htmlFor="email">Email</FormLabel>
+                  <FormLabel htmlFor="email">E-mail</FormLabel>
                   <TextField
                             fullWidth
                             variant="outlined"
@@ -159,6 +185,7 @@ function SignIn() {
         </Box>
       </Box>
     </Box>
+    <AlertPopup Alertshow={alert.show} msg={alert.msg} severity={alert.severity} setAlert={setAlert}/>
     </main>
     </div> 
     </>

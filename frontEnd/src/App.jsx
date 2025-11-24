@@ -54,7 +54,7 @@ function App() {
       <Route path="/signup" element={<SignUp/>}/>
       <Route path="/signin" element={<SignIn/>}/>
       <Route path="/registeration" element={<RegisterationArtist/>}/>
-      <Route path="/admin" element={<Admin/>}>
+      <Route path="/admin/:id" element={<Admin/>}>
           <Route path="viewartist" element={<AdminViewartist/>}/>
           <Route path="complaints" element={<Complaints/>}/>
           <Route path="viewuser" element={<Viewuser/>}/>
@@ -62,7 +62,7 @@ function App() {
           <Route path="payments" element={<AdminPayments/>}/>
           <Route path="profile" element={<AdminProfile/>}/>
       </Route>
-      <Route path="/artist" element={<Artist/>}>
+      <Route path="/artist/:id" element={<Artist/>}>
           <Route path="chats" element={<ArtistChats/>}/>
           <Route path="gallery" element={<Gallery/>}/>
           <Route path="addpost" element={<Addpost/>}/>
@@ -71,7 +71,7 @@ function App() {
           <Route path="report" element={<ArtistReport/>}/>
           <Route path="profile" element={<ArtistProfile/>}/>
       </Route>
-      <Route path="/user" element={<User/>}>
+      <Route path="/user/:id" element={<User/>}>
           <Route path="viewartist" element={<UserViewartist/>}/>
           <Route path="imagegeneration" element={<Imagegeneration/>}/>
           <Route path="chats" element={<UserChats/>}/>

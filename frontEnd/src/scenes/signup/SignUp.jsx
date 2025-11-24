@@ -1,4 +1,5 @@
 import React,{ useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 import Topbar from '../global/Topbar'
 import { tokens } from '../../Theme'
 import {Box ,Typography,useTheme,TextField,Button, IconButton, InputAdornment}from "@mui/material"
@@ -9,26 +10,39 @@ import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import { Formik } from 'formik'
 import { SignupSchema } from '../../schemas/validation';
+import Api from '../../Api'
+import AlertPopup from '../../Components/AlertPopup';
 
 function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
     const theme =useTheme();
     const colors =tokens(theme.palette.mode);
+    const navigate=useNavigate();
     const initialValues={
+      Name:"",
         email:"",
         password:"",
         confirmPassword:"",
     }
-
-    const handleSubmit = (event) => {
-      const data = new FormData(event.currentTarget);
-      console.log({
-        name: data.get('Name'),
-        email: data.get('email'),
-        password: data.get('password'),
+    const [alert, setAlert] = useState({
+        show: false,
+        msg: "",
+        severity: "error",
       });
+    const handleSubmit = async (values) => {
+        try {
+            const response= await Api.post('/signup',values)
+            if (response.status===200) {
+              navigate(response.data.path)
+            }
+          } catch (err) {
+                setAlert({
+              show: true,
+              msg:err.status +" : "+ err.response?.data?.msg || "Login failed",
+              severity: "warning",
+            });
     };
-
+  };
   return (
     <>
       <div className="app">
@@ -205,6 +219,7 @@ function SignUp() {
       </Box>
     </Box>
     </main>
+        <AlertPopup Alertshow={alert.show} msg={alert.msg} severity={alert.severity} setAlert={setAlert}/>
     </div> 
     </>
   )
