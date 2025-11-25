@@ -20,6 +20,7 @@ function ProfileSection({ values,errors, touched, handleBlur, handleChange,initi
       const handleSelect = (file) => {
         setImage(URL.createObjectURL(file));
       };
+      
   return (
     <>
 <Box display="flex" justifyContent="center" alignItems='flex-end'>
@@ -92,7 +93,7 @@ function ProfileSection({ values,errors, touched, handleBlur, handleChange,initi
         }}
         />
         <TextField
-          InputProps={{readOnly: edit,}}
+          InputProps={{readOnly: true,}}
           fullWidth
           variant="outlined"
           type="text"
@@ -162,8 +163,63 @@ function ProfileSection({ values,errors, touched, handleBlur, handleChange,initi
     <MenuItem value="female">Female</MenuItem>
   </Select>
 </FormControl>
-
-
+ <TextField
+          InputProps={{readOnly: edit,}}
+          fullWidth
+          variant="outlined"
+          type="text"
+          label="state"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={values.state}
+          name="state"
+          error={!!touched.state && !!errors.state}
+          helperText={touched.state && errors.state}
+          sx={{
+            gridColumn:"span 2 !important", 
+            "& .MuiInputBase-input": {
+              padding: "26px 12px 20px 12px !important",
+            }    
+        }}
+        />
+<TextField
+          InputProps={{readOnly: edit,}}
+          fullWidth
+          variant="outlined"
+          type="text"
+          label="Town"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={values.town}
+          name="town"
+          error={!!touched.town && !!errors.town}
+          helperText={touched.town && errors.town}
+          sx={{
+            gridColumn:"span 1 !important", 
+            "& .MuiInputBase-input": {
+              padding: "26px 12px 20px 12px !important",
+            }    
+        }}
+        />
+        <TextField
+          InputProps={{readOnly: edit,}}
+          fullWidth
+          variant="outlined"
+          type="text"
+          label="Pin code"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={values.pin}
+          name="pin"
+          error={!!touched.pin && !!errors.pin}
+          helperText={touched.pin && errors.pin}
+          sx={{
+            gridColumn:"span 1 !important", 
+            "& .MuiInputBase-input": {
+              padding: "26px 12px 20px 12px !important",
+            }    
+        }}
+        />
         <TextField
           InputProps={{readOnly: edit,}}
                   fullWidth

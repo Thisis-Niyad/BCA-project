@@ -1,6 +1,6 @@
-import React from 'react'
-
-import {Outlet} from 'react-router-dom'
+import React,{useEffect,useState} from 'react'
+import Api from './Api'
+import {Outlet,useParams} from 'react-router-dom'
 import './sass/main.css'
 import Topbar from './scenes/global/Topbar'
 import SideBar from './scenes/global/SideBar'
@@ -51,11 +51,26 @@ function Admin() {
      Icon:<LogoutIcon/>
   },
 ];
+const { id } = useParams();
+const [name,setName]=useState()
+const [image,setImage]=useState()
+useEffect(()=>{
+const SideBarProflieInfo=async()=>{
+  try {
+    const response=await Api.get(`/admin/${id}`)
+    setName(response.data.name)
+    setImage(response.data.Image)
+  } catch (err) {
+    console.log(err);
+    
+  }
+}
+SideBarProflieInfo()},[id])
   return (
     <>
    
               <div className="app">
-                <SideBar list={list}/>
+                <SideBar list={list} Name={name} Image={image}/>
                   <main className="content">
                     <Topbar />
                    <Outlet />

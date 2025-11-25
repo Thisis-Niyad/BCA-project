@@ -32,7 +32,12 @@ function SignUp() {
     const handleSubmit = async (values) => {
         try {
             const response= await Api.post('/signup',values)
-            if (response.status===200) {
+            if (response.status===201) {
+                setAlert({
+              show: true,
+              msg:"Success Full",
+              severity: "success",
+            });
               navigate(response.data.path)
             }
           } catch (err) {
@@ -41,7 +46,7 @@ function SignUp() {
               msg:err.status +" : "+ err.response?.data?.msg || "Login failed",
               severity: "warning",
             });
-    };
+    }; 
   };
   return (
     <>

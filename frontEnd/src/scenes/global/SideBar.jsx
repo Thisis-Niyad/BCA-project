@@ -26,7 +26,7 @@ const Item=({title, to,Icon, selected , setSelected})=>{
     )
 }
 
-const SideBar = ({list}) => {
+const SideBar = ({list,Name,Image}) => {
     const theme =useTheme();
     const colors =tokens(theme.palette.mode);
     const [isCollapsed,setIsCollapsed]=useState(false);
@@ -105,7 +105,7 @@ const SideBar = ({list}) => {
                             <img 
                                 alt="profile picture"
                                 width="100px"
-                                src={unknownImg}
+                                src={Image==""||Image==null?unknownImg:Image}
                                 style={{cursor:"pointer",borderRadius:"50%",height:"100px"}}
                                 />
                             </Link>
@@ -115,8 +115,8 @@ const SideBar = ({list}) => {
                               variant='h4'
                               color={colors.grey[100]} 
                               fontWeight="bold"
-                              sx={{m:"8px 0 0 0"}}
-                          >hello</Typography>
+                              sx={{m:"8px 0 0 0",textAlign:"center"}}
+                          >{Name}</Typography>
                         </Box>
                       </Box>
                     )}

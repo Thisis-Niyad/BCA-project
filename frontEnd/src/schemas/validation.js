@@ -8,6 +8,9 @@ export const ProfileSchema = yup.object().shape({
   DOB: yup.date().typeError("Invalid date").required("Date of birth is required"),
   gender: yup.string().required("Gender is required"),
   phone: yup.string().matches(phoneRegExp, "phone.no is not valid").required("required"),
+  state: yup.string().required("required"),
+  town: yup.string().required("required"),
+  pin: yup.string().matches(/^\d{6}$/, "Enter a valid pin").required("required"),
   address: yup.string().required("required"),
 });
 

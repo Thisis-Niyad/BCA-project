@@ -24,6 +24,7 @@ const AdminsSchema = new mongoose.Schema({
         state: { type: String, default: "" },
         town: { type: String, default: "" },
         pin: { type: Number, default: null },
+        dob: { type: Date, default: null },
         profileImg: { type: String, default: "" }
     }
 

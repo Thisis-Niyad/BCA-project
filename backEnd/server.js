@@ -4,11 +4,9 @@ import { connectDB } from "./config/db.js"
 import index from "./routes/index.js"
 import Login from "./routes/Login.js"
 import SignUp from "./routes/SignUp.js"
-// import Artist from "./routes/Artist.js"
-// import User from "./routes/User.js"
-import bcrypt from "bcrypt";
+import Admin from './routes/Admin.js'
+
 import cors from 'cors'
-import Admins from "./models/actors.js"
 
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config();
@@ -26,19 +24,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", index);
 app.use("/signin", Login);
 app.use("/signup", SignUp);
-// app.use("/",index);
-
-const fun = async (params) => {
-    try {
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash("Tcaplexip@123", salt);
-        console.log(hashedPassword);
+app.use("/admin", Admin);
 
 
-    } catch (e) {
-        console.log("error:", e);
-    }
-}
 
 app.listen(PORT, () => {
     console.log(`server runnig at PORT:${PORT}`)
