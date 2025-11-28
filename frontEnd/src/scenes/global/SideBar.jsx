@@ -105,7 +105,7 @@ const SideBar = ({list,Name,Image}) => {
                             <img 
                                 alt="profile picture"
                                 width="100px"
-                                src={Image==""||Image==null?unknownImg:Image}
+                                src={Image==""||Image==null?unknownImg:`data:image/png;base64,${Image}`}
                                 style={{cursor:"pointer",borderRadius:"50%",height:"100px"}}
                                 />
                             </Link>

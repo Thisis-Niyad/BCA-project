@@ -18,14 +18,38 @@ const AdminsSchema = new mongoose.Schema({
         required: true
     },
     profileInfo: {
-        phoneNo: { type: String, default: "" },
-        address: { type: String, default: "" },
-        gender: { type: String, default: "" },
-        state: { type: String, default: "" },
-        town: { type: String, default: "" },
-        pin: { type: Number, default: null },
-        dob: { type: Date, default: null },
-        profileImg: { type: String, default: "" }
+        phoneNo: {
+            type: String,
+            default: ""
+        },
+        address: {
+            type: String,
+            default: ""
+        },
+        gender: {
+            type: String,
+            default: ""
+        },
+        state: {
+            type: String,
+            default: ""
+        },
+        town: {
+            type: String,
+            default: ""
+        },
+        pin: {
+            type: Number,
+            default: null
+        },
+        dob: {
+            type: Date,
+            default: null
+        },
+        profileImg: {
+            type: String,
+            default: ""
+        }
     }
 
 });

@@ -118,6 +118,8 @@ function SignIn() {
             onSubmit={handleSubmit}
             initialValues={initialValues}
             validationSchema={loginSchema}
+            validateOnChange={false}
+            validateOnBlur={false}
           >
           {({ values, errors, touched, handleBlur, handleChange, handleSubmit})=>(
             <form onSubmit={handleSubmit}>

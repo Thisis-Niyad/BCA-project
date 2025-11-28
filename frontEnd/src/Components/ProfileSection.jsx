@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {DatePicker} from '@mui/x-date-pickers/DatePicker'
 import {Box, Button,useTheme,TextField,Select, MenuItem,InputLabel,FormControl } from '@mui/material'
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -10,23 +10,30 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import EditIcon from '@mui/icons-material/Edit';
 
-function ProfileSection({ values,errors, touched, handleBlur, handleChange,initialValues}) {
+function ProfileSection({ values,errors, touched, handleBlur, handleChange, setFieldValue,initialValues }) {
       const theme =useTheme();
       const colors =tokens(theme.palette.mode);
       const isNonMobile=useMediaQuery("min-width:600px");
-      const DOB = initialValues.DOB?dayjs(initialValues.DOB):null;
-      const [image, setImage] = useState(null);
+      const [image, setImage] = useState();
       const [edit,setEdit]=useState(true);
       const handleSelect = (file) => {
         setImage(URL.createObjectURL(file));
       };
-      
+      useEffect(() => {
+  setImage(
+    initialValues.ProfileImg
+      ? `data:image/png;base64,${initialValues.ProfileImg}`
+      : unKnownImg
+  );
+},  [initialValues.ProfileImg]);
+
   return (
     <>
+    <Box>
 <Box display="flex" justifyContent="center" alignItems='flex-end'>
    
       <img
-        src={image?image:unKnownImg}
+        src={image}
         alt="preview"
         width={150}
         style={{
@@ -39,11 +46,17 @@ function ProfileSection({ values,errors, touched, handleBlur, handleChange,initi
      <input
         accept="image/*"
         id="upload-image"
+        name="ProfileImg"
         type="file"
         disabled={edit}
         style={{ display: "none" }}
-        onChange={(e) => handleSelect(e.target.files[0])}
+        onChange={(e) => {
+          const file = e.target.files[0];
+          handleSelect(file);   // update preview
+          setFieldValue("ProfileImg", file); // update formik value
+        }}
       />
+
       <label htmlFor="upload-image" style={{ margin: "0 0 0 -20px" }}>
           < AutorenewIcon sx={{minWidth:"40px",width:"40px",height:"40px", padding:"10px",cursor:"pointer", borderRadius:"50%",backgroundColor: `${colors.primary[400]} !important`
           }}/>
@@ -127,35 +140,37 @@ function ProfileSection({ values,errors, touched, handleBlur, handleChange,initi
                   padding: "24px 12px 20px 12px !important",
               },}}
           />
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker
-         disabled={edit}
-          label="DOB"
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={DOB}
-          name="DOB"
-          slotProps={{
-            textField:{
-        sx: {
-          gridColumn: "span 2 !important",
-          "& .MuiInputBase-input": {
-            padding: "26px 12px 20px 12px !important",
-          },
-        },
-        error: !!touched.DOB && !!errors.DOB,
-        helperText: touched.DOB && errors.DOB,
-      },
-          }}
-        /></LocalizationProvider>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              disabled={edit}
+              label="DOB"
+              name="DOB"
+              value={values.DOB ? dayjs(values.DOB) : null}
+              onChange={(value) => {setFieldValue("DOB", value ? value.toDate() : null);}}
+              slotProps={{
+                textField: {
+                  onBlur: handleBlur,
+                  error: !!touched.DOB && !!errors.DOB,
+                  helperText: touched.DOB && errors.DOB,
+                  sx: {
+                    gridColumn: "span 2 !important",
+                    "& .MuiInputBase-input": {
+                      padding: "26px 12px 20px 12px !important",
+                    },
+                  },
+                },
+              }}
+            />
+          </LocalizationProvider>
+
  <FormControl fullWidth disabled={edit} sx={{ gridColumn: "span 2 !important" }}>
   <InputLabel id="gender-label">Gender</InputLabel>
 
   <Select
     labelId="gender-label"
     label="Gender"
-    name="Gender"
-    value={values.Gender||""}
+    name="gender"
+    value={values.gender||""}
     onChange={handleChange}
     sx={{ width: "80%", marginLeft: "5px" }}
   >
@@ -236,12 +251,13 @@ function ProfileSection({ values,errors, touched, handleBlur, handleChange,initi
                   helperText={touched.address && errors.address}
                   sx={{gridColumn:"span 4"}}
                 />
-    {!edit &&(<Box display="flex" justifyContent="end" mt="10px">
-      <Button type="submit" color="secondary" variant="contained">SAVE</Button>
+    {!edit &&(
+      <Box display="flex" justifyContent="end" mt="10px">
+      <Button  type="Submit" color="secondary" variant="contained">SAVE</Button>
     </Box>
  )}
  </Box>
-    
+    </Box>
 </>
   )
 }

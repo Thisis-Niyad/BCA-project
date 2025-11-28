@@ -36,6 +36,8 @@ function Report() {
           onSubmit={handleFormSubmit}
           initialValues={initialValues}
           validationSchema={reportSchema}
+          validateOnChange={false}
+          validateOnBlur={false}
         >
           {({ values, errors, touched, handleBlur, handleChange, handleSubmit})=>(
             <form onSubmit={handleSubmit}>

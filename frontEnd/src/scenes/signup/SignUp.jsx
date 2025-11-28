@@ -116,6 +116,8 @@ function SignUp() {
             onSubmit={handleSubmit}
             initialValues={initialValues}
             validationSchema={SignupSchema}
+            validateOnChange={false}
+            validateOnBlur={false}
           >
           {({ values, errors, touched, handleBlur, handleChange, handleSubmit})=>(
             <form onSubmit={handleSubmit}>
