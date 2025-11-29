@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import {Outlet,useParams} from 'react-router-dom'
+import { UserContext } from './scenes/context/context'
 import './sass/main.css'
 import Topbar from './scenes/global/Topbar'
 import SideBar from './scenes/global/SideBar'
@@ -15,6 +16,7 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import PaidIcon from '@mui/icons-material/Paid';
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
+
 function User() {
   
     var list = [
@@ -67,12 +69,14 @@ function User() {
 const { id } = useParams();
 const [name,setName]=useState()
 const [image,setImage]=useState()
+const [email,setEmail]=useState()
 useEffect(()=>{
 const SideBarProflieInfo=async()=>{
   try {
     const response=await Api.get(`/user/${id}`)
     setName(response.data.name)
     setImage(response.data.Image)
+    setEmail(response.data.email)
   } catch (err) {
     console.log(err);
     
@@ -86,7 +90,9 @@ SideBarProflieInfo()},[id])
                 <SideBar list={list} Name={name} Image={image}/>
                   <main className="content">
                     <Topbar />
-                    <Outlet />              
+                    <UserContext.Provider value={{name,email}}>
+                      <Outlet />              
+                    </UserContext.Provider >
                   </main>
               </div>
          

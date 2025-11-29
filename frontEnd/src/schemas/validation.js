@@ -19,6 +19,7 @@ export const reportSchema = yup.object().shape({
   Name: yup.string().required("required"),
   email: yup.string().email("invalid E-mail").required("required"),
   phone: yup.string().matches(phoneRegExp, "phone.no is not valid").required("required"),
+  title: yup.string().required("required"),
   complaintDetails: yup.string().required("required")
 });
 

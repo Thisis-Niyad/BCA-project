@@ -35,6 +35,8 @@ import Carts from './scenes/User/Carts'
 import UserPayments from './scenes/User/Payments'
 import Report from './scenes/User/Report'
 import UserProfile from './scenes/User/Profile'
+import NewReport from './scenes/User/ReportFeild/NewReport'
+import ReportsStatus from './scenes/User/ReportFeild/ReportsStatus'
 
 function App() {
   
@@ -78,7 +80,10 @@ function App() {
           <Route path="orders" element={<Orderdetails/>}/>
           <Route path="carts" element={<Carts/>}/>
           <Route path="payments" element={<UserPayments/>}/>
-          <Route path="report" element={<Report/>}/>
+          <Route path="report" element={<Report/>}>
+              <Route index  element={<ReportsStatus/>}/>
+              <Route path="new" element={<NewReport/>}/>
+          </Route>
           <Route path="profile" element={<UserProfile/>}/>
       </Route>
     </Routes>

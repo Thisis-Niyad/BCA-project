@@ -5,6 +5,8 @@ import index from "./routes/index.js"
 import Login from "./routes/Login.js"
 import SignUp from "./routes/SignUp.js"
 import Admin from './routes/Admin.js'
+import Artist from './routes/Artist.js'
+import User from './routes/User.js'
 
 import cors from 'cors'
 
@@ -25,6 +27,8 @@ app.use("/", index);
 app.use("/signin", Login);
 app.use("/signup", SignUp);
 app.use("/admin", Admin);
+app.use("/artist", Artist);
+app.use("/user", User);
 
 
 

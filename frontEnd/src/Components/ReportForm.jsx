@@ -4,6 +4,7 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 
 function ReportForm({values, errors, touched, handleBlur, handleChange}) {
       const isNonMobile=useMediaQuery("min-width:600px");
+      
   return (
     <>
   <Box m="20px"
@@ -22,6 +23,7 @@ function ReportForm({values, errors, touched, handleBlur, handleChange}) {
    }}}
   >
         <TextField
+          InputProps={{readOnly: true,}}
           fullWidth
           variant="outlined"
           type="text"
@@ -32,13 +34,14 @@ function ReportForm({values, errors, touched, handleBlur, handleChange}) {
           name="Name"
           error={!!touched.Name && !!errors.Name}
           helperText={touched.Name && errors.Name}
-          sx={{gridColumn:"span 4",
+          sx={{gridColumn:"span 2 !important",
             "& .MuiInputBase-input": {
                 padding: "26px 12px 20px 12px !important",
             }    
         }}
         />
         <TextField
+          InputProps={{readOnly: true,}}
           fullWidth
           variant="outlined"
           type="text"
@@ -49,7 +52,7 @@ function ReportForm({values, errors, touched, handleBlur, handleChange}) {
           name="email"
           error={!!touched.email && !!errors.email}
           helperText={touched.email && errors.email}
-          sx={{gridColumn:"span 4",
+          sx={{gridColumn:"span 2 !important",
             "& .MuiInputBase-input": {
                 padding: "24px 12px 20px 12px !important",
             },
@@ -70,6 +73,23 @@ function ReportForm({values, errors, touched, handleBlur, handleChange}) {
             "& .MuiInputBase-input": {
                 padding: "24px 12px 20px 12px !important",
             },}}
+        />
+        <TextField
+          fullWidth
+          variant="outlined"
+          type="text"
+          label="Title"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={values.title}
+          name="title"
+          error={!!touched.title && !!errors.title}
+          helperText={touched.title && errors.title}
+          sx={{gridColumn:"span 4",
+            "& .MuiInputBase-input": {
+                padding: "26px 12px 20px 12px !important",
+            }    
+        }}
         />
         <TextField
           fullWidth
