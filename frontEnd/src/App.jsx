@@ -37,6 +37,7 @@ import Report from './scenes/User/Report'
 import UserProfile from './scenes/User/Profile'
 import NewReport from './scenes/User/ReportFeild/NewReport'
 import ReportsStatus from './scenes/User/ReportFeild/ReportsStatus'
+import ViewComplaint from './scenes/Admin/ViewComplaint/ViewComplaint'
 
 function App() {
   
@@ -59,6 +60,7 @@ function App() {
       <Route path="/admin/:id" element={<Admin/>}>
           <Route path="viewartist" element={<AdminViewartist/>}/>
           <Route path="complaints" element={<Complaints/>}/>
+          <Route path="complaints/:complaintId" element={<ViewComplaint/>}/>
           <Route path="viewuser" element={<Viewuser/>}/>
           <Route path="newartist" element={<Newartist/>}/>
           <Route path="payments" element={<AdminPayments/>}/>

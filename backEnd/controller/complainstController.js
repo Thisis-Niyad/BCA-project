@@ -27,15 +27,51 @@ export const getComplaints = async (req, res) => {
         // const status = parseInt(req.query.status);
         // const createdAt = parseInt(req.query.createdAt);
 
-        const complaints = await complaint.find()
+        const complaints = await complaint.find({}, {
+            _id: 1,
+            email: 1,
+            name: 1,
+            role: 1,
+            dateOfComplaint: 1,
+            title: 1,
+            status: 1
+        })
         // .sort({ status: status, createdAt: createdAt })
         // .skip(skip)
         // .limit(20);
 
-        res.status(200).json({ complaints });
+        res.status(200).json(complaints);
+    } catch (err) {
+        res.status(500).json({ msg: "Server error" });
+    }
+}
+
+
+export const complaintStatus = async (req, res) => {
+    try {
+        const actorId = req.params.id
+        const complaints = await complaint.find({ actorId: actorId }, {
+            _id: 1,
+            dateOfComplaint: 1,
+            title: 1,
+            status: 1
+        });
+        res.status(200).json(complaints);
+    } catch (err) {
+        res.status(500).json({ msg: "Server error" });
+    }
+}
+
+export const getComplaintDetails = async (req, res) => {
+    try {
+        const complaintDetails = await complaint.findById(req.params.complaintId);
+        res.status(200).json(complaintDetails);
+
     } catch (err) {
         console.log(err);
 
         res.status(500).json({ msg: "Server error" });
+
     }
+
 }

@@ -1,10 +1,15 @@
 import React,{useEffect,useState} from 'react'
 import Header from '../../Components/Header'
 import {Box, Typography,useTheme} from '@mui/material'
-import {DataGrid} from '@mui/x-data-grid'
 import Api from '../../Api'
 import {useParams} from 'react-router-dom'
 import {tokens} from '../../Theme'
+// icons
+import HourglassTopIcon from '@mui/icons-material/HourglassTop';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
+import TableGridComplaint from '../../Components/TableGridComplaint'
 
 function Comlpaints() {
   const theme= useTheme()
@@ -21,36 +26,41 @@ function Comlpaints() {
         const fetchComplaintRows=async()=>{
           try {
             const response=await Api.get(`/admin/${id}/complaints`)
-           setComplaintRows(response.data.complaints);  
+           setComplaintRows(response.data);  
   
           } catch (err) {
             console.log(err);
           }
         }
-fetchComplaintRows()},[id])
-      console.log(complaintRows);
+      fetchComplaintRows()},[id])
+     
   const columns=[
-    {field:"_id" ,headerName:"ID",flex:1},
-    {field:"title",headerName:"Title",flex:1},
-    {field:"email",headerName:"E-mail",flex:1},
-    {field:"name",headerName:"Name",flex:1},
-    {field:"role",headerName:"Role"},
-    {field:"dateOfComplaint", headerName:"Date",flex:1},
+    {field:"_id" ,headerName:"ID",flex:1, headerClassName: "super-header",},
+    {field:"title",headerName:"Title",flex:1,cellClassName:"title-column--cell", headerClassName: "super-header",},
+    {field:"email",headerName:"E-mail",flex:1, headerClassName: "super-header",},
+    {field:"role",headerName:"Role", headerClassName: "super-header",},
+    {field:"dateOfComplaint", headerName:"Date",flex:1, headerClassName: "super-header",},
     {
       field:"status",
       headerName:"Status",
+       headerClassName: "super-header",
       flex:1,
       renderCell:({row:{status}})=>{
           return(
             <Box
             display="flex"
             alignItems="center"
+            borderRadius="4px"
             m="0 auto"
             p="5px"
             height="100%"
             justifyContent="center"  
            color={colors.primary[500]}
             backgroundColor={ statusColors[status]}>
+              {status==="pending"&&<HourglassTopIcon/>}
+              {status==="In progress"&&<ShowChartIcon/>}
+              {status==="Resolved"&&<TaskAltIcon/>}
+              {status==="Rejected"&&<HighlightOffRoundedIcon/>}
             <Typography>{status}</Typography>
             </Box>
           )
@@ -64,13 +74,7 @@ fetchComplaintRows()},[id])
         <Box display="flex" justifyContent="space-between" alignItems="center">
             <Header title="Complaints" subtitle="Track, review, and resolve complaints" /> 
         </Box>
-        <Box m="20px 0 0 0" height="70vh">
-          <DataGrid 
-          rows={complaintRows}
-          columns={columns}
-           getRowId={(row) => row._id}
-          />
-        </Box>
+        <TableGridComplaint columns={columns} Rows={complaintRows}/>
     </Box>
   )
 }
