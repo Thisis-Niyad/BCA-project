@@ -65,6 +65,11 @@ export const complaintStatus = async (req, res) => {
 export const getComplaintDetails = async (req, res) => {
     try {
         const complaintDetails = await complaint.findById(req.params.complaintId);
+        // if (!complaintDetails) {
+        //     return res.status(404).json({ message: "Complaint not found" });
+        // }
+        console.log(complaintDetails);
+
         res.status(200).json(complaintDetails);
 
     } catch (err) {
