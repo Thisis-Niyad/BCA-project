@@ -46,7 +46,6 @@ export const getComplaints = async (req, res) => {
     }
 }
 
-
 export const complaintStatus = async (req, res) => {
     try {
         const actorId = req.params.id

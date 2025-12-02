@@ -2,20 +2,19 @@ import React from 'react'
 import Topbar from '../global/Topbar'
 import { tokens } from '../../Theme'
 import {Box ,Typography,useTheme,TextField,Button, IconButton,Select, MenuItem, InputAdornment,InputLabel,}from "@mui/material"
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import AddIcon from '@mui/icons-material/Add';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
-import { Formik } from 'formik'
-import { SignupSchema } from '../../schemas/validation';
+import { Formik ,FieldArray } from 'formik'
+import { ArtistRegisterationSchema } from '../../schemas/validation';
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import useMediaQuery from '@mui/material/useMediaQuery'
 import {DatePicker} from '@mui/x-date-pickers/DatePicker'
 import UploadFileIcon from "@mui/icons-material/UploadFile";
-
+import DeleteIcon from "@mui/icons-material/Delete";
 const initialValues={
         Name:"",
         email:"",
@@ -25,8 +24,10 @@ const initialValues={
         state:"",
         town:"",
         pin:"",
-        certificates:"",
+        certificate:"",
         address:"",
+        artPortfolioLinks: [""],
+        workImages: [],
     }
 function RegisterationArtist() {
    const DOB = initialValues.DOB?dayjs(initialValues.DOB):null;
@@ -35,11 +36,8 @@ function RegisterationArtist() {
     const colors =tokens(theme.palette.mode);
     
 
-    const handleSubmit = (event) => {
-      const data = new FormData(event.currentTarget);
-      console.log({
-        info: data
-      });
+    const handleSubmit = (values) => {
+     console.log(values);
     };
 
   return (
@@ -102,9 +100,12 @@ function RegisterationArtist() {
           <Formik
             onSubmit={handleSubmit}
             initialValues={initialValues}
-            validationSchema={SignupSchema}
+            validationSchema={ArtistRegisterationSchema}
+             validateOnChange={false}
+            validateOnBlur={false}
+            enableReinitialize
           >
-          {({ values, errors, touched, handleBlur, handleChange, handleSubmit})=>(
+          {({ values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue})=>(
             <form onSubmit={handleSubmit}>
               <Box 
                m="20px"
@@ -157,6 +158,7 @@ function RegisterationArtist() {
                      <TextField
                                  fullWidth
                                  variant="outlined"
+                                 label="91*****"
                                  type="text"
                                  onBlur={handleBlur}
                                  onChange={handleChange}
@@ -205,11 +207,88 @@ function RegisterationArtist() {
                         <MenuItem value="female">Female</MenuItem>
                       </Select>
                     </FormControl>
+                     <FieldArray name="artPortfolioLinks">
+        {({ push, remove }) => (
+          <Box display="flex" flexDirection="column" gap={2}>
+            <FormLabel style={{margin:"0"}}>Art Portfolio Links</FormLabel>
+            {values.artPortfolioLinks.map((link, index) => (
+              <Box key={index} display="flex" alignItems="center" gap={2}>
+                
+                <TextField
+                  label={`Link ${index + 1}`}
+                  name={`artPortfolioLinks[${index}]`}
+                  value={link}
+                  onChange={handleChange}
+                  fullWidth
+                  error={touched.socialLinks && errors.socialLinks?.[index]}
+                  helperText={
+                    touched.socialLinks && errors.socialLinks?.[index]
+                      ? errors.socialLinks[index]
+                      : ""
+                  }
+                  sx={{gridColumn:"span 4",
+                              "& .MuiInputBase-input": {
+                                  padding: "24px 12px 20px 12px !important",
+                              },
+                            }}
+                />
+
+                {index > 0 && (
+                  <IconButton color="error" onClick={() => remove(index)}>
+                    <DeleteIcon />
+                  </IconButton>
+                )}
+                {index == 0 && (
+                  <IconButton onClick={() => push("")}>
+                  <AddIcon/>
+                </IconButton>
+                )}
+              </Box>
+            ))}
+
+          </Box>
+        )}
+      </FieldArray>
+      <FormControl>
+                  <FormLabel htmlFor="workImages">Upload work Images (min 5)</FormLabel>
+                    <input
+                       id="work-images-upload"
+                        type="file"
+                        accept="image/*"
+                        name="workImages"
+                        multiple
+                        style={{ display: "none" }}
+                        onChange={(event) => {
+                        setFieldValue("workImages",Array.from(event.target.files));
+                      }}
+                      />
+
+                    
+                      <label htmlFor="work-images-upload">
+                        <Button
+                          variant="contained"
+                          component="span"
+                          fullWidth
+                          startIcon={<UploadFileIcon />}
+                          sx={{ mt: 1, mb: 1, }}
+                        >
+                          Choose Images
+                        </Button>
+                      </label>
+
+  <Box display="flex" flexWrap="wrap" gap={2} mt={1}>
+          {values.workImages.map((file, index) => (
+            <Typography key={index}>{file.name}</Typography>
+          ))}
+        </Box>
+
+</FormControl>
                     <FormControl>
-                  <FormLabel htmlFor="certificates">Upload Certificates</FormLabel>
+                  <FormLabel htmlFor="certificate">Upload Certificates</FormLabel>
                     <input
                         accept=".pdf"
                         type="file"
+                        name="certificate"
                         id="certificate-upload"
                         style={{ display: "none" }}
                       onChange={handleChange}
@@ -231,13 +310,13 @@ function RegisterationArtist() {
                       <TextField
                         fullWidth
                         variant="outlined"
-                        value={values.certificates}
+                        value={values.certificate}
                         placeholder="No file chosen"
                         InputProps={{
                           readOnly: true,
                         }}
-                        error={!!touched.certificates && !!errors.certificates}
-                        helperText={touched.certificates && errors.certificates}
+                        error={!!touched.certificate && !!errors.certificate}
+                        helperText={touched.certificate && errors.certificate}
                       />
                 </FormControl>
                 <FormControl>

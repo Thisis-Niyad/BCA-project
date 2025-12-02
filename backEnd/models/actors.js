@@ -17,6 +17,10 @@ const AdminsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    isBlocked: {
+        type: Boolean,
+        default: false
+    },
     profileInfo: {
         phoneNo: {
             type: String,
