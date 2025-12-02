@@ -3,7 +3,7 @@ import {Box,Typography,Button,TextField,MenuItem,useTheme} from '@mui/material'
 import {tokens} from '../../../Theme'
 import Api from '../../../Api'
 import { Formik } from 'formik'
-import {useParams,useNavigate} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import ViewComplaintDetails from '../../../Components/ViewComplaintDetails';
 import AlertPopup from '../../../Components/AlertPopup'
 
@@ -13,7 +13,6 @@ function ViewComplaint() {
       const { complaintId } = useParams();
       const theme= useTheme()
         const colors =tokens(theme.palette.mode)
-            const navigate=useNavigate();
       const [complaint, setComplaint] = useState();
        const [status, setStatus] = useState( "pending" );
         const [alert, setAlert] = useState({
@@ -25,16 +24,13 @@ function ViewComplaint() {
       console.log(values);
       
             try {
-                     const response= await Api.post(`/`,values)
-                     if (response.status===201) {
+                     const response= await Api.post(`/admin/${id}/complaints/${complaintId}`,values)
+                     if (response.status===200) {
                          setAlert({
                        show: true,
                        msg:response.data.msg,
                        severity: "success",
                      });
-                     setTimeout(() => {
-                       navigate(-1)
-                     }, 1000);
                      }
                    } catch (err) {
                          setAlert({

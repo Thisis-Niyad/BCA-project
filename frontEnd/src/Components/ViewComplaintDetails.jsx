@@ -10,9 +10,9 @@ function ViewComplaintDetails({complaint}) {
         const navigate=useNavigate();
        const statusColors={
           pending:"#FFEE8C",
-          "In progress":"#fcd12a",
-          resolved:"#98fb98",
-          rejected:"#fa8072",
+          "In Progress":"#f7b335",
+          Resolved:"#98fb98",
+          Rejected:"#fa8072",
         }  
   return (
     <>
@@ -50,7 +50,7 @@ function ViewComplaintDetails({complaint}) {
         width:'fit-content',
         borderRadius:"9px",
         padding:"10px",
-        margin:"10px",
+        margin:"10px 0",
         backgroundColor: statusColors[complaint?.status],
         color:colors.grey[500]
         }}>

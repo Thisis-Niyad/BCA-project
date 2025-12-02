@@ -16,6 +16,7 @@ import AdminViewartist from './scenes/Admin/Viewartist'
 import Viewuser from './scenes/Admin/Viewuser'
 import Newartist from './scenes/Admin/Newartist'
 import Complaints from './scenes/Admin/Comlpaints'
+import ViewComplaint from './scenes/Admin/ViewComplaint/ViewComplaint'
 import AdminPayments from './scenes/Admin/Payments'
 import AdminProfile from './scenes/Admin/Profile'
 // artist
@@ -25,7 +26,10 @@ import Addpost from './scenes/Artist/Addpost'
 import Request from './scenes/Artist/Request'
 import ArtistPayments from './scenes/Artist/Payments'
 import ArtistReport from './scenes/Artist/Report'
+import ArtistNewReport from './scenes/Artist/ReportField/NewReport'
+import ArtistReportsStatus from './scenes/Artist/ReportField/ReportStatus'
 import ArtistProfile from './scenes/Artist/Profile'
+import ArtistViewReport from './scenes/Artist/ReportField/ViewReport'
 // User
 import UserViewartist from './scenes/User/Viewartist'
 import Imagegeneration from './scenes/User/Imagegeneration'
@@ -35,9 +39,9 @@ import Carts from './scenes/User/Carts'
 import UserPayments from './scenes/User/Payments'
 import Report from './scenes/User/Report'
 import UserProfile from './scenes/User/Profile'
-import NewReport from './scenes/User/ReportFeild/NewReport'
-import ReportsStatus from './scenes/User/ReportFeild/ReportsStatus'
-import ViewComplaint from './scenes/Admin/ViewComplaint/ViewComplaint'
+import UserNewReport from './scenes/User/ReportFeild/NewReport'
+import UserReportsStatus from './scenes/User/ReportFeild/ReportsStatus'
+import UserViewReport from './scenes/User/ReportFeild/ViewReport'
 
 function App() {
   
@@ -72,7 +76,11 @@ function App() {
           <Route path="addpost" element={<Addpost/>}/>
           <Route path="request" element={<Request/>}/>
           <Route path="payments" element={<ArtistPayments/>}/>
-          <Route path="report" element={<ArtistReport/>}/>
+          <Route path="report" element={<ArtistReport/>}>
+                <Route index  element={<ArtistReportsStatus/>}/>
+                <Route path="new" element={<ArtistNewReport/>}/>
+                <Route path=":complaintId" element={<ArtistViewReport/>}/>
+          </Route>
           <Route path="profile" element={<ArtistProfile/>}/>
       </Route>
       <Route path="/user/:id" element={<User/>}>
@@ -83,8 +91,9 @@ function App() {
           <Route path="carts" element={<Carts/>}/>
           <Route path="payments" element={<UserPayments/>}/>
           <Route path="report" element={<Report/>}>
-              <Route index  element={<ReportsStatus/>}/>
-              <Route path="new" element={<NewReport/>}/>
+              <Route index  element={<UserReportsStatus/>}/>
+              <Route path="new" element={<UserNewReport/>}/>
+              <Route path=":complaintId" element={<UserViewReport/>}/>
           </Route>
           <Route path="profile" element={<UserProfile/>}/>
       </Route>

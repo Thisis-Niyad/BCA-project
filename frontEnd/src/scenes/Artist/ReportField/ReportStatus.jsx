@@ -26,7 +26,7 @@ function ReportsStatus() {
      useEffect(()=>{
             const fetchtStatusRows=async()=>{
               try {
-                const response=await Api.get(`/user/${id}/reports`)
+                const response=await Api.get(`/artist/${id}/reports`)
                setStatusRow(response.data);  
       
               } catch (err) {

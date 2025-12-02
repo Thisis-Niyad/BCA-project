@@ -18,9 +18,9 @@ function Comlpaints() {
   const { id } = useParams();
   const statusColors={
     pending:"#FFEE8C",
-    "In progress":"#fcd12a",
-    resolved:"#98fb98",
-    rejected:"#fa8072",
+    "In Progress":"#f7b335",
+    Resolved:"#98fb98",
+    Rejected:"#fa8072",
   }
       useEffect(()=>{
         const fetchComplaintRows=async()=>{
@@ -58,7 +58,7 @@ function Comlpaints() {
            color={colors.primary[500]}
             backgroundColor={ statusColors[status]}>
               {status==="pending"&&<HourglassTopIcon/>}
-              {status==="In progress"&&<ShowChartIcon/>}
+              {status==="In Progress"&&<ShowChartIcon/>}
               {status==="Resolved"&&<TaskAltIcon/>}
               {status==="Rejected"&&<HighlightOffRoundedIcon/>}
             <Typography>{status}</Typography>

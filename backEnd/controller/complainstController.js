@@ -68,15 +68,19 @@ export const getComplaintDetails = async (req, res) => {
         // if (!complaintDetails) {
         //     return res.status(404).json({ message: "Complaint not found" });
         // }
-        console.log(complaintDetails);
-
         res.status(200).json(complaintDetails);
-
     } catch (err) {
-        console.log(err);
-
         res.status(500).json({ msg: "Server error" });
-
     }
 
+}
+
+export const postUpdateStatus = async (req, res) => {
+    try {
+        const response = await complaint.findByIdAndUpdate(req.params.complaintId, { status: req.body.status })
+        res.status(200).json({ msg: "Status updated" });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ msg: "Server error" });
+    }
 }
