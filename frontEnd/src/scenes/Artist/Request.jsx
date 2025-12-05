@@ -5,7 +5,7 @@ function Request() {
   return (
     <Box m="20px">
         <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Header title="Work lists" subtitle="Track, review, and resolve complaints" /> 
+            <Header title="Work lists" subtitle="Veiw ,track and respond to artwork requests" /> 
         </Box>
     </Box>
   )

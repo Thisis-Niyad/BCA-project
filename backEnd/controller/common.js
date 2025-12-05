@@ -5,7 +5,7 @@ export const sidebarDetails = async (req, res) => {
     try {
         let img = ""
         const actor = await actors.findById(req.params.id);
-        if (actor.profileInfo.profilImg) {
+        if (actor.profileInfo.profileImg) {
             img = fs.readFileSync(`uploads/profile_images/${actor.profileInfo.profileImg}`, "base64")
         }
         res.status(200).json({ name: actor.name, Image: img, email: actor.email })
@@ -21,7 +21,8 @@ export const getProfileDetails = async (req, res) => {
     try {
         let img = "";
         const actor = await actors.findById(req.params.id);
-        if (actor.profileInfo.profilImg) {
+
+        if (actor.profileInfo.profileImg) {
             img = fs.readFileSync(`uploads/profile_images/${actor.profileInfo.profileImg}`, "base64")
         }
         res.status(200).json({

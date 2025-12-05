@@ -69,7 +69,7 @@ function ReportsStatus() {
   return (
     <Box m="20px">
      <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Header title="Report Status" subtitle="Track, review, and resolve complaints" /> 
+            <Header title="Report Status" subtitle="Monitor, Update and follow progress of your reports" /> 
     </Box>
     <Box display="flex" justifyContent="end" mt="10px">
         <Link to="new">

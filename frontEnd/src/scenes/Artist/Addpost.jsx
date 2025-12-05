@@ -5,7 +5,7 @@ function Addpost() {
   return (
     <Box m="20px">
         <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Header title="Add Post" subtitle="Track, review, and resolve complaints" /> 
+            <Header title="Add Post" subtitle="Upload, Manage and showcase your artwork images" /> 
         </Box>
     </Box>
   )

@@ -18,6 +18,8 @@ import { Formik } from 'formik'
 import { loginSchema } from '../../schemas/validation';
 import Api from '../../Api'
 import AlertPopup from '../../Components/AlertPopup';
+import MonkeyAvatar from '../../Components/formMonkey/MonkeyAvatar'
+
 
 function SignIn() {
 
@@ -79,7 +81,7 @@ function SignIn() {
             minWidth="380px"
             borderRadius="14px"
             sx={{
-              height:"450px",
+              height:"600px",
               backgroundImage: colors.blueAccent[100],
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
@@ -95,6 +97,12 @@ function SignIn() {
                       },
             }}
           >
+      <Box display="flex" justifyContent="center">
+             <MonkeyAvatar 
+              showPassword={showPassword}
+              togglePassword={() => setShowPassword(!showPassword)}
+            />
+      </Box>
           <Typography
             component="h1"
             variant="h4"
@@ -113,7 +121,7 @@ function SignIn() {
           >
             Welcome back! Please sign In to continue
           </Typography>
-     
+
           <Formik
             onSubmit={handleSubmit}
             initialValues={initialValues}

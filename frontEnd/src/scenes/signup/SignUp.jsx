@@ -12,6 +12,7 @@ import { Formik } from 'formik'
 import { SignupSchema } from '../../schemas/validation';
 import Api from '../../Api'
 import AlertPopup from '../../Components/AlertPopup';
+import MonkeyAvatar from '../../Components/formMonkey/MonkeyAvatar'
 
 function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +21,7 @@ function SignUp() {
     const navigate=useNavigate();
     const initialValues={
       Name:"",
-        email:"",
+        email:"", 
         password:"",
         confirmPassword:"",
     }
@@ -71,13 +72,13 @@ function SignUp() {
             display="flex"
             justifyContent="center"
             flexDirection= 'column'
-            padding="35px"
+            padding=" 45px 35px 35px"
             m="30px 0 20px 0"
             width="480px" 
             minWidth="380px"
             borderRadius="14px"
             sx={{
-              height:"650px",
+              height:"800px",
               backgroundImage: colors.blueAccent[100],
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
@@ -93,6 +94,12 @@ function SignUp() {
                       },
             }}
           >
+             <Box display="flex" justifyContent="center">
+                    <MonkeyAvatar 
+                    showPassword={showPassword}
+                    togglePassword={() => setShowPassword(!showPassword)}
+                  />
+            </Box>
           <Typography
             component="h1"
             variant="h4"

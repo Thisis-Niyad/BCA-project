@@ -5,7 +5,7 @@ function Carts() {
   return (
     <Box m="20px">
         <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Header title="Cart Lists" subtitle="Track, review, and resolve complaints" /> 
+            <Header title="Cart Lists" subtitle="Review, update and procced with selected Items" /> 
         </Box>
     </Box>
   )

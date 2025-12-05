@@ -1,0 +1,219 @@
+
+.avatar {
+  --sz-avatar: 166px;
+  order: 0;
+  width: var(--sz-avatar);
+  min-width: var(--sz-avatar);
+  max-width: var(--sz-avatar);
+  height: var(--sz-avatar);
+  min-height: var(--sz-avatar);
+  max-height: var(--sz-avatar);
+  border: 1px solid #707070;
+  border-radius: 9999px;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 2;
+  perspective: 80px;
+  position: relative;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --sz-svg: calc(var(--sz-avatar) - 10px);
+}
+.avatar svg {
+  position: absolute;
+  transition: transform 0.2s ease-in, opacity 0.1s;
+  transform-origin: 50% 100%;
+  height: var(--sz-svg);
+  width: var(--sz-svg);
+  pointer-events: none;
+}
+.avatar svg#monkey {
+  z-index: 1;
+}
+.avatar svg#monkey-hands {
+  z-index: 2;
+  transform-style: preserve-3d;
+  transform: translateY(calc(var(--sz-avatar) / 1.25)) rotateX(-21deg);
+}
+
+.avatar::before {
+  content: "";
+  border-radius: 45%;
+  width: calc(var(--sz-svg) / 3.889);
+  height: calc(var(--sz-svg) / 5.833);
+  border: 0;
+  border-bottom: calc(var(--sz-svg) * (4 / 100)) solid #3c302a;
+  bottom: 20%;
+
+  position: absolute;
+  transition: all 0.2s ease;
+  z-index: 3;
+}
+.avatar.show::before  {
+  width: calc(var(--sz-svg) * (9 / 100));
+  height: 0;
+  border-radius: 50%;
+  border-bottom: calc(var(--sz-svg) * (10 / 100)) solid #3c302a;
+}
+.avatar svg#monkey .monkey-eye-r,
+.avatar svg#monkey .monkey-eye-l {
+  animation: blink 10s 1s infinite;
+  transition: all 0.2s ease;
+}
+@keyframes blink {
+  0%,
+  2%,
+  4%,
+  26%,
+  28%,
+  71%,
+  73%,
+  100% {
+    ry: 4.5;
+    cy: 31.7;
+  }
+  1%,
+  3%,
+  27%,
+  72% {
+    ry: 0.5;
+    cy: 30;
+  }
+}
+.blind-check:checked ~ .avatar svg#monkey .monkey-eye-r,
+.blind-check:checked ~ .avatar svg#monkey .monkey-eye-l {
+  ry: 0.5;
+  cy: 30;
+}
+.blind-check:checked ~ .avatar svg#monkey-hands {
+  transform: translate3d(0, 0, 0) rotateX(0deg);
+}
+.avatar svg#monkey,
+.avatar::before,
+.avatar svg#monkey .monkey-eye-nose,
+.avatar svg#monkey .monkey-eye-r,
+.avatar svg#monkey .monkey-eye-l {
+  transition: all 0.2s ease;
+}
+.blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey,
+.blind-check:checked ~ .form:focus-within ~ .avatar::before,
+.blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey .monkey-eye-nose,
+.blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey .monkey-eye-r,
+.blind-check:checked ~ .form:focus-within ~ .avatar svg#monkey .monkey-eye-l {
+  animation: none;
+}
+.form:focus-within ~ .avatar svg#monkey {
+  animation: slick 3s ease infinite 1s;
+  --center: rotateY(0deg);
+  --left: rotateY(-4deg);
+  --right: rotateY(4deg);
+}
+.form:focus-within ~ .avatar::before,
+.form:focus-within ~ .avatar svg#monkey .monkey-eye-nose,
+.blind-check:not(:checked)
+  ~ .form:focus-within
+  ~ .avatar
+  svg#monkey
+  .monkey-eye-r,
+.blind-check:not(:checked)
+  ~ .form:focus-within
+  ~ .avatar
+  svg#monkey
+  .monkey-eye-l {
+  ry: 3;
+  cy: 35;
+  animation: slick 3s ease infinite 1s;
+  --center: translateX(0);
+  --left: translateX(-0.5px);
+  --right: translateX(0.5px);
+}
+@keyframes slick {
+  0%,
+  100% {
+    transform: var(--center);
+  }
+  25% {
+    transform: var(--left);
+  }
+  75% {
+    transform: var(--right);
+  }
+}
+
+.card label.blind_input {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  z-index: 4;
+  position: absolute;
+  border: none;
+  right: calc(var(--p) + (var(--input-px) / 2));
+  bottom: calc(
+    var(--p) + var(--submit-h) + var(--space-y) + (var(--input-py) / 1) + 3px
+  );
+  padding: 4px 0;
+  width: var(--blind-w);
+  border-radius: 4px;
+  background-color: #fff;
+  color: #4d4d4d;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.card label.blind_input:before {
+  content: "";
+  position: absolute;
+  left: calc((var(--input-px) / 2) * -1);
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background: #8f8f8f;
+}
+.card label.blind_input:hover {
+  color: #262626;
+  background-color: #f2f2f2;
+}
+.blind-check ~ label.blind_input span.show,
+.blind-check:checked ~ label.blind_input span.hide {
+  display: none;
+}
+.blind-check ~ label.blind_input span.hide,
+.blind-check:checked ~ label.blind_input span.show {
+  display: block;
+}
+
+
+
+.blind-check:checked ~ .form .input[type="text"] {
+  /* text-emphasis: circle; */
+  -webkit-text-security: disc;
+}
+
+.avatar svg {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  transition: all 0.25s ease;
+}
+
+.eye {
+  transition: all 0.2s ease;
+}
+
+/* 👀 Eyes closed when showPassword == true */
+.avatar.show .eye {
+  ry: 0.5 !important;
+  cy: 30 !important;
+}
+
+/* 🖐️ Hands move up when showPassword == true */
+#monkey-hands {
+  transform-origin: bottom;
+  transition: transform 0.25s ease;
+}
+
+.avatar.show #monkey-hands {
+  transform: translateY(0px);
+}
