@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Topbar from '../global/Topbar'
 import { tokens } from '../../Theme'
 import {Box ,Typography,useTheme,TextField,Button, IconButton,Select, MenuItem, InputAdornment,InputLabel,}from "@mui/material"
@@ -15,6 +15,10 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import {DatePicker} from '@mui/x-date-pickers/DatePicker'
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Api from '../../Api'
+import AlertPopup from '../../Components/AlertPopup'
+import {useNavigate} from 'react-router-dom';
+
 const initialValues={
         Name:"",
         email:"",
@@ -33,12 +37,54 @@ function RegisterationArtist() {
    const DOB = initialValues.DOB?dayjs(initialValues.DOB):null;
    const isNonMobile=useMediaQuery("min-width:600px");
     const theme =useTheme();
+        const navigate=useNavigate();
     const colors =tokens(theme.palette.mode);
-    
+     const [alert, setAlert] = useState({
+                show: false,
+                msg: "",
+                severity: "error",
+              });
 
-    const handleSubmit = (values) => {
-     console.log(values);
-    };
+ const handleFormSubmit = async (values) => {
+  try {
+    const formData = new FormData();
+
+    // Append all normal fields + files correctly
+    Object.keys(values).forEach((key) => {
+      if (key === "certificate") {
+        formData.append("certificate", values.certificate);
+      } else if (key === "workImages") {
+        values.workImages.forEach((file) =>
+          formData.append("workImages", file)
+        );
+      } else {
+        formData.append(key, values[key]);
+      }
+    });
+
+    const response = await Api.post("/registeration", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    if (response.status === 201) {
+      setAlert({
+        show: true,
+        msg: response.data.msg,
+        severity: "success",
+      });
+      setTimeout(() => {
+        navigate(response.data.path)
+      }, 3000);
+    }
+  } catch (err) {
+    setAlert({
+      show: true,
+      msg: (err.status ?? "") + " : " + (err.response?.data?.msg || "Failed"),
+      severity: "warning",
+    });
+  }
+};
+
 
   return (
     <>
@@ -98,7 +144,7 @@ function RegisterationArtist() {
           </Typography>
      
           <Formik
-            onSubmit={handleSubmit}
+            onSubmit={handleFormSubmit}
             initialValues={initialValues}
             validationSchema={ArtistRegisterationSchema}
              validateOnChange={false}
@@ -163,7 +209,7 @@ function RegisterationArtist() {
                                  onBlur={handleBlur}
                                  onChange={handleChange}
                                  value={values.phone}
-                                 name="phone"
+                                 name="phoneNo"
                                  error={!!touched.phone && !!errors.phone}
                                  helperText={touched.phone && errors.phone}
                                  sx={{gridColumn:"span 4",
@@ -172,26 +218,27 @@ function RegisterationArtist() {
                                    },}}
                                />
                   </FormControl>
-                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                         <DatePicker
-                           label="DOB"
-                           onBlur={handleBlur}
-                           onChange={handleChange}
-                           value={DOB}
-                           name="DOB"
-                           slotProps={{
-                             textField:{
-                         sx: {
-                           gridColumn: "span 2 !important",
-                           "& .MuiInputBase-input": {
-                             padding: "26px 12px 20px 12px !important",
-                           },
-                         },
-                         error: !!touched.DOB && !!errors.DOB,
-                         helperText: touched.DOB && errors.DOB,
-                       },
-                           }}
-                         /></LocalizationProvider>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              label="DOB"
+              name="DOB"
+              value={values.DOB ? dayjs(values.DOB) : null}
+              onChange={(value) => {setFieldValue("DOB", value ? value.toDate() : null);}}
+              slotProps={{
+                textField: {
+                
+                  error: !!touched.DOB && !!errors.DOB,
+                  helperText: touched.DOB && errors.DOB,
+                  sx: {
+                    gridColumn: "span 2 !important",
+                    "& .MuiInputBase-input": {
+                      padding: "26px 12px 20px 12px !important",
+                    },
+                  },
+                },
+              }}
+            />
+          </LocalizationProvider>
                     <FormControl fullWidth sx={{ gridColumn: "span 2 !important" }}>
                       <InputLabel id="gender-label">Gender</InputLabel>
                     
@@ -271,16 +318,29 @@ function RegisterationArtist() {
                           fullWidth
                           startIcon={<UploadFileIcon />}
                           sx={{ mt: 1, mb: 1, }}
+                          
                         >
                           Choose Images
                         </Button>
                       </label>
+                      
+                      <TextField
+                        fullWidth
+                        variant="outlined"
+                         value={values.workImages.map((file) => file.name).join(", ")}
+                        placeholder="No file chosen"
+                        InputProps={{
+                          readOnly: true,
+                        }}
+                        error={!!touched.workImages && !!errors.workImages}
+                        helperText={touched.workImages && errors.workImages}
+                      />
 
-  <Box display="flex" flexWrap="wrap" gap={2} mt={1}>
+  {/* <Box display="flex" flexWrap="wrap" gap={2} mt={1}>
           {values.workImages.map((file, index) => (
             <Typography key={index}>{file.name}</Typography>
           ))}
-        </Box>
+        </Box> */}
 
 </FormControl>
                     <FormControl>
@@ -291,7 +351,7 @@ function RegisterationArtist() {
                         name="certificate"
                         id="certificate-upload"
                         style={{ display: "none" }}
-                      onChange={handleChange}
+                     onChange={(e) => setFieldValue("certificate", e.target.files[0])}
                       />
 
                     
@@ -406,13 +466,12 @@ function RegisterationArtist() {
                   >
                     Submit
                   </Button>
-                </Box>
                  </Box>
-                  
-              
+                 </Box>
              </form>
            )}
          </Formik>
+        <AlertPopup Alertshow={alert.show} msg={alert.msg} severity={alert.severity} setAlert={setAlert}/>
         </Box>
       </Box>
     </Box>

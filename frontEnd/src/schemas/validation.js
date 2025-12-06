@@ -58,8 +58,8 @@ export const ArtistRegisterationSchema = yup.object({
   Name: yup.string().required("required"),
   email: yup.string().email("invalid E-mail").required("required"),
   DOB: yup.date().typeError("Invalid date").required("Date of birth is required"),
-  gender: yup.string().required("Gender is required"),
-  phone: yup.string().matches(phoneRegExp, "phone.no is not valid").required("required"),
+  Gender: yup.string().required("Gender is required"),
+  phoneNo: yup.string().matches(phoneRegExp, "phone.no is not valid").required("required"),
   state: yup.string().required("required"),
   town: yup.string().required("required"),
   pin: yup.string().matches(/^\d{6}$/, "Enter a valid pin").required("required"),
@@ -68,15 +68,8 @@ export const ArtistRegisterationSchema = yup.object({
     yup.string().url("Invalid URL").required("Link cannot be empty")
   ).min(1, "At least one link is required"),
   certificate: yup.mixed()
-    .required("Certificate is required")
-    .test("fileType", "Only PDF files are allowed", (value) => {
-      if (!value) return false;
-      return value.type === "application/pdf";
-    })
-    .test("fileSize", "File size must be less than 2MB", (value) => {
-      if (!value) return false;
-      return value.size <= 2 * 1024 * 1024; // 2MB
-    }),
+    .required("Certificate is required"),
+
   workImages: yup.array()
     .min(5, "At least 5 work images are required")
     .required("Work images are required")

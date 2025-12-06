@@ -7,7 +7,7 @@ import SignUp from "./routes/SignUp.js"
 import Admin from './routes/Admin.js'
 import Artist from './routes/Artist.js'
 import User from './routes/User.js'
-
+import ArtistRegisteration from './routes/ArtistRegisteration.js'
 import cors from 'cors'
 
 if (process.env.NODE_ENV !== 'production') {
@@ -29,6 +29,7 @@ app.use("/signup", SignUp);
 app.use("/admin", Admin);
 app.use("/artist", Artist);
 app.use("/user", User);
+app.use("/registeration", ArtistRegisteration)
 
 
 
