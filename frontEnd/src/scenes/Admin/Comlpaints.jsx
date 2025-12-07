@@ -3,7 +3,7 @@ import Header from '../../Components/Header'
 import {Box, Typography,useTheme} from '@mui/material'
 import Api from '../../Api'
 import {useParams} from 'react-router-dom'
-import {tokens} from '../../Theme'
+import {tokens,statusColors} from '../../Theme'
 // icons
 import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
@@ -16,12 +16,7 @@ function Comlpaints() {
   const colors =tokens(theme.palette.mode)
   const [complaintRows, setComplaintRows] = useState();
   const { id } = useParams();
-  const statusColors={
-    pending:"#FFEE8C",
-    "In Progress":"#f7b335",
-    Resolved:"#98fb98",
-    Rejected:"#fa8072",
-  }
+ 
       useEffect(()=>{
         const fetchComplaintRows=async()=>{
           try {

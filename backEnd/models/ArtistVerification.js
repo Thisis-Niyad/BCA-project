@@ -24,7 +24,7 @@ const ArtistVerificationSchema = new mongoose.Schema({
 
     status: {
         type: String,
-        enum: ["pending", "approved", "rejected"],
+        enum: ["pending", "Approved", "Rejected"],
         default: "pending",
     },
 

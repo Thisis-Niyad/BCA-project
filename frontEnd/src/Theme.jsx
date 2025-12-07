@@ -182,3 +182,15 @@ export const useMode =()=>{
 
     return[theme, colorMode];
 }
+
+export  const statusColors={
+    pending:"#FFEE8C",
+    "In Progress":"#f7b335",
+    Resolved:"#98fb98",
+    Rejected:"#fa8072",
+  }
+  export  const NewArtistStatusColors={
+    pending:"#FFEE8C",
+    Approved:"#98fb98",
+    Rejected:"#fa8072",
+  }

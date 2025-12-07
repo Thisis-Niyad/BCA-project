@@ -55,10 +55,10 @@ export const SignupSchema = yup.object().shape({
 
 
 export const ArtistRegisterationSchema = yup.object({
-  Name: yup.string().required("required"),
+  name: yup.string().required("required"),
   email: yup.string().email("invalid E-mail").required("required"),
   DOB: yup.date().typeError("Invalid date").required("Date of birth is required"),
-  Gender: yup.string().required("Gender is required"),
+  gender: yup.string().required("Gender is required"),
   phoneNo: yup.string().matches(phoneRegExp, "phone.no is not valid").required("required"),
   state: yup.string().required("required"),
   town: yup.string().required("required"),

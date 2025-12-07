@@ -20,9 +20,7 @@ function ViewComplaint() {
                          msg: "",
                          severity: "error",
                        });
-    const handleSubmit= async(values)=>{
-      console.log(values);
-      
+    const handleSubmit= async(values)=>{  
             try {
                      const response= await Api.post(`/admin/${id}/complaints/${complaintId}`,values)
                      if (response.status===200) {

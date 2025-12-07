@@ -8,6 +8,7 @@ import {
     postUpdateStatus
 } from "../controller/complainstController.js";
 import { getUserList, postToggleUserAccess } from "../controller/manageAccount.js";
+import { getAllNewArtist, getViewArtist, putApproveApplication, putRejectApplication } from "../controller/NewArtistController.js";
 
 const router = express.Router();
 
@@ -19,5 +20,10 @@ router.get("/:id/complaints/:complaintId", getComplaintDetails)
 router.post("/:id/complaints/:complaintId", postUpdateStatus)
 router.get("/:id/viewuser", getUserList)
 router.post("/:id/toggleuseraccess", postToggleUserAccess)
+router.get("/:id/newartist", getAllNewArtist)
+router.get("/:id/newartist/:newartistId", getViewArtist)
+router.put("/:id/approve/:newartistId", putApproveApplication)
+router.put("/:id/reject/:newartistId", putRejectApplication)
+
 
 export default router

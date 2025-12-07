@@ -20,11 +20,11 @@ import AlertPopup from '../../Components/AlertPopup'
 import {useNavigate} from 'react-router-dom';
 
 const initialValues={
-        Name:"",
+        name:"",
         email:"",
         phoneNo:"",
         DOB:"",
-        Gender:"",
+        gender:"",
         state:"",
         town:"",
         pin:"",
@@ -168,10 +168,10 @@ function RegisterationArtist() {
                             placeholder="Name"
                             onBlur={handleBlur}
                             onChange={handleChange}
-                            value={values.Name}
-                            name="Name"
-                            error={!!touched.Name && !!errors.Name}
-                            helperText={touched.Name && errors.Name}
+                            value={values.name}
+                            name="name"
+                            error={!!touched.name && !!errors.name}
+                            helperText={touched.name && errors.name}
                             sx={{gridColumn:"span 4",
                               "& .MuiInputBase-input": {
                                   padding: "24px 12px 20px 12px !important",
@@ -245,8 +245,8 @@ function RegisterationArtist() {
                       <Select
                         labelId="gender-label"
                         label="Gender"
-                        name="Gender"
-                        value={values.Gender||""}
+                        name="gender"
+                        value={values.gender||""}
                         onChange={handleChange}
                         sx={{ width: "90%", marginLeft: "5px" }}
                       >

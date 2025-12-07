@@ -21,6 +21,9 @@ const AdminsSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    Bio: {
+        type: String
+    },
     profileInfo: {
         phoneNo: {
             type: String,

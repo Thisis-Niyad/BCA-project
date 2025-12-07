@@ -19,6 +19,7 @@ import Complaints from './scenes/Admin/Comlpaints'
 import ViewComplaint from './scenes/Admin/ViewComplaint/ViewComplaint'
 import AdminPayments from './scenes/Admin/Payments'
 import AdminProfile from './scenes/Admin/Profile'
+import ViewNewArtist from './scenes/Admin/viewNewArtist/ViewNewArtist'
 // artist
 import ArtistChats from './scenes/Artist/Chats'
 import Gallery from './scenes/Artist/Gallery'
@@ -30,7 +31,7 @@ import ArtistNewReport from './scenes/Artist/ReportField/NewReport'
 import ArtistReportsStatus from './scenes/Artist/ReportField/ReportStatus'
 import ArtistProfile from './scenes/Artist/Profile'
 import ArtistViewReport from './scenes/Artist/ReportField/ViewReport'
-// User
+// User 
 import UserViewartist from './scenes/User/Viewartist'
 import Imagegeneration from './scenes/User/Imagegeneration'
 import UserChats from './scenes/User/Chats'
@@ -67,6 +68,7 @@ function App() {
           <Route path="complaints/:complaintId" element={<ViewComplaint/>}/>
           <Route path="viewuser" element={<Viewuser/>}/>
           <Route path="newartist" element={<Newartist/>}/>
+          <Route path="newartist/:newartistId" element={<ViewNewArtist/>}/>
           <Route path="payments" element={<AdminPayments/>}/>
           <Route path="profile" element={<AdminProfile/>}/>
       </Route>

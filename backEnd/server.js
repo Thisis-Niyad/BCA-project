@@ -9,7 +9,7 @@ import Artist from './routes/Artist.js'
 import User from './routes/User.js'
 import ArtistRegisteration from './routes/ArtistRegisteration.js'
 import cors from 'cors'
-
+import path from 'path'
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config();
 }
@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
-// app.use('/uploads', express.static("uploads"))
+app.use('/uploads', express.static("uploads"))
 
 app.use("/", index);
 app.use("/signin", Login);
@@ -31,6 +31,11 @@ app.use("/artist", Artist);
 app.use("/user", User);
 app.use("/registeration", ArtistRegisteration)
 
+app.get('/download/uploads/:folder/:filename', (req, res) => {
+    const { folder, filename } = req.params;
+    const filePath = path.join('uploads', folder, filename);
+    res.download(filePath);  // forces download
+});
 
 
 app.listen(PORT, () => {
