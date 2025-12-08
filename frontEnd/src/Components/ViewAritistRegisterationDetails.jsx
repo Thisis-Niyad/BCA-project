@@ -22,6 +22,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function ViewAritistRegisterationDetails({
+  status,
   artist = null,
   onBack = () => {},
   onApprove = (id) => console.log("Approve", id),
@@ -59,6 +60,7 @@ function ViewAritistRegisterationDetails({
   };
 
   const data = artist ?? mockArtist;
+              console.log(status)
 
   const formattedDate = (d) =>
     d ? new Date(d).toLocaleString("en-IN", { dateStyle: "medium" }) : "-";
@@ -89,7 +91,7 @@ function ViewAritistRegisterationDetails({
             </Button>
             <Typography sx={{color:colors.grey[200]}} variant="h6">Artist Registration Details</Typography>
             <Chip
-              label={data.status}
+              label={status}              
               color={statusColor}
               sx={{ ml: 2, textTransform: "capitalize" }}
             />

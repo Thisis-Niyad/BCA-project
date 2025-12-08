@@ -3,6 +3,7 @@ import * as yup from "yup"
 const phoneRegExp = /^(\+91|91|0)?[6-9]\d{9}$/;
 
 export const ProfileSchema = yup.object({
+  Bio: yup.string().max(150, "Maximum 150 Character"),
   Name: yup.string().required("required"),
   email: yup.string().email("invalid E-mail").required("required"),
   DOB: yup.date().typeError("Invalid date").required("Date of birth is required"),

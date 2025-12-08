@@ -10,7 +10,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import EditIcon from '@mui/icons-material/Edit';
 
-function ProfileSection({ values,errors, touched, handleBlur, handleChange, setFieldValue,initialValues }) {
+function ProfileSection({ values,errors, touched, handleBlur, handleChange, setFieldValue,initialValues ,Bio}) {
       const theme =useTheme();
       const colors =tokens(theme.palette.mode);
       const isNonMobile=useMediaQuery("min-width:600px");
@@ -69,7 +69,7 @@ function ProfileSection({ values,errors, touched, handleBlur, handleChange, setF
       variant="contained"
       style={{margin:"0 20px 0 0 "}}
       onClick={() => {setEdit((prev) => !prev);}}
-      >EDIT</Button>
+      >{edit==true?"EDIT":"Editable"}</Button>
     </Box>
  <Box m="20px"
    display="grid"
@@ -86,6 +86,24 @@ function ProfileSection({ values,errors, touched, handleBlur, handleChange, setF
             },
    }}}
   >
+    {(Bio &&
+       <TextField
+          InputProps={{readOnly: edit,}}
+                  fullWidth
+                  multiline
+                  rows={4}
+                  variant="outlined"
+                  type="text"
+                  label="BIO"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.Bio}
+                  name="Bio"
+                  error={!!touched.Bio && !!errors.Bio}
+                  helperText={touched.Bio && errors.Bio}
+                  sx={{gridColumn:"span 4"}}
+                />
+    )}
         <TextField
           fullWidth
           variant="outlined"

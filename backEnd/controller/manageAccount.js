@@ -1,12 +1,15 @@
 import actors from '../models/actors.js'
 
-export const getUserList = async (req, res) => {
+export const getActorsList = async (req, res) => {
     try {
-        const users = await actors.find({ role: "user" }, {
+        const users = await actors.find({ role: req.query.actor }, {
             _id: 1,
             email: 1,
             name: 1,
-            isBlocked: 1
+            isBlocked: 1,
+            profileInfo: {
+                profileImg: 1
+            }
         })
         res.status(200).json(users);
 

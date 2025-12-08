@@ -24,6 +24,10 @@ const AdminsSchema = new mongoose.Schema({
     Bio: {
         type: String
     },
+    artistRating: {
+        average: { type: Number, default: 0 },
+        totalReviews: { type: Number, default: 0 }
+    },
     profileInfo: {
         phoneNo: {
             type: String,

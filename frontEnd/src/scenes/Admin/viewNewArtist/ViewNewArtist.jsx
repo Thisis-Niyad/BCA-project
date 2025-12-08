@@ -9,27 +9,25 @@ function ViewNewArtist() {
     const { id } = useParams();
         const { newartistId } = useParams();
      const [artist, setArtist] = useState();
+     const [status, setStatus] = useState("pending");
          const navigate=useNavigate();
  const [alert, setAlert] = useState({
                          show: false,
                          msg: "",
                          severity: "error",
                        });     
-   useEffect(()=>{
-             const fetchNewArtist=async()=>{
-               try {
-                 const response=await Api.get(`/admin/${id}/newartist/${newartistId}`)
-                setArtist(response.data);  
-                
-               } catch (err) {
-                 console.log(err);
-               }
+  useEffect(()=>{
+   const fetchNewArtist=async()=>{
+           try {
+              const response=await Api.get(`/admin/${id}/newartist/${newartistId}`)
+              setArtist(response.data);  
+              setStatus(response.data.status)
+            } catch (err) {
+              console.log(err);
              }
-         fetchNewArtist()},[id,newartistId])
- console.log(artist);
- 
+           }
+   fetchNewArtist()},[id,newartistId])
   
-
  const onApprove= async(newartistId)=>{  
             try {
                      const response= await Api.put(`/admin/${id}/approve/${newartistId}`)
@@ -39,6 +37,7 @@ function ViewNewArtist() {
                        msg:response.data.msg,
                        severity: "success",
                      });
+                     setStatus("Approve");
                      }
                    } catch (err) {
                          setAlert({
@@ -57,6 +56,7 @@ function ViewNewArtist() {
                          msg:response.data.msg,
                          severity: "success",
                        });
+                     setStatus("Reject");
                        }
                      } catch (err) {
                            setAlert({
@@ -74,6 +74,7 @@ function ViewNewArtist() {
        artist={artist}
        onBack={()=>{navigate(-1)}}
        onApprove={onApprove}
+       status={status}
        onReject={onReject}/>
         <AlertPopup Alertshow={alert.show} msg={alert.msg} severity={alert.severity} setAlert={setAlert}/>
             

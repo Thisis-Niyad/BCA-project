@@ -89,6 +89,7 @@ SideBarProflieInfo()},[id])
                       handleChange={handleChange}
                       setFieldValue={setFieldValue}
                       initialValues={profile}        
+                      Bio={true}
                   />
                 </form>
               )}

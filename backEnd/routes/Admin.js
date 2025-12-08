@@ -7,7 +7,7 @@ import {
     getComplaints,
     postUpdateStatus
 } from "../controller/complainstController.js";
-import { getUserList, postToggleUserAccess } from "../controller/manageAccount.js";
+import { getActorsList, postToggleUserAccess } from "../controller/manageAccount.js";
 import { getAllNewArtist, getViewArtist, putApproveApplication, putRejectApplication } from "../controller/NewArtistController.js";
 
 const router = express.Router();
@@ -18,7 +18,7 @@ router.post("/:id/profile", upload.single("ProfileImg"), updateProfile)
 router.get("/:id/complaints", getComplaints)
 router.get("/:id/complaints/:complaintId", getComplaintDetails)
 router.post("/:id/complaints/:complaintId", postUpdateStatus)
-router.get("/:id/viewuser", getUserList)
+router.get("/:id/viewactors", getActorsList)
 router.post("/:id/toggleuseraccess", postToggleUserAccess)
 router.get("/:id/newartist", getAllNewArtist)
 router.get("/:id/newartist/:newartistId", getViewArtist)

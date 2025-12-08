@@ -40,7 +40,7 @@ function Viewuser() {
    useEffect(()=>{
           const fetchUsersRows=async()=>{
             try {
-              const response=await Api.get(`/admin/${id}/viewuser`)
+              const response=await Api.get(`/admin/${id}/viewactors?actor=user`)
              setUsersRows(response.data);  
               
             } catch (err) {
