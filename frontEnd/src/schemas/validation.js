@@ -83,3 +83,24 @@ export const ArtistRegisterationSchema = yup.object({
       );
     })
 });
+
+export const AddPostSchema = yup.object({
+  title: yup.string().required("Title is required"),
+  description: yup.string().min(10).required("Description is required"),
+  keywords: yup
+    .array()
+    .of(
+      yup
+        .string()
+        .trim()
+        .min(2, "Each keyword must have at least 2 characters")
+        .max(20, "Keyword cannot be longer than 20 characters")
+    )
+    .min(1, "At least one keyword is required")
+    .max(10, "Maximum 10 keywords allowed"),
+  workImage: yup.mixed().required("Image is required"),
+  price: yup.number()
+    .required("price is required")
+    .positive("must be postive")
+    .min(50.00, "must be at least 50.00"),
+});
