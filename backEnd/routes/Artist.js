@@ -5,6 +5,7 @@ import { uploadWorkImg } from '../middleWare/uploadArtwork.js'
 import { getProfileDetails, sidebarDetails, updateProfile } from "../controller/common.js";
 import { complaintStatus, newComplaint } from "../controller/complainstController.js";
 import { uploadArtwork } from "../controller/uploadArtWork.js";
+import { getGallery } from "../controller/ViewWork.js";
 const router = express.Router();
 
 router.get("/:id", sidebarDetails)
@@ -13,6 +14,7 @@ router.post("/:id/profile", upload.single("ProfileImg"), updateProfile)
 router.post("/:id/report/new", newComplaint)
 router.get("/:id/reports", complaintStatus)
 router.post("/:id/addpost", uploadWorkImg.single("workImage"), uploadArtwork)
+router.get("/:id/gallery", getGallery)
 
 
 export default router

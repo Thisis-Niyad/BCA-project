@@ -32,6 +32,7 @@ import ArtistReportsStatus from './scenes/Artist/ReportField/ReportStatus'
 import ArtistProfile from './scenes/Artist/Profile'
 import ArtistViewReport from './scenes/Artist/ReportField/ViewReport'
 // User 
+import UserHome from './scenes/User/Home'
 import UserViewartist from './scenes/User/Viewartist'
 import Imagegeneration from './scenes/User/Imagegeneration'
 import UserChats from './scenes/User/Chats'
@@ -86,6 +87,7 @@ function App() {
           <Route path="profile" element={<ArtistProfile/>}/>
       </Route>
       <Route path="/user/:id" element={<User/>}>
+          <Route index element={<UserHome/>}/>
           <Route path="viewartist" element={<UserViewartist/>}/>
           <Route path="imagegeneration" element={<Imagegeneration/>}/>
           <Route path="chats" element={<UserChats/>}/>
