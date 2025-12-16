@@ -12,6 +12,7 @@ import Admin from './Admin'
 import Artist from './Artist'
 import User from './User'
 // Admin
+import AdminHome from './scenes/Admin/AminHome'
 import AdminViewartist from './scenes/Admin/Viewartist'
 import Viewuser from './scenes/Admin/Viewuser'
 import Newartist from './scenes/Admin/Newartist'
@@ -20,7 +21,7 @@ import ViewComplaint from './scenes/Admin/ViewComplaint/ViewComplaint'
 import AdminPayments from './scenes/Admin/Payments'
 import AdminProfile from './scenes/Admin/Profile'
 import ViewNewArtist from './scenes/Admin/viewNewArtist/ViewNewArtist'
-// artist
+// artist 
 import ArtistChats from './scenes/Artist/Chats'
 import Gallery from './scenes/Artist/Gallery'
 import Addpost from './scenes/Artist/Addpost'
@@ -63,7 +64,9 @@ function App() {
       <Route path="/signup" element={<SignUp/>}/>
       <Route path="/signin" element={<SignIn/>}/>
       <Route path="/registeration" element={<RegisterationArtist/>}/>
+
       <Route path="/admin/:id" element={<Admin/>}>
+          <Route index element={<AdminHome/>}/>
           <Route path="viewartist" element={<AdminViewartist/>}/>
           <Route path="complaints" element={<Complaints/>}/>
           <Route path="complaints/:complaintId" element={<ViewComplaint/>}/>
