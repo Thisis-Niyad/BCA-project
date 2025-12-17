@@ -6,9 +6,17 @@ import {
     getComplaintDetails,
     getComplaints,
     postUpdateStatus
-} from "../controller/complainstController.js";
+}
+    from "../controller/complainstController.js";
 import { getActorsList, postToggleUserAccess } from "../controller/manageAccount.js";
-import { getAllNewArtist, getViewArtist, putApproveApplication, putRejectApplication } from "../controller/NewArtistController.js";
+import {
+    getAllNewArtist,
+    getViewArtist,
+    putApproveApplication,
+    putRejectApplication
+}
+    from "../controller/NewArtistController.js";
+import { getAdminHomeDetails } from "../controller/HomeController.js";
 
 const router = express.Router();
 
@@ -24,6 +32,7 @@ router.get("/:id/newartist", getAllNewArtist)
 router.get("/:id/newartist/:newartistId", getViewArtist)
 router.put("/:id/approve/:newartistId", putApproveApplication)
 router.put("/:id/reject/:newartistId", putRejectApplication)
+router.get("/:id/home", getAdminHomeDetails)
 
 
 export default router

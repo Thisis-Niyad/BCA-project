@@ -1,3 +1,4 @@
+import React,{useEffect,useState} from 'react'
 import { Box, Grid, Typography, Paper,useTheme } from "@mui/material";
 import PeopleIcon from "@mui/icons-material/People";
 import BrushIcon from "@mui/icons-material/Brush";
@@ -7,13 +8,16 @@ import { ResponsiveLine } from "@nivo/line";
 import { ResponsivePie } from "@nivo/pie";
 import { ResponsiveBar } from "@nivo/bar";
 import Header from '../../Components/Header'
+import {useParams} from 'react-router-dom'
 import {tokens} from '../../Theme'
+import Api from '../../Api'
 
 const StatCard = ({ title, value, icon }) => {
     const theme =useTheme();
         const colors =tokens(theme.palette.mode);
+        
         return(
-  <Paper sx={{ p: 3, display: "flex", alignItems: "center", gap: 2 ,backgroundColor:colors.primary[400]}}>
+          <Paper sx={{ p: 3, display: "flex", alignItems: "center", gap: 2 ,backgroundColor:colors.primary[400]}}>
     {icon}
     <Box>
       <Typography variant="subtitle1" style={{textTransform:"uppercase"}}color={colors.greenAccent[200]}>
@@ -25,8 +29,36 @@ const StatCard = ({ title, value, icon }) => {
 )};
 
 const AdminHome = () => {
-      const theme =useTheme();
-        const colors =tokens(theme.palette.mode);
+  const initialValues={
+    noofComplaints: 0, 
+    noofUser: 0, 
+    noofArtist: 0, 
+    formattedNComplaints:[  {
+    "id": "complaints",
+    "data": [
+      { "x": "Jan", "y": 10 }
+    ]
+  }],
+  topTenArtist:[
+                { name: "unKnown", artistRating: 0 },
+              ],
+    }
+  const theme =useTheme();
+  const colors =tokens(theme.palette.mode);
+      const { id } = useParams();
+  const [Datas, setData] = useState(initialValues);
+
+    useEffect(()=>{
+      const fetchData=async()=>{
+        try {
+          const response=await Api.get(`/admin/${id}/home`)
+            setData(response.data);  
+        } catch (err) {
+          console.log(err);
+        }
+    }
+  fetchData()},[id])
+
   return (
     <Box m="20px">
       {/* Header */}
@@ -40,7 +72,7 @@ const AdminHome = () => {
         <Grid item xs={12} md={3}>
           <StatCard
             title="Total Users"
-            value="1,240"
+            value={Datas?.noofUser}
             icon={<PeopleIcon color="primary" fontSize="large" />}
           />
         </Grid>
@@ -48,14 +80,14 @@ const AdminHome = () => {
         <Grid item xs={12} md={3}>
           <StatCard
             title="Artists"
-            value="320"
+            value={Datas?.noofArtist}
             icon={<BrushIcon color="secondary" fontSize="large" />}
           />
         </Grid>
           <Grid item xs={12} md={3}>
           <StatCard
             title="Complaints"
-            value="28"
+            value={Datas?.noofComplaints}
             icon={<ReportProblemIcon color="error" fontSize="large" />}
           />
         </Grid>
@@ -79,25 +111,16 @@ const AdminHome = () => {
           <Paper sx={{ height: 350, p: 2 ,backgroundColor:colors.primary[400]}}>
             
             <ResponsiveLine
-              data={[
-                {
-                  id: "Users",
-                  data: [
-                    { x: "Jan", y: 200 },
-                    { x: "Feb", y: 350 },
-                    { x: "Mar", y: 500 },
-                    { x: "Apr", y: 800 },
-                      { x: "May", y: 1240 },
-                  ],
-                },
-              ]}
+              data={Datas.formattedNComplaints}
+              
               margin={{ top: 20, right: 20, bottom: 50, left: 60 }}
               xScale={{ type: "point" }}
               yScale={{ type: "linear", min: 0, max: "auto" }}
-              axisBottom={{ legend: "Month", legendOffset: 36 }}
-              axisLeft={{ legend: "Users", legendOffset: -40 }}
+              axisBottom={{ legend: "Month", legendOffset: 44 }}
+              axisLeft={{ legend: "complaints", legendOffset: -48 }}
               colors={{ scheme: "category10" }}
-              pointSize={8}
+              pointSize={10}
+              theme={{text:{fill:colors.grey[200],fontSize:15}}}
             />
           </Paper>
         </Grid>
@@ -115,8 +138,8 @@ const AdminHome = () => {
             
             <ResponsivePie
               data={[
-                { id: "Users", value: 920 },
-                { id: "Artists", value: 320 },
+                { id: "Users", value: Datas?.noofUser },
+                { id: "Artists", value: Datas?.noofArtist },
               ]}
               margin={{ top: 20, right: 20, bottom: 40, left: 20 }}
               innerRadius={0.5}
@@ -132,6 +155,7 @@ const AdminHome = () => {
                   itemHeight: 14,
                 },
               ]}
+              theme={{text:{fill:colors.blueAccent[400],fontSize:"15px !important"}}}
             />
           </Paper>
         </Grid>
@@ -146,19 +170,15 @@ const AdminHome = () => {
           <Paper sx={{ height: 320, p: 2 ,backgroundColor:colors.primary[400]}}>
            
             <ResponsiveBar
-              data={[
-                { month: "Jan", complaints: 5 },
-                { month: "Feb", complaints: 9 },
-                { month: "Mar", complaints: 12 },
-                { month: "Apr", complaints: 6 },
-                { month: "May", complaints: 28 },
-              ]}
-              keys={["complaints"]}
-              indexBy="month"
+              data={Datas.topTenArtist}
+              keys={["artistRating"]}
+              indexBy="name"
               margin={{ top: 20, right: 30, bottom: 50, left: 60 }}
-              axisBottom={{ legend: "Month", legendOffset: 36 }}
-              axisLeft={{ legend: "Count", legendOffset: -40 }}
+              axisBottom={{ legend: "Name", legendOffset: 44 }}
+              axisLeft={{ legend: "Rating", legendOffset: -48 }}
               colors={{ scheme: "set2" }}
+              theme={{text:{fill:colors.grey[200],fontSize:15}}}
+
             />
           </Paper>
         </Grid>
