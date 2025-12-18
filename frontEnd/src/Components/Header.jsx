@@ -7,7 +7,7 @@ function Header({title, subtitle}) {
     const colors =tokens(theme.palette.mode);
 
   return (
-    <Box mb="30px" width="100%">
+    <Box  width="100%">
         <Typography variant="h3" 
         color={colors.grey[100]}
         fontWeight="bold"

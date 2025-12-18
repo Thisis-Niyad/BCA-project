@@ -30,3 +30,20 @@ export const postToggleUserAccess = async (req, res) => {
         res.status(500).json({ msg: "Server error" });
     }
 }
+
+export const getActorsListForUser = async (req, res) => {
+    try {
+        const users = await actors.find({ role: req.query.actor }, {
+            _id: 1,
+            name: 1,
+            artistRating: 1,
+            profileInfo: {
+                profileImg: 1
+            }
+        })
+        res.status(200).json(users);
+
+    } catch (err) {
+        res.status(500).json({ msg: "Server error" });
+    }
+}
