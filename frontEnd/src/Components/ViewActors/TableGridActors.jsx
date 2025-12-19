@@ -3,11 +3,13 @@ import {Box,useTheme,Button} from '@mui/material'
 import {DataGrid} from '@mui/x-data-grid'
 import AlertPopup from '../AlertPopup'
 import {tokens} from '../../Theme'
+import {useNavigate} from 'react-router-dom'
 import Api from '../../Api'
 
 
 function TableGridAcotrs({Rows ,columns}) {
-
+    const navigate=useNavigate();
+  
   
      const theme= useTheme()
       const colors =tokens(theme.palette.mode)
@@ -51,9 +53,9 @@ function TableGridAcotrs({Rows ,columns}) {
               rows={Rows}
               columns={columns}
                getRowId={(row) => row._id}
-              //  onRowClick={(params)=>{
-              //  const complaintId=params.row._id;
-              //   navigate(complaintId)}}
+               onRowClick={(params)=>{
+               const artisId=params.row._id;
+                navigate(artisId)}}
               />
             </Box>
   )

@@ -8,7 +8,7 @@ import {
     postUpdateStatus
 }
     from "../controller/complainstController.js";
-import { getActorsList, postToggleUserAccess } from "../controller/manageAccount.js";
+import { getActorsList, getArtistProfile, postToggleUserAccess } from "../controller/manageAccount.js";
 import {
     getAllNewArtist,
     getViewArtist,
@@ -33,6 +33,7 @@ router.get("/:id/newartist/:newartistId", getViewArtist)
 router.put("/:id/approve/:newartistId", putApproveApplication)
 router.put("/:id/reject/:newartistId", putRejectApplication)
 router.get("/:id/home", getAdminHomeDetails)
+router.get("/:id/viewartist/:artistId", getArtistProfile)
 
 
 export default router

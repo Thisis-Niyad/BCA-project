@@ -21,6 +21,7 @@ import ViewComplaint from './scenes/Admin/ViewComplaint/ViewComplaint'
 import AdminPayments from './scenes/Admin/Payments'
 import AdminProfile from './scenes/Admin/Profile'
 import ViewNewArtist from './scenes/Admin/viewNewArtist/ViewNewArtist'
+import AdminViewArtistProfile from './scenes/Admin/ViewArtistProfile'
 // artist 
 import ArtistChats from './scenes/Artist/Chats'
 import Gallery from './scenes/Artist/Gallery'
@@ -45,7 +46,7 @@ import UserProfile from './scenes/User/Profile'
 import UserNewReport from './scenes/User/ReportFeild/NewReport'
 import UserReportsStatus from './scenes/User/ReportFeild/ReportsStatus'
 import UserViewReport from './scenes/User/ReportFeild/ViewReport'
-
+import UserViewArtistProfile from './scenes/User/ViewArtistPofile'
 function App() {
   
 
@@ -68,6 +69,7 @@ function App() {
       <Route path="/admin/:id" element={<Admin/>}>
           <Route index element={<AdminHome/>}/>
           <Route path="viewartist" element={<AdminViewartist/>}/>
+          <Route path="viewartist/:artistId" element={<AdminViewArtistProfile/>}/>
           <Route path="complaints" element={<Complaints/>}/>
           <Route path="complaints/:complaintId" element={<ViewComplaint/>}/>
           <Route path="viewuser" element={<Viewuser/>}/>
@@ -92,6 +94,7 @@ function App() {
       <Route path="/user/:id" element={<User/>}>
           <Route index element={<UserHome/>}/>
           <Route path="viewartist" element={<UserViewartist/>}/>
+          <Route path="viewartist/:artistId" element={<UserViewArtistProfile/>}/>
           <Route path="imagegeneration" element={<Imagegeneration/>}/>
           <Route path="chats" element={<UserChats/>}/>
           <Route path="orders" element={<Orderdetails/>}/>
