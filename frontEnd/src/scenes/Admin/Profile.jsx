@@ -26,11 +26,7 @@ const initialValues={
 function Profile() {
     const { id } = useParams();
     const [profile, setProfile] = useState(initialValues);
-    const [alert, setAlert] = useState({
-            show: false,
-            msg: "",
-            severity: "error",
-          });
+    const [alert, setAlert] = useState({show: false,msg: "",severity: "error",});
   useEffect(()=>{
     const SideBarProflieInfo=async()=>{
       try {

@@ -23,7 +23,12 @@ const artistWorkSchema = new mongoose.Schema(
         blockchainHash: String,   // 🔗 link to blockchain
         imageHash: String,        // for fast verification
         createdAt: { type: Date, default: Date.now },
-
+        workRating: {
+            type: Number, default: 0
+        },
+        ratingCount: {
+            type: Number, default: 0
+        },
         price: {
             type: Number,
             default: 0,

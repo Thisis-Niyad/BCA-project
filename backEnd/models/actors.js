@@ -27,6 +27,9 @@ const AdminsSchema = new mongoose.Schema({
     artistRating: {
         type: Number, default: 0
     },
+    ratingCount: {
+        type: Number, default: 0
+    },
     profileInfo: {
         phoneNo: {
             type: String,

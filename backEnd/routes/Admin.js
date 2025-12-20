@@ -36,4 +36,5 @@ router.get("/:id/home", getAdminHomeDetails)
 router.get("/:id/viewartist/:artistId", getArtistProfile)
 
 
+
 export default router

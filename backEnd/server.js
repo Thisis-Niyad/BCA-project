@@ -8,6 +8,7 @@ import Admin from './routes/Admin.js'
 import Artist from './routes/Artist.js'
 import User from './routes/User.js'
 import ArtistRegisteration from './routes/ArtistRegisteration.js'
+import Ratings from "./routes/Ratings.js"
 import cors from 'cors'
 import path from 'path'
 if (process.env.NODE_ENV !== 'production') {
@@ -30,6 +31,7 @@ app.use("/admin", Admin);
 app.use("/artist", Artist);
 app.use("/user", User);
 app.use("/registeration", ArtistRegisteration)
+app.use("/rating", Ratings)
 
 app.get('/download/uploads/:folder/:filename', (req, res) => {
     const { folder, filename } = req.params;

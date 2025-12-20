@@ -13,7 +13,6 @@ import {tokens} from '../Theme'
 const ArtistworkCard = ({ cardData }) => {
     const theme= useTheme()
     const colors =tokens(theme.palette.mode)
-    console.log(cardData);
     
   return (
     <Box

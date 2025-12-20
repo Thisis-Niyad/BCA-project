@@ -62,7 +62,7 @@ function Viewartist() {
                flex:1,
                renderCell:({row})=>{
              return (
-                      <Box display="flex" alignItems="center" justifyCntent="center" gap={1}>
+                      <Box display="flex" alignItems="center" justifyContent="center" gap={1}>
                         <Rating
                           value={row.rating}
                           precision={0.5}
@@ -81,7 +81,9 @@ function Viewartist() {
         <Box display="flex" justifyContent="space-between" alignItems="center">
             <Header title="Artits" subtitle="Track, review, and resolve complaints" /> 
         </Box>
+        <Box>
           <TableGridAcotrs Rows={usersRows} columns={columns}/>
+          </Box>
                 <AlertPopup Alertshow={alert.show} msg={alert.msg} severity={alert.severity} 
                 setAlert={setAlert}/>
                 

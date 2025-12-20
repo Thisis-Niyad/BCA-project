@@ -1,5 +1,6 @@
 import actors from '../models/actors.js'
 import { ArtistWork } from '../models/ArtistWork.js'
+import rating from '../models/rating.js';
 
 export const getActorsList = async (req, res) => {
     try {
@@ -56,6 +57,7 @@ export const getArtistProfile = async (req, res) => {
             _id: 1,
             name: 1,
             artistRating: 1,
+            ratingCount: 1,
             email: 1,
             Bio: 1,
             profileInfo: {

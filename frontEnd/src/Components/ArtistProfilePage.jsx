@@ -1,3 +1,4 @@
+import React,{useEffect,useState} from 'react'
 import {
   Box,
   Grid,
@@ -17,7 +18,11 @@ import {tokens} from '../Theme'
 import unknownImg from "../assets/unknown.jpg";
 import MessageIcon from "@mui/icons-material/Message";
 import StarIcon from "@mui/icons-material/Star";
-import ArtistworkCard from './ArtistworkCard'
+import ArtistworkCard from './ArtistworkCard';
+import Api from '../Api'
+import {useParams} from 'react-router-dom'
+import AlertPopup from '../Components/AlertPopup'
+
 
 // const artist = {
 //   name: "Ameen Calligrapher",
@@ -53,6 +58,45 @@ import ArtistworkCard from './ArtistworkCard'
 export default function ArtistProfilePage({artist ,works}) {
      const theme= useTheme()
           const colors =tokens(theme.palette.mode)
+          const [rating,setRating]=useState(0);
+              const { id } = useParams();
+    const { artistId } = useParams();
+        const [alert, setAlert] = useState({show: false,msg: "",severity: "error",});
+    
+          
+  useEffect(()=>{
+    const fetchRating=async()=>{
+      try {
+        const response=await Api.get(`/rating/${id}/artistrating/${artistId}`)
+          setRating(response.data.rating);  
+      } catch (err) {
+        console.log(err);
+      }
+  }
+fetchRating()},[id,artistId])
+
+ const handleSubmit=async()=>{
+        try {
+          console.log(rating);
+          const response= await Api.put(`/rating/${id}/artistrating/${artistId}`,{rating})
+          if (response.status===201) {
+              setAlert({
+            show: true,
+            msg:response.data.msg,
+            severity: "success",
+          });
+            console.log(response)
+          }
+        } catch (err) {
+          console.log(err);
+          
+              setAlert({
+            show: true,
+            msg:err.status +" : "+ err.response?.data?.msg || "Login failed",
+            severity: "warning",
+          });
+        };     
+    }
   return (
     <Box p={3}>
       {/* ===== PROFILE HEADER ===== */}
@@ -88,12 +132,12 @@ export default function ArtistProfilePage({artist ,works}) {
           <Grid item>
             <Stack spacing={1} alignItems="center">
               <Rating
-                value={artist?.artistRating}
+                value={artist? artist.artistRating/artist.ratingCount:0}
                 precision={0.5}
                 readOnly
               />
               <Typography variant="body2">
-                {artist?.rating} ({artist?.totalReviews} reviews)
+                {artist?.artistRating} ({artist?.ratingCount} reviews)
               </Typography>
 
               <Button
@@ -117,10 +161,12 @@ export default function ArtistProfilePage({artist ,works}) {
           <Rating
             size="large"
             precision={1}
+            value={rating}
+            onChange={(event,newValue)=>{setRating(newValue)}}
             icon={<StarIcon fontSize="inherit" />}
             emptyIcon={<StarIcon fontSize="inherit" />}
           />
-          <Button variant="outlined" color={colors.blueAccent[400]}>Submit Rating</Button>
+          <Button variant="outlined" onClick={handleSubmit} color={colors.blueAccent[400]}>Submit Rating</Button>
         </Stack>
       </Card>
 
@@ -132,6 +178,8 @@ export default function ArtistProfilePage({artist ,works}) {
       <Box>
         <ArtistworkCard cardData={works}/>
       </Box>
+    <AlertPopup Alertshow={alert.show} msg={alert.msg} severity={alert.severity} setAlert={setAlert}/>
+
     </Box>
   );
 }
