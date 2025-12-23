@@ -23,6 +23,7 @@ import AdminProfile from './scenes/Admin/Profile'
 import ViewNewArtist from './scenes/Admin/viewNewArtist/ViewNewArtist'
 import AdminViewArtistProfile from './scenes/Admin/ViewArtistProfile'
 // artist 
+import ArtistHome from './scenes/Artist/ArtistHome'
 import ArtistChats from './scenes/Artist/Chats'
 import Gallery from './scenes/Artist/Gallery'
 import Addpost from './scenes/Artist/Addpost'
@@ -47,6 +48,7 @@ import UserNewReport from './scenes/User/ReportFeild/NewReport'
 import UserReportsStatus from './scenes/User/ReportFeild/ReportsStatus'
 import UserViewReport from './scenes/User/ReportFeild/ViewReport'
 import UserViewArtistProfile from './scenes/User/ViewArtistPofile'
+
 function App() {
   
 
@@ -79,6 +81,7 @@ function App() {
           <Route path="profile" element={<AdminProfile/>}/>
       </Route>
       <Route path="/artist/:id" element={<Artist/>}>
+          <Route index element={<ArtistHome/>}/>
           <Route path="chats" element={<ArtistChats/>}/>
           <Route path="gallery" element={<Gallery/>}/>
           <Route path="addpost" element={<Addpost/>}/>
