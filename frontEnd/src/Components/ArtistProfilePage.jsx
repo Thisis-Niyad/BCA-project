@@ -101,7 +101,7 @@ fetchRating()},[id,artistId])
     <Box p={3}>
       {/* ===== PROFILE HEADER ===== */}
       <Card sx={{ mb: 4, p: 4,backgroundColor:colors.primary[400] }}>
-        <Grid container spacing={5} alignItems="center">
+        <Grid container spacing={6} alignItems="center">
           <Grid item>
             <Avatar
               src={artist?.profileInfo.profileImg==""||artist?.profileInfo.profileImg==null? unknownImg:`http://localhost:5000/${artist.profileInfo.profileImg}`}
@@ -109,14 +109,17 @@ fetchRating()},[id,artistId])
             />
           </Grid>
 
-          <Grid item xs>
+          <Grid item xs size={6}>
             <Typography variant="h5" fontWeight="bold" color={colors.greenAccent[200]}>
               {artist?.name}
             </Typography>
-
+            <Stack direction="row" spacing={1} >
+              <Chip label="Verified Artist" color="primary" size="small" />
+            </Stack>
             <Typography color="text.secondary">
               {artist?.profileInfo.state},India
             </Typography>
+            
 
             <Typography sx={{ mt: 1 }}>
               {artist?.Bio}
@@ -136,10 +139,12 @@ fetchRating()},[id,artistId])
                 precision={0.5}
                 readOnly
               />
-              <Typography variant="body2">
-                {artist?.artistRating} ({artist?.ratingCount} reviews)
-              </Typography>
-
+                 <Chip
+                                icon={<StarIcon />}
+                                label={`${artist? (artist.artistRating/artist.ratingCount).toFixed(1) :0.0} Rating `}
+                                color={artist? artist.artistRating/artist.ratingCount>2.5?"success":"warning":0}
+                                size="small"
+                    />
               <Button
                 variant="contained"
                 startIcon={<MessageIcon />}

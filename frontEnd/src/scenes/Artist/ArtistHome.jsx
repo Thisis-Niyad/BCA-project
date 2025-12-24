@@ -11,17 +11,21 @@ import {
   Stack,
   Divider,
   CardMedia,
+  useTheme,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import UploadIcon from "@mui/icons-material/Upload";
 import EditIcon from "@mui/icons-material/Edit";
+import {tokens} from '../../Theme'
 
 export default function ArtistHome() {
+  const theme= useTheme()
+  const colors =tokens(theme.palette.mode)
   return (
     <>
     <Box sx={{ p: 3 }}>
       {/* ================= HEADER ================= */}
-      <Card sx={{ mb: 3, p: 2 }}>
+      <Card sx={{ mb: 3, p: 2 ,backgroundColor:colors.primary[400]}}>
         <Grid container spacing={2} alignItems="center">
           <Grid item>
             <Avatar
@@ -31,7 +35,7 @@ export default function ArtistHome() {
           </Grid>
 
           <Grid item xs>
-            <Typography variant="h5" fontWeight="bold">
+            <Typography variant="h5" fontWeight="bold" color={colors.greenAccent[500]}>
               Muhammed Niyad
             </Typography>
             <Typography color="text.secondary">
@@ -76,13 +80,13 @@ export default function ArtistHome() {
           { title: "Total Earnings", value: "₹42,000" },
           { title: "Avg Rating", value: "4.8 ★" },
         ].map((item, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card>
+          <Grid item xs={12} sm={6} md={3} key={index} >
+            <Card sx={{backgroundColor:colors.primary[400]}}>
               <CardContent>
-                <Typography color="text.secondary">
+                <Typography color="text.secondary" color={colors.blueAccent[500]}>
                   {item.title}
                 </Typography>
-                <Typography variant="h5" fontWeight="bold">
+                <Typography variant="h5" fontWeight="bold" color={colors.grey[200]}>
                   {item.value}
                 </Typography>
               </CardContent>
@@ -92,14 +96,14 @@ export default function ArtistHome() {
       </Grid>
 
       {/* ================= RECENT WORKS ================= */}
-      <Typography variant="h6" fontWeight="bold" mb={2}>
+      <Typography variant="h6" fontWeight="bold" mb={2} color={colors.blueAccent[400]}>
         Recent Works
       </Typography>
 
       <Grid container spacing={2}>
         {[1, 2, 3, 4].map((item) => (
           <Grid item xs={12} sm={6} md={3} key={item}>
-            <Card sx={{ height: "100%" }}>
+            <Card sx={{ height: "100%",backgroundColor:colors.primary[400] }}>
               <CardMedia
                 component="img"
                 height="200"
