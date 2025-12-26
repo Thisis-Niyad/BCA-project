@@ -22,7 +22,7 @@ const ArtistworkCard = ({ cardData }) => {
      display="flex"
      flexWrap= "wrap"
     alignContent= "center"
-    justifyContent= "flex-start"
+    justifyContent= "center"
     >
         {cardData  && cardData.length > 0 ? 
         cardData.map((work)=>{

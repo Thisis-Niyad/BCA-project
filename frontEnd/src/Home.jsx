@@ -17,7 +17,9 @@ function Home() {
     <div >
       <Box className='bodyindex' sx={{backgroundColor:colors.blueAccent[200]}}>
     <Navbar />
+    <Box>
     <Outlet />
+    </Box>
     </Box>
     <Footer/>
      

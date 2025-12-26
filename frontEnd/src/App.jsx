@@ -2,6 +2,9 @@
 import {Route,Routes,Link} from 'react-router-dom'
 import { ColorModeContext,useMode } from './Theme'
 import { CssBaseline, ThemeProvider }from "@mui/material"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import Home from './Home'
 import Contact from '../pages/contact'
 import Index from '../pages'
