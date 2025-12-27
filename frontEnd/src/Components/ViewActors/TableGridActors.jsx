@@ -17,7 +17,7 @@ function TableGridAcotrs({Rows ,columns}) {
 
     
   return (
-    <Box m="20px 0 0 0" height="70vh"
+    <Box m="20px auto" height="70vh" maxWidth="1080px"
             sx={{
               "& .MuiDataGrid-root":{
                 border:"none",

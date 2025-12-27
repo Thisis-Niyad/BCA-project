@@ -50,7 +50,7 @@ function NewReport() {
     }
   return (
     <>
-    <Box m="20px">
+    <Box m="40px">
         <Box display="flex" justifyContent="space-between" alignItems="center">
                     <Header title="Report issues" subtitle="Track, review, and resolve complaints" /> 
         </Box>

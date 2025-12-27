@@ -9,7 +9,7 @@ function Report() {
   
       
   return (
-    <Box m="20px">
+    <Box  >
      <Outlet />
         </Box>
         

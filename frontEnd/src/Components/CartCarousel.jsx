@@ -96,33 +96,6 @@ const NextButton = (props) => {
 
   return (
     <Box sx={{ mt: 4 }}>
-      {/* <Slider {...settings}>
-        {groupedItems.map((item, index) => (
-          <Box key={index} sx={{ p: 1 }}>
-            <Card sx={{ borderRadius: 3 }}>
-              <CardMedia
-                component="img"
-                height="180"
-                image={item.image}
-                alt={item.title}
-              />
-              <CardContent>
-                <Typography variant="h6">{item.title}</Typography>
-                <Typography color="text.secondary">
-                  ₹{item.price}
-                </Typography>
-                <Button
-                  variant="contained"
-                  size="small"
-                  sx={{ mt: 1 }}
-                >
-                  View
-                </Button>
-              </CardContent>
-            </Card>
-          </Box>
-        ))}
-      </Slider> */}
        <Slider {...settings}>
       {groupedItems.map((group, index) => (
         <Box
@@ -130,35 +103,10 @@ const NextButton = (props) => {
           sx={{
             display: "flex",
             gap: 2,
-            overflowX: "auto",
+
             padding: 2,
           }}
         >
-          {/* {group.map((item) => (
-            <Card
-              key={item._id}
-              sx={{
-                minWidth: 180,
-                borderRadius: 2,
-                boxShadow: 3,
-              }}
-            >
-              <CardMedia
-                component="img"
-                height="140"
-                image={item.image}
-                alt={item.title}
-              />
-              <Box sx={{ p: 1 }}>
-                <Typography variant="subtitle2">
-                  {item.title}
-                </Typography>
-                <Typography variant="caption">
-                  ₹{item.price}
-                </Typography>
-              </Box>
-            </Card>
-          ))} */}
           <ArtistworkCard cardData={group}/>
         </Box>
       ))}

@@ -9,8 +9,9 @@ function TableGridComplaint({Rows,columns}) {
      const theme= useTheme()
       const colors =tokens(theme.palette.mode)
   return (
-    <Box m="20px 0 0 0" height="70vh"
+    <Box m="20px auto " height="70vh"
             sx={{
+              maxWidth:"1080px",
               "& .MuiDataGrid-root":{
                 border:"none",
                 borderRadius:"7px",

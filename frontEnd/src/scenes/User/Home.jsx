@@ -5,12 +5,12 @@ import {
   Typography,
   TextField,
   Button,
+  useTheme,
   Box,
 } from "@mui/material";
-import SearchBar from "../../Components/SearchBar";
 import ArtistworkCard from "../../components/ArtistworkCard";
 import CartCarousel from "../../Components/CartCarousel";
-
+import {tokens} from '../../Theme'
 const artworksData = [
   {
     id: 1,
@@ -197,6 +197,8 @@ const artworksData = [
 ];
 
 const Home = () => {
+        const theme= useTheme()
+        const colors =tokens(theme.palette.mode)
   const [search, setSearch] = useState("");
 
   const filteredArtworks = artworksData.filter((art) =>
@@ -249,9 +251,10 @@ const Home = () => {
               onChange={(e) => setSearch(e.target.value)}
             />
           </Box>
-      <Box>
-        <CartCarousel cartItems={filteredArtworks} />
       </Box>
+      <Box width="93%" overFlow="hidden" m="40px">
+        <CartCarousel cartItems={filteredArtworks} />
+    
     {/* </Container> */}
     
     </Box>
@@ -262,7 +265,7 @@ const Home = () => {
           bgcolor: "#020617",
         }}
       >
-        <Typography variant="h4" fontWeight="bold">
+        <Typography variant="h4" fontWeight="bold" color={colors.greenAccent[500]}>
           AI Art Suggestions 🎨
         </Typography>
         <Typography sx={{ mt: 1 }}>
