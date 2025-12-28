@@ -22,6 +22,7 @@ import ArtistworkCard from './ArtistworkCard';
 import Api from '../Api'
 import {useParams} from 'react-router-dom'
 import AlertPopup from '../Components/AlertPopup'
+import { useNavigate } from "react-router-dom";
 
 
 // const artist = {
@@ -61,6 +62,7 @@ export default function ArtistProfilePage({artist ,works}) {
           const [rating,setRating]=useState(0);
               const { id } = useParams();
     const { artistId } = useParams();
+      const navigate = useNavigate();
         const [alert, setAlert] = useState({show: false,msg: "",severity: "error",});
     
           
@@ -74,7 +76,31 @@ export default function ArtistProfilePage({artist ,works}) {
       }
   }
 fetchRating()},[id,artistId])
+  const handleMessage = async () => {
+    try {
+      const response= await Api.post(`/user/${id}/getchatroomid/`,{artistId})
+        const conversation = response.data;
 
+    // Redirect to chat page with conversationId
+    navigate(`../chatroom/${conversation._id}`);
+    } catch (err) {
+      console.log(err);
+      
+    }
+    // const res = await fetch("/api/conversation", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     userId,
+    //     artistId: artist._id,
+    //   }),
+    // });
+
+    // const conversation = await res.json();
+
+    // // Redirect to chat page with conversationId
+    // navigate(`/chat/${conversation._id}`);
+  };
  const handleSubmit=async()=>{
         try {
           console.log(rating);
@@ -142,12 +168,13 @@ fetchRating()},[id,artistId])
                  <Chip
                                 icon={<StarIcon />}
                                 label={`${artist? (artist.artistRating/artist.ratingCount).toFixed(1) :0.0} Rating `}
-                                color={artist? artist.artistRating/artist.ratingCount>2.5?"success":"warning":0}
+                                color={artist ? (rating > 2.5 ? "success" : "warning") : "default"}
                                 size="small"
                     />
               <Button
                 variant="contained"
                 startIcon={<MessageIcon />}
+                onClick={handleMessage}
               >
                 Message Artist
               </Button>

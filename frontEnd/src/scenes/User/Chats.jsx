@@ -4,6 +4,7 @@ import {Box,} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ChatsLists from '../../Components/ChatsLists';
 
+
 const chats = [
   {
     id: 1,
@@ -32,7 +33,7 @@ const chats = [
 ];
 
 function Chats() {
-   
+ 
   return (
     <Box m="20px">
         <Box display="flex" justifyContent="space-between" alignItems="center">

@@ -104,7 +104,7 @@ function App() {
           <Route path="viewartist/:artistId" element={<UserViewArtistProfile/>}/>
           <Route path="imagegeneration" element={<Imagegeneration/>}/>
           <Route path="chats" element={<UserChats/>}/>
-          <Route path="chats/chatroom" element={<UserChatRoom/>}/>
+          <Route path="chatroom/:chatroomId" element={<UserChatRoom/>}/>
           <Route path="orders" element={<Orderdetails/>}/>
           <Route path="carts" element={<Carts/>}/>
           <Route path="payments" element={<UserPayments/>}/>

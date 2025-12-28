@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 
 const ChatRoomSchema = new mongoose.Schema(
     {
-        participants: [
+        members: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "User",
+                ref: "actors",
                 required: true,
             },
         ],

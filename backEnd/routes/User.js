@@ -4,6 +4,7 @@ import { upload } from "../middleWare/upload.js";
 import { getProfileDetails, sidebarDetails, updateProfile } from "../controller/common.js";
 import { complaintStatus, getComplaintDetails, newComplaint } from "../controller/complainstController.js";
 import { getActorsListForUser, getArtistProfile } from "../controller/manageAccount.js";
+import { getChatRoomId } from '../controller/messangerController.js'
 
 const router = express.Router();
 
@@ -15,6 +16,7 @@ router.get("/:id/reports", complaintStatus)
 router.get("/:id/report/:complaintId", getComplaintDetails)
 router.get("/:id/viewartist", getActorsListForUser)
 router.get("/:id/viewartist/:artistId", getArtistProfile)
+router.post("/:id/getchatroomid", getChatRoomId)
 
 
 
