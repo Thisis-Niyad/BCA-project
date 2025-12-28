@@ -51,6 +51,7 @@ import UserNewReport from './scenes/User/ReportFeild/NewReport'
 import UserReportsStatus from './scenes/User/ReportFeild/ReportsStatus'
 import UserViewReport from './scenes/User/ReportFeild/ViewReport'
 import UserViewArtistProfile from './scenes/User/ViewArtistPofile'
+import UserChatRoom from './scenes/User/UserChatRoom';
 
 function App() {
   
@@ -103,6 +104,7 @@ function App() {
           <Route path="viewartist/:artistId" element={<UserViewArtistProfile/>}/>
           <Route path="imagegeneration" element={<Imagegeneration/>}/>
           <Route path="chats" element={<UserChats/>}/>
+          <Route path="chats/chatroom" element={<UserChatRoom/>}/>
           <Route path="orders" element={<Orderdetails/>}/>
           <Route path="carts" element={<Carts/>}/>
           <Route path="payments" element={<UserPayments/>}/>
