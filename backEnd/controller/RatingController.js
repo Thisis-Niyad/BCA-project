@@ -71,7 +71,6 @@ export const fetchArtistRating = async (req, res) => {
 
         res.status(200).json(artistRating)
     } catch (err) {
-        console.log(err);
         res.status(500).json({ msg: "server error" });
     }
 }

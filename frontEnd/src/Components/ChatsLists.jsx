@@ -14,10 +14,18 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-function ChatsLists({chats}) {
+function ChatsLists({chats,role}) {
      const [search, setSearch] = useState("");
-       const filteredChat = chats.filter((chatRoom) =>
-        chatRoom.name.toLowerCase().includes(search.toLowerCase()) );
+ const filteredChat = chats?.filter(chatRoom =>
+  (
+    role === "user"
+      ? chatRoom.artistName
+      : chatRoom.userName
+  )
+    ?.toLowerCase()
+    .includes(search.toLowerCase())
+);
+
   return (
     <>
       <Box
@@ -64,9 +72,20 @@ function ChatsLists({chats}) {
           </Box>
     
           {/* Chat List */}
-          <List>
-            {filteredChat.map((chat) => (
-              <Box key={chat.id}>
+            <List>
+      {filteredChat?.length === 0 && (
+        <Typography align="center" mt={2}>
+          No chats found
+        </Typography>
+      )}
+       {filteredChat?.map((chat) => {
+        const name =
+          role === "user" ? chat.artistName : chat.userName;
+        const profile =
+          role === "user" ? chat.artistProfile : chat.userProfile;
+
+        return (
+          <Box key={chat._id}>
                 <ListItem button>
                   <ListItemAvatar>
                     <Badge
@@ -74,14 +93,14 @@ function ChatsLists({chats}) {
                       badgeContent={chat.unread}
                       invisible={chat.unread === 0}
                     >
-                      <Avatar src={chat.avatar} />
+                      <Avatar src={profile} />
                     </Badge>
                   </ListItemAvatar>
     
                   <ListItemText
                     primary={
                       <Typography fontWeight="600">
-                        {chat.name}
+                        {name}
                       </Typography>
                     }
                     secondary={
@@ -99,13 +118,14 @@ function ChatsLists({chats}) {
                     variant="caption"
                     color="#94a3b8"
                   >
-                    {chat.time}
+                    {chat.lastMessageAt}
                   </Typography>
                 </ListItem>
                 <Divider sx={{ bgcolor: "#1e293b" }} />
               </Box>
-            ))}
-          </List>
+        );
+      })}
+    </List>
         </Box>
     </>
   )
