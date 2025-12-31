@@ -22,18 +22,32 @@ if (process.env.NODE_ENV !== 'production') {
 connectDB();
 
 const app = express();
-// 
+// socket start here
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: process.env.CLIENT_URL,
+        // origin: process.env.CLIENT_URL,
+        origin: "*",
+        methods: ["GET", "POST"],
     },
 });
 
 io.on("connection", (socket) => {
     console.log("User connected:", socket.id);
+
+    socket.on("send_message", (data) => {
+        socket.to(data.room).emit("receive_message", data)
+    })
+
+    socket.on("join_room", (data) => {
+        socket.join(data);
+    })
+
+    socket.on("disconnect", () => {
+        console.log("User disconnected");
+    });
 })
-// 
+// socket ended 
 const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
@@ -56,6 +70,6 @@ app.get('/download/uploads/:folder/:filename', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`server runnig at PORT:${PORT}`)
 })

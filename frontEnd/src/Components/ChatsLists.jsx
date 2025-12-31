@@ -5,13 +5,14 @@ import {
   Box,
   Divider,
   List,
-  ListItem,
+  ListItemButton,
   ListItemAvatar,
   ListItemText,
   Typography,
   IconButton,
   TextField, InputAdornment, 
 } from "@mui/material";
+import {Link} from 'react-router-dom'
 import SearchIcon from "@mui/icons-material/Search";
 
 function ChatsLists({chats,role}) {
@@ -86,7 +87,7 @@ function ChatsLists({chats,role}) {
 
         return (
           <Box key={chat._id}>
-                <ListItem button>
+                <ListItemButton component={Link} to={`../chatroom/${chat._id}`}>
                   <ListItemAvatar>
                     <Badge
                       color="success"
@@ -120,7 +121,7 @@ function ChatsLists({chats,role}) {
                   >
                     {chat.lastMessageAt}
                   </Typography>
-                </ListItem>
+                </ListItemButton>
                 <Divider sx={{ bgcolor: "#1e293b" }} />
               </Box>
         );
