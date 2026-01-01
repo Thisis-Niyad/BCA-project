@@ -14,6 +14,7 @@ import path from 'path'
 // 
 import http from "http";
 import { Server } from "socket.io";
+import Message from "./models/Message.js"
 // 
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config();
@@ -35,8 +36,19 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
     console.log("User connected:", socket.id);
 
-    socket.on("send_message", (data) => {
-        socket.to(data.room).emit("receive_message", data)
+    socket.on("send_message", async (data) => {
+        try {
+            const message = await Message.create({
+                chatroomId: data.room,
+                senderId: data.senderId,
+                messageType: data.msgType,
+                text: data.message,
+                image: data.image || null,
+            });
+            socket.to(data.room).emit("receive_message", data)
+        } catch (err) {
+            console.error("Message save error:", err);
+        }
     })
 
     socket.on("join_room", (data) => {

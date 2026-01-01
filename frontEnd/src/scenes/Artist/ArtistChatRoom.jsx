@@ -48,8 +48,8 @@ function UserChatRoom() {
     socketRef.current.emit("send_message", {
       room: chatroomId,
       senderId: id,
+       msgType:"text",
       message: newMessage,
-      msgType:"text"
     });
 
     setMessages((prev) => [

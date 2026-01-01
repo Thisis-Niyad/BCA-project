@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {  useRef,useState } from "react";
 import {
   Box,
   TextField,
@@ -12,30 +12,27 @@ import {
 import SendIcon from "@mui/icons-material/Send";
 import ImageIcon from "@mui/icons-material/Image";
 import {tokens} from '../Theme'
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
-const ChatRoom = () => {
+const ChatRoom = ({role,newMessage,setNewMessage,messages,sendMessage}) => {
           const theme= useTheme()
           const colors =tokens(theme.palette.mode)
           const bottomRef=useRef(null);
-  const [messages, setMessages] = useState([
-    { sender: "artist", text: "Hello! How can I help you?" },
-    { sender: "user", text: "I want a custom artwork." }
-  ]);
+          const [image, setImage] = useState();
+          
 
-  const [newMessage, setNewMessage] = useState("");
 
-  const sendMessage = () => {
-    if (!newMessage.trim()) return;
-    setMessages([...messages, { sender: "user", text: newMessage }]);
-    setNewMessage("");
-  };
+
 
   const sendImage = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
     const imageURL = URL.createObjectURL(file);
-    setMessages([...messages, { sender: "user", image: imageURL }]);
+    // setMessages([...messages, { sender: role, image: imageURL }]);
+    if (file) {
+          setImage(imageURL);
+      }
   };
 
   return (
@@ -54,7 +51,7 @@ const ChatRoom = () => {
             key={index}
             sx={{
               display: "flex",
-              justifyContent: msg.sender === "user" ? "flex-end" : "flex-start",
+              justifyContent: msg.sender === role ? "flex-end" : "flex-start",
               mb: 1
             }}
           >
@@ -62,7 +59,7 @@ const ChatRoom = () => {
               sx={{
                 p: 1.5,
                 maxWidth: "60%",
-                bgcolor: msg.sender === "user" ? colors.greenAccent[500] : "#cececeff",
+                bgcolor: msg.sender === role ? colors.greenAccent[500] : "#cececeff",
                 color: "#000",
                 borderRadius: 2
               }}
@@ -82,7 +79,20 @@ const ChatRoom = () => {
 <div ref={bottomRef}/>
       </Box>
       {/* Input */}
-      <Box sx={{ p: 2, display: "flex", alignItems: "center", borderTop: "1px solid #ddd" }}>
+      <Box sx={{ pt: 2, display: "flex", alignItems: "center",flexDirection:"column", borderTop: "1px solid #ddd" }}>
+          {image?(
+             <Box display="flex" alignItems="flex-start" justifyContent="center">
+              <img
+                  src={image}
+                  alt="Preview"
+                  style={{ width: "200px", height: "200px", objectFit: "cover", borderRadius: 8 }}
+                />
+                  <IconButton sx={{color:"#666666" ,m:"0 0 0 -17px",paddingTop:"0"}} onClick={()=>{setImage("")}} >
+                    <HighlightOffIcon/>
+                    </IconButton>
+              </Box>
+              ):null}
+              <Box sx={{p: 2, display: "flex", alignItems: "center"}} width="100%">
         <IconButton component="label">
           <ImageIcon />
           <input type="file" hidden accept="image/*" onChange={sendImage} />
@@ -115,6 +125,7 @@ const ChatRoom = () => {
                 }
             }}
         />
+        </Box>
       </Box>
     </Box>
   );

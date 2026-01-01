@@ -52,6 +52,7 @@ import UserReportsStatus from './scenes/User/ReportFeild/ReportsStatus'
 import UserViewReport from './scenes/User/ReportFeild/ViewReport'
 import UserViewArtistProfile from './scenes/User/ViewArtistPofile'
 import UserChatRoom from './scenes/User/UserChatRoom';
+import ArtistChatRoom from './scenes/Artist/ArtistChatRoom';
 
 function App() {
   
@@ -87,6 +88,7 @@ function App() {
       <Route path="/artist/:id" element={<Artist/>}>
           <Route index element={<ArtistHome/>}/>
           <Route path="chats" element={<ArtistChats/>}/>
+          <Route path="chatroom/:chatroomId" element={<ArtistChatRoom/>}/>
           <Route path="gallery" element={<Gallery/>}/>
           <Route path="addpost" element={<Addpost/>}/>
           <Route path="request" element={<Request/>}/>
