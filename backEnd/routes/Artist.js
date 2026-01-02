@@ -6,7 +6,9 @@ import { getProfileDetails, sidebarDetails, updateProfile } from "../controller/
 import { complaintStatus, newComplaint } from "../controller/complainstController.js";
 import { uploadArtwork } from "../controller/uploadArtWork.js";
 import { getGallery } from "../controller/ViewWork.js";
-import { getChatList } from "../controller/messangerController.js";
+import { getChatList, getMessages, sendImage } from "../controller/messangerController.js";
+import { uploadchatImg } from "../middleWare/uploadChatImages.js";
+
 const router = express.Router();
 
 router.get("/:id", sidebarDetails)
@@ -17,6 +19,8 @@ router.get("/:id/reports", complaintStatus)
 router.post("/:id/addpost", uploadWorkImg.single("workImage"), uploadArtwork)
 router.get("/:id/gallery", getGallery)
 router.get("/:id/chats", getChatList)
+router.get("/:id/chatroom/:chatroomId", getMessages)
+router.post("/:id/chatroom/:chatroomId", uploadchatImg.single("image"), sendImage)
 
 
 export default router

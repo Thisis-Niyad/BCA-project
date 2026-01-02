@@ -34,16 +34,17 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-    console.log("User connected:", socket.id);
+    // console.log("User connected:", socket.id);
 
     socket.on("send_message", async (data) => {
         try {
             const message = await Message.create({
                 chatroomId: data.room,
                 senderId: data.senderId,
+                role: data.role,
                 messageType: data.msgType,
-                text: data.message,
-                image: data.image || null,
+                text: data.text,
+                image: data.image,
             });
             socket.to(data.room).emit("receive_message", data)
         } catch (err) {

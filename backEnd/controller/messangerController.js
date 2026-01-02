@@ -1,5 +1,6 @@
 import ChatRoom from "../models/ChatRoom.js";
 import actors from '../models/actors.js'
+import Message from "../models/Message.js";
 
 export const getChatRoomId = async (req, res) => {
     const userId = req.params.id;
@@ -62,3 +63,37 @@ export const getChatList = async (req, res) => {
     }
 };
 
+export const sendImage = async (req, res) => {
+    try {
+        res.json({ imageUrl: req.file.path });
+    } catch (err) {
+        res.status(500).json({ msg: "server error" });
+        console.log(err);
+    }
+}
+
+export const getMessages = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const role = req.query.role;
+        const filter = role === "user"
+            ? { userId: id }
+            : { artistId: id };
+        const selectFields = role === "user"
+            ? "artistName artistProfile"
+            : "userName userProfile";
+
+        const actor = await ChatRoom.findOne(filter)
+            .select(selectFields)
+            .sort({ lastMessageAt: -1 });
+
+        const messages = await Message.find({
+            chatroomId: req.params.chatroomId,
+        }).sort({ createdAt: 1 }); // oldest → newest
+
+        res.status(200).json({ messages, actor });
+    } catch (err) {
+        res.status(500).json({ msg: "server error" });
+        console.log(err);
+    }
+}

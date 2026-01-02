@@ -19,14 +19,17 @@ const messageSchema = new mongoose.Schema(
             enum: ["text", "image"],
             required: true,
         },
-
+        role: {
+            type: String,
+            enum: ["user", "artist"],
+            required: true,
+        },
         text: {
             type: String,
         },
 
         image: {
-            filename: String,
-            path: String,
+            type: String,
         },
 
         seen: {
