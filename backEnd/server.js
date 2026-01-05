@@ -11,10 +11,11 @@ import ArtistRegisteration from './routes/ArtistRegisteration.js'
 import Ratings from "./routes/Ratings.js"
 import cors from 'cors'
 import path from 'path'
-// 
 import http from "http";
 import { Server } from "socket.io";
 import Message from "./models/Message.js"
+// 
+import ChatRoom from './models/ChatRoom.js'
 // 
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config();
@@ -47,6 +48,13 @@ io.on("connection", (socket) => {
                 image: data.image,
             });
             socket.to(data.room).emit("receive_message", data)
+            let lastMsg = "";
+            if (data.msgType === 'text') {
+                lastMsg = data.text;
+            } else {
+                lastMsg = "Photo"
+            }
+            await ChatRoom.findByIdAndUpdate(data.room, { lastMessage: lastMsg, lastMessageAt: new Date(), })
         } catch (err) {
             console.error("Message save error:", err);
         }

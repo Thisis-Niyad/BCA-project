@@ -15,7 +15,7 @@ function UserChatRoom() {
   useEffect(()=>{
     const fetchMessages=async()=>{
       try {
-        const response=await Api.get(`/artist/${id}/chatroom/${chatroomId}?role=user`);
+        const response=await Api.get(`/user/${id}/chatroom/${chatroomId}?role=user`);
         const data=response.data;
           setMessages(data.messages);  
           setActor({name:data.actor.artistName,profile:data.actor.artistProfile})

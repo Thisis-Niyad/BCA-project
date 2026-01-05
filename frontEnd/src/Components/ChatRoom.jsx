@@ -33,14 +33,12 @@ const ChatRoom = ({role,actor,newMessage,setNewMessage,messages,sendMessage,send
 console.log(messages);
 
 
- 
-
   return (
     <Box sx={{ height: "90vh", display: "flex", flexDirection: "column" }}>
       
       {/* Header */}
       <Box sx={{ p: 2, bgcolor:colors.primary[500], color: "white", display: "flex", alignItems: "center", borderTop: "1px solid #ddd"   }}>
-        <Avatar sx={{ mr: 2 }} src={actor?.profile}/>
+        <Avatar sx={{ mr: 2 }} src={`http://localhost:5000/${actor?.profile}`}/>
         <Typography variant="h6" color={colors.grey[200]}>{actor?.name}</Typography>
       </Box>
 
