@@ -103,10 +103,10 @@ console.log(messages);
               </Box>
               ):null}
               <Box sx={{p: 2, display: "flex", alignItems: "center"}} width="100%">
-        <IconButton component="label">
+        {sendImage!==null &&(<IconButton component="label">
           <ImageIcon />
           <input type="file" hidden accept="image/*" onChange={prevImage} />
-        </IconButton>
+        </IconButton>)}
 
         <TextField
           fullWidth

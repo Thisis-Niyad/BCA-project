@@ -14,9 +14,9 @@ import path from 'path'
 import http from "http";
 import { Server } from "socket.io";
 import Message from "./models/Message.js"
-// 
 import ChatRoom from './models/ChatRoom.js'
-// 
+import { generateAIImage } from "./controller/AIController.js"
+
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config();
 }
@@ -35,7 +35,7 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-    // console.log("User connected:", socket.id);
+    console.log("User connected:", socket.id);
 
     socket.on("send_message", async (data) => {
         try {
@@ -63,6 +63,39 @@ io.on("connection", (socket) => {
     socket.on("join_room", (data) => {
         socket.join(data);
     })
+
+    socket.on("sendPromptToAI", async ({ userId, prompt }) => {
+        try {
+            const conversationId = userId;
+
+            // 1️⃣ Save user message
+            const userMsg = await Message.create({
+                chatroomId: conversationId,
+                senderId: conversationId,
+                role: "user",
+                messageType: "text",
+                text: prompt,
+            });
+            io.to(conversationId).emit("receiveMessage", userMsg);
+
+            // 2️⃣ Generate AI image
+            const imagePath = await generateAIImage(prompt);
+
+            // 3️⃣ Save AI message
+            const aiMsg = await Message.create({
+                chatroomId: conversationId,
+                senderId: process.env.AI_Id,
+                role: "AI",
+                messageType: "image",
+                image: imagePath,
+            });
+
+            // 4️⃣ Send AI image
+            io.to(conversationId).emit("receiveMessage", aiMsg);
+        } catch (error) {
+            console.error("AI socket error:", error);
+        }
+    });
 
     socket.on("disconnect", () => {
         console.log("User disconnected");
