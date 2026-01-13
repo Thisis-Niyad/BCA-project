@@ -6,10 +6,12 @@ import { complaintStatus, getComplaintDetails, newComplaint } from "../controlle
 import { getActorsListForUser, getArtistProfile } from "../controller/manageAccount.js";
 import { getChatList, getChatRoomId, getMessages, sendImage } from '../controller/messangerController.js'
 import { uploadchatImg } from "../middleWare/uploadChatImages.js";
+import { userHome } from "../controller/HomeController.js";
 
 const router = express.Router();
 
 router.get("/:id", sidebarDetails)
+router.get("/:id/home", userHome)
 router.get("/:id/profile", getProfileDetails)
 router.post("/:id/profile", upload.single("ProfileImg"), updateProfile)
 router.post("/:id/report/new", newComplaint)

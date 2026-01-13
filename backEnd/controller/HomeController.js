@@ -1,5 +1,6 @@
 import actors from '../models/actors.js'
 import complaint from '../models/Complaint.js'
+import { ArtistWork } from '../models/ArtistWork.js';
 
 export const getAdminHomeDetails = async (req, res) => {
     try {
@@ -44,6 +45,16 @@ export const getAdminHomeDetails = async (req, res) => {
         res.status(200).json({ noofComplaints, noofUser, noofArtist, formattedNComplaints, topTenArtist })
 
 
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ msg: "Server error" });
+    }
+}
+
+export const userHome = async (req, res) => {
+    try {
+        const artworks = await ArtistWork.find().select("-artistId,-blockchainHash,-imageHash").sort({ createdAt: -1 })
+        res.status(200).json(artworks)
     } catch (err) {
         console.log(err);
         res.status(500).json({ msg: "Server error" });

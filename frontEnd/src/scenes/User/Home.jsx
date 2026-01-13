@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React,{ useState,useEffect } from "react";
 import {
   Container,
   Grid,
@@ -11,194 +11,199 @@ import {
 import ArtistworkCard from "../../components/ArtistworkCard";
 import CartCarousel from "../../Components/CartCarousel";
 import {tokens} from '../../Theme'
-const artworksData = [
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-  {
-    id: 1,
-    title: "Digital Sunset",
-    artist: "Niyad",
-    price: 2500,
-    image: "https://source.unsplash.com/400x300/?art",
-  },
-  {
-    id: 2,
-    title: "Abstract Flow",
-    artist: "Alex",
-    price: 1800,
-    image: "https://source.unsplash.com/400x300/?painting",
-  },
-];
+import Api from '../../Api'
+import {useParams} from 'react-router-dom'
+
+// const artworksData = [
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+//   {
+//     id: 1,
+//     title: "Digital Sunset",
+//     artist: "Niyad",
+//     price: 2500,
+//     image: "https://source.unsplash.com/400x300/?art",
+//   },
+//   {
+//     id: 2,
+//     title: "Abstract Flow",
+//     artist: "Alex",
+//     price: 1800,
+//     image: "https://source.unsplash.com/400x300/?painting",
+//   },
+// ];
 
 const Home = () => {
         const theme= useTheme()
+            const { id } = useParams();
         const colors =tokens(theme.palette.mode)
+        const [artworksData,setArtworkData]=useState([]);
   const [search, setSearch] = useState("");
 
   const filteredArtworks = artworksData.filter((art) =>
@@ -206,6 +211,19 @@ const Home = () => {
     art.artist.toLowerCase().includes(search.toLowerCase())
   );
 
+    useEffect(()=>{
+      const fetchArtWorkData=async()=>{
+        try {
+          const response=await Api.get(`/user/${id}/home`)
+            setArtworkData(response.data);  
+        } catch (err) {
+          console.log(err);
+        }
+    }
+  fetchArtWorkData()},[id])
+
+
+  
   return (
     <>
     <Box

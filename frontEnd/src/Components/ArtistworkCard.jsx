@@ -1,5 +1,6 @@
 import {
   Card,
+  CardActionArea,
   CardMedia,
   CardContent,
   Typography,
@@ -12,6 +13,7 @@ import {
   Chip
 } from "@mui/material";
 import {tokens} from '../Theme'
+import {Link} from 'react-router-dom'
 
 const ArtistworkCard = ({ cardData }) => {
     const theme= useTheme()
@@ -45,6 +47,7 @@ const ArtistworkCard = ({ cardData }) => {
         },
       }}
       >
+        <CardActionArea component={Link} to={`artwork/${work._id}`}>
                           <CardMedia
                             component="img"
                             style={{height:"300px"}}
@@ -59,7 +62,7 @@ const ArtistworkCard = ({ cardData }) => {
                             </Typography>
             
                             <Typography color="text.secondary" fontSize={14}>
-                              Custom handmade artwork
+                              {work? work.description:"Custom handmade artwork"}
                             </Typography>
             
                             <Divider sx={{ my: 1 }} />
@@ -85,11 +88,12 @@ const ArtistworkCard = ({ cardData }) => {
                               </Box>
                               <Chip
                                 size="small"
-                                label="Available"
+                                label="Buy"
                                 color="success"
                               />
                             </Stack>
                           </CardContent>
+                          </CardActionArea>
                         </Card>
         )
         })
