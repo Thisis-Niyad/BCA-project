@@ -1,3 +1,7 @@
+.vscode
+
+Ai/.env
+
 Documentation/doc files
 Documentation/drawio
 Documentation/newItems
@@ -8,5 +12,3 @@ backEnd/uploads/registerationFiles
 backEnd/uploads/Artwork_images
 backEnd/uploads/chatImages
 backEnd/uploads/images
-
-.vscode

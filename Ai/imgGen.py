@@ -2,12 +2,17 @@
 # !pip install pillow
 # !pip install diffusers transformers accelerate safetensors
 # !pip install fastapi uvicorn pyngrok nest_asyncio
+# !pip install python-dotenv
+# --------------------dotenv setup--------------------
+import os
+from dotenv import load_dotenv
 
-
+load_dotenv()
+ngorkToken = os.getenv("ngorkToken")
 # ------------------- ngork auth -------------------
 from pyngrok import ngrok
 
-ngrok.set_auth_token("356ECzsn1fGp4C3SFwvOuxdTs3C_qrymgaheWsXhWJAhCLoh")
+ngrok.set_auth_token(ngorkToken)
 
 
 # ------------------- sdxl  import -------------------
@@ -34,68 +39,48 @@ from pydantic import BaseModel
 from pyngrok import ngrok
 import nest_asyncio
 import uvicorn
-import asyncio  # Import asyncio
-from fastapi.responses import HTMLResponse
-from fastapi import FastAPI, Form
+import asyncio
 import base64
 from io import BytesIO
 
-# FastAPI app in the same cell (NO app.py file)
+# ---- FastAPI App ----
 app = FastAPI()
 
 
-@app.get("/", response_class=HTMLResponse)
-def home():
-    html = """
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <form action="/generate" method="post">
-            < <textarea name="prompt" id=""></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </body>
-    </html>
-    """
-    return html
-    # return {"message": "AI Image Generator API Running"}
+# ---- Request Schema ----
+class ImageRequest(BaseModel):
+    prompt: str
 
 
-class Prompt(BaseModel):
-    text: str
-
-
-@app.post("/generate")
-def generate(prompt: str = Form(...)):
-    # Generate image
-    image = pipe(prompt, height=480, width=480).images[0]
-
-    # Convert to base64 string
+# ---- Image to Base64 ----
+def image_to_base64(image):
     buffer = BytesIO()
     image.save(buffer, format="PNG")
-    img_str = base64.b64encode(buffer.getvalue()).decode()
-
-    # return {"image": img_str}
-
-    html = f"<img src='data:image/png;base64,{img_str}' />"
-    return HTMLResponse(content=html)
+    return base64.b64encode(buffer.getvalue()).decode("utf-8")
 
 
-# Allow nested event loops (Colab fix)
+# ---- API Route ----
+@app.post("/generate-image")
+def generate_image(data: ImageRequest):
+    prompt = data.prompt
+    print("Prompt:", prompt)
+
+    image = pipe(prompt, height=480, width=480).images[0]
+
+    image_base64 = image_to_base64(image)
+
+    return {"image": image_base64}
+
+
+# ---- Colab Fix ----
 nest_asyncio.apply()
 
-# Start ngrok
+# ---- Ngrok ----
 public_url = ngrok.connect(8000)
 print("Public URL:", public_url)
 
-# Run FastAPI using uvicorn.Server to integrate with the existing event loop
-config = uvicorn.Config(app, host="0.0.0.0", port=8000)  # Use 'app' directly
+# ---- Run Server ----
+config = uvicorn.Config(app, host="0.0.0.0", port=8000)
 server = uvicorn.Server(config)
 
-# Run the server in the existing event loop
 asyncio.get_running_loop().run_until_complete(server.serve())
