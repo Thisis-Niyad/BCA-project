@@ -53,6 +53,7 @@ import UserViewReport from './scenes/User/ReportFeild/ViewReport'
 import UserViewArtistProfile from './scenes/User/ViewArtistPofile'
 import UserChatRoom from './scenes/User/UserChatRoom';
 import ArtistChatRoom from './scenes/Artist/ArtistChatRoom';
+import VeiwItemDetails from './scenes/User/ViewItemDetails';
 
 function App() {
   
@@ -116,6 +117,7 @@ function App() {
               <Route path=":complaintId" element={<UserViewReport/>}/>
           </Route>
           <Route path="profile" element={<UserProfile/>}/>
+          <Route path="artwork/:artworkId" element={<VeiwItemDetails/>}/>
       </Route>
     </Routes>
      </ThemeProvider>
