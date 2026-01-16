@@ -15,3 +15,15 @@ export const getGallery = async (req, res) => {
         res.status(500).json({ msg: "Server error" });
     }
 }
+
+export const viewWork = async (req, res) => {
+    try {
+        const artworkId = req.params.artworkId
+        const response = await ArtistWork.findById(artworkId).select("")
+        // incomplete
+        res.status(200).json(response)
+    } catch (err) {
+        res.status(500).json({ msg: "Server error" });
+        log(err)
+    }
+}
