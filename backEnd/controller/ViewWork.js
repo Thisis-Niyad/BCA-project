@@ -19,8 +19,7 @@ export const getGallery = async (req, res) => {
 export const viewWork = async (req, res) => {
     try {
         const artworkId = req.params.artworkId
-        const response = await ArtistWork.findById(artworkId).select("")
-        // incomplete
+        const response = await ArtistWork.findById(artworkId).select("-blockchainHash,-imageHash");
         res.status(200).json(response)
     } catch (err) {
         res.status(500).json({ msg: "Server error" });

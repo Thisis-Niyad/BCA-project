@@ -7,6 +7,7 @@ import { getActorsListForUser, getArtistProfile } from "../controller/manageAcco
 import { getChatList, getChatRoomId, getMessages, sendImage } from '../controller/messangerController.js'
 import { uploadchatImg } from "../middleWare/uploadChatImages.js";
 import { userHome } from "../controller/HomeController.js";
+import { viewWork } from "../controller/ViewWork.js";
 
 const router = express.Router();
 
@@ -23,6 +24,7 @@ router.post("/:id/getchatroomid", getChatRoomId)
 router.get("/:id/chats", getChatList)
 router.get("/:id/chatroom/:chatroomId", getMessages)
 router.post("/:id/chatroom/:chatroomId", uploadchatImg.single("image"), sendImage)
+router.get("/:id/artwork/:artworkId", viewWork)
 
 
 export default router
