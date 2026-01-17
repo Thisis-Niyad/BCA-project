@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/home.dart';
+import 'package:flutter_app/pages/login.dart';
+import 'package:flutter_app/pages/view_artist.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,14 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: (Scaffold(
-        body: Center(
-          child: Text(
-            "hello world",
-            style: TextStyle(fontSize: 25, color: Colors.red),
-          ),
-        ),
-      )),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Login(),
+        '/home': (context) => Home(),
+        '/viewartist': (context) => ViewArtist(),
+      },
     );
   }
 }
