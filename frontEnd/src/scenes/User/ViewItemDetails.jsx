@@ -17,11 +17,17 @@ import BoltIcon from "@mui/icons-material/Bolt";
 import {useParams} from 'react-router-dom'
 import {tokens} from '../../Theme'
 import Api from '../../Api'
+import AlertPopup from '../../Components/AlertPopup'
 
 const VeiwItemDetails = () => {
     const theme= useTheme()
         const { id ,artworkId} = useParams();
     const colors =tokens(theme.palette.mode)
+    const [alert, setAlert] = useState({
+                show: false,
+                msg: "",
+                severity: "error",
+              });
     const [data ,setData]=useState()
       useEffect(()=>{
         const hetchWorkDetails=async()=>{
@@ -36,18 +42,26 @@ const VeiwItemDetails = () => {
 
     console.log(data,artworkId);
     
-  // temporary mock data (replace with API data)
-  // const data = work || {
-  //   title: "Arabic Calligraphy – Bismillah",
-  //   description:
-  //     "Hand-crafted Arabic calligraphy artwork created using premium ink on archival paper. Suitable for wall framing and gifting.",
-  //   createdAt: "2025-01-10",
-  //   workRating: 4.6,
-  //   ratingCount: 124,
-  //   price: 2499,
-  //   image:
-  //     "https://images.unsplash.com/photo-1618220179428-22790b461013",
-  // };
+ const AddToCart=async()=>{
+        try {
+          const response= await Api.post(`/user/${id}/addtocart`,{artworkId})
+          
+          if (response.status===200) {
+              setAlert({
+            show: true,
+            msg:response.data.msg,
+            severity: "success",
+          });
+            console.log(response)
+          }
+        } catch (err) {
+              setAlert({
+            show: true,
+            msg:err.status +" : "+ err.response?.data?.msg || "Login failed",
+            severity: "warning",
+          });
+        };     
+    }
 
   return (
     <Box m="0 20px"><Container maxWidth="lg" sx={{py: 4, }}>
@@ -126,6 +140,7 @@ const VeiwItemDetails = () => {
                 variant="outlined"
                 color={colors.grey[400]}
                 size="large"
+                onClick={AddToCart}
                 startIcon={<ShoppingCartIcon />}
               >
                 Add to Cart
@@ -135,6 +150,8 @@ const VeiwItemDetails = () => {
         </Grid>
       </Grid>
     </Container>
+            <AlertPopup Alertshow={alert.show} msg={alert.msg} severity={alert.severity} setAlert={setAlert}/>
+
     </Box>
   );
 };

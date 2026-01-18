@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import {tokens} from '../Theme'
 import {Link} from 'react-router-dom'
+import BoltIcon from "@mui/icons-material/Bolt";
+
 
 const ArtistworkCard = ({ cardData }) => {
     const theme= useTheme()
@@ -86,11 +88,14 @@ const ArtistworkCard = ({ cardData }) => {
                                   ({work.rating})
                                 </Typography>
                               </Box>
-                              <Chip
-                                size="small"
-                                label="Buy"
-                                color="success"
-                              />
+                              <Button
+                                              variant="contained"
+                                              color="success"
+                                              size="small"
+                                              startIcon={<BoltIcon />}
+                                            >
+                                              Buy Now
+                                            </Button>
                             </Stack>
                           </CardContent>
                           </CardActionArea>
