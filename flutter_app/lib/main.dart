@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/home.dart';
+import 'package:flutter_app/pages/loading.dart';
 import 'package:flutter_app/pages/login.dart';
 import 'package:flutter_app/pages/view_artist.dart';
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => Login(),
+        '/': (context) => Loading(),
+        '/login': (context) => Login(),
         '/home': (context) => Home(),
         '/viewartist': (context) => ViewArtist(),
       },
