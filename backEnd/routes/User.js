@@ -8,7 +8,7 @@ import { getChatList, getChatRoomId, getMessages, sendImage } from '../controlle
 import { uploadchatImg } from "../middleWare/uploadChatImages.js";
 import { userHome } from "../controller/HomeController.js";
 import { viewWork } from "../controller/ViewWork.js";
-import { addToCart } from "../controller/CartController.js";
+import { addToCart, getCart } from "../controller/CartController.js";
 
 const router = express.Router();
 
@@ -27,5 +27,6 @@ router.get("/:id/chatroom/:chatroomId", getMessages)
 router.post("/:id/chatroom/:chatroomId", uploadchatImg.single("image"), sendImage)
 router.get("/:id/artwork/:artworkId", viewWork)
 router.post("/:id/addtocart", addToCart)
+router.get("/:id/carts", getCart)
 
 export default router

@@ -89,13 +89,13 @@ const ArtistworkCard = ({ cardData }) => {
                                 </Typography>
                               </Box>
                               <Button
-                                              variant="contained"
-                                              color="success"
-                                              size="small"
-                                              startIcon={<BoltIcon />}
-                                            >
-                                              Buy Now
-                                            </Button>
+                                  variant="contained"
+                                  color="success"
+                                  size="small"
+                                  startIcon={<BoltIcon />}
+                                >
+                                  Buy Now
+                                </Button>
                             </Stack>
                           </CardContent>
                           </CardActionArea>

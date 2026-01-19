@@ -64,6 +64,20 @@ export const addToCart = async (req, res) => {
 
     } catch (error) {
         console.error("Add to cart error:", error);
-        res.status(500).json({ msg: "Server error" });
+        res.status(500).json({ msg: "Server error, please try again" });
     }
 };
+
+
+export const getCart = async (req, res) => {
+    try {
+        const userId = req.params.id; // from auth middleware
+        const cart = await Cart.findOne({ userId });
+
+        res.status(200).json(cart)
+
+    } catch (error) {
+        console.error("Add to cart error:", error);
+        res.status(500).json({ msg: "Server error" });
+    }
+}
