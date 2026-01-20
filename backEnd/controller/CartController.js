@@ -81,3 +81,46 @@ export const getCart = async (req, res) => {
         res.status(500).json({ msg: "Server error" });
     }
 }
+
+
+
+export const deleteCartItem = async (req, res) => {
+    try {
+        const { id, artworkId } = req.params;
+
+        // Validate ObjectId
+        if (!mongoose.Types.ObjectId.isValid(artworkId)) {
+            return res.status(400).json({ message: "Invalid artworkId" });
+        }
+
+        const cart = await Cart.findOneAndUpdate(
+            { userId: id },
+            {
+                $pull: {
+                    items: { artworkId: new mongoose.Types.ObjectId(artworkId) },
+                },
+            },
+            { new: true }
+        );
+
+        if (!cart) {
+            return res.status(404).json({ message: "Cart not found" });
+        }
+
+        // Recalculate total price
+        cart.totalPrice = cart.items.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+        );
+
+        await cart.save();
+
+        res.status(200).json({
+            msg: "Item removed from cart",
+            cart,
+        });
+    } catch (error) {
+        console.error("Delete cart item error:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+};

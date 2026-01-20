@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   CardMedia,
+  Link,
   Container,
   useTheme,
   Divider,
@@ -14,7 +15,7 @@ import {
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import BoltIcon from "@mui/icons-material/Bolt";
-import {useParams} from 'react-router-dom'
+import {useParams,Link as RouterLink} from 'react-router-dom'
 import {tokens} from '../../Theme'
 import Api from '../../Api'
 import AlertPopup from '../../Components/AlertPopup'
@@ -29,18 +30,22 @@ const VeiwItemDetails = () => {
                 severity: "error",
               });
     const [data ,setData]=useState()
+    const [Artist ,setArtist]=useState()
       useEffect(()=>{
         const hetchWorkDetails=async()=>{
           try {
             const response=await Api.get(`/user/${id}/artwork/${artworkId}`)
-              setData(response.data);  
+              setData(response.data.item);  
+              setArtist(response.data.artist);  
+              console.log(response.data);
+              
           } catch (err) {
             console.log(err);
           }
       }
     hetchWorkDetails()},[id,artworkId])
 
-    console.log(data,artworkId);
+    console.log(Artist);
     
  const AddToCart=async()=>{
         try {
@@ -86,10 +91,27 @@ const VeiwItemDetails = () => {
         <Grid item size={9}>
           <Stack spacing={2}>
             {/* TITLE */}
-            <Typography variant="h4" fontWeight={600} color={colors.greenAccent[500]}>
+            
+              <Box display="flex" justifyContent="space-between">
+                <Typography variant="h4" fontWeight={600} color={colors.greenAccent[500]}>
               {data?.title}
             </Typography>
+                      <Stack direction="row" spacing={1} alignItems="center">
+            <Typography variant="body2" color="text.secondary">
+              Created By:
+            </Typography>
 
+            <Link
+              component={RouterLink}
+              to={`../viewartist/${Artist?._id}`}
+              underline="hover"
+              fontWeight={600}
+              color={colors.grey[200]}
+            >
+              {Artist?.name}
+            </Link>
+          </Stack>
+              </Box>
             {/* RATING */}
             <Stack direction="row" alignItems="center" spacing={1}>
               <Rating

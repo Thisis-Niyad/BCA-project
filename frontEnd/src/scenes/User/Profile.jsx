@@ -52,7 +52,6 @@ SideBarProflieInfo()},[id])
             msg:response.data.msg,
             severity: "success",
           });
-            console.log(response)
           }
         } catch (err) {
               setAlert({

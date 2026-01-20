@@ -20,6 +20,7 @@ import {tokens} from '../../Theme';
 import Api from '../../Api';
 import {useParams,Link} from 'react-router-dom'
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import AlertPopup from '../../Components/AlertPopup'
 
 // const cartItems = [
 //   {
@@ -45,6 +46,11 @@ function Carts() {
       const theme= useTheme()
       const [cartItems,setCartItem]=useState()
           const { id } = useParams();
+          const [alert, setAlert] = useState({
+                      show: false,
+                      msg: "",
+                      severity: "error",
+                    });
       const colors =tokens(theme.palette.mode)
   const subtotal = cartItems ?cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -69,6 +75,26 @@ const decrementQty = (id) => {
   );
 };
 
+const deleteItem =async (artworkId) => {
+  try {
+        const response=await Api.delete(`/user/${id}/deleteitem/${artworkId}`)
+        setCartItem(response.data.cart.items);
+        
+    setAlert({
+            show: true,
+            msg:response.data.msg,
+            severity: "success",
+          });
+  } catch (err) {
+    console.log(err);
+    
+     setAlert({
+            show: true,
+            msg:err.status +" : "+ err.response?.data?.msg || "delete item failed",
+            severity: "warning",
+          });
+  }
+}
 
     useEffect(()=>{
     const fetchCarts=async()=>{
@@ -132,7 +158,7 @@ fetchCarts()},[id])
 
                       <Box flexGrow={1} />
 
-                      <IconButton color="error">
+                      <IconButton color="error" onClick={()=>{deleteItem(item.artworkId)}}>
                         <DeleteIcon />
                       </IconButton>
                     </Stack>
@@ -193,6 +219,8 @@ fetchCarts()},[id])
         </Grid>
       </Grid>
     </Box>
+            <AlertPopup Alertshow={alert.show} msg={alert.msg} severity={alert.severity} setAlert={setAlert}/>
+    
     </Box>
   )
 }

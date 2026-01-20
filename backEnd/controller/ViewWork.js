@@ -1,4 +1,5 @@
 import { ArtistWork } from '../models/ArtistWork.js'
+import actors from '../models/actors.js';
 
 export const getGallery = async (req, res) => {
     try {
@@ -19,10 +20,13 @@ export const getGallery = async (req, res) => {
 export const viewWork = async (req, res) => {
     try {
         const artworkId = req.params.artworkId
-        const response = await ArtistWork.findById(artworkId).select("-blockchainHash,-imageHash");
-        res.status(200).json(response)
+        const item = await ArtistWork.findById(artworkId).select("-blockchainHash,-imageHash");
+        const artist = await actors.findById({ _id: item.artistId }, { _id: 1, name: 1 })
+
+        res.status(200).json({ item, artist })
     } catch (err) {
         res.status(500).json({ msg: "Server error" });
-        log(err)
+        console.log(err);
+
     }
 }
