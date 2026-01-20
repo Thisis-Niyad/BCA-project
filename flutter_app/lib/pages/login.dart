@@ -8,6 +8,16 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
   // void sendData()async{
   //   try{
 
@@ -15,9 +25,12 @@ class _LoginState extends State<Login> {
 
   //   }
   // }
+  //   bool isValidEmail(String email) {
+  //   return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
+  // }
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
+    // final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -29,7 +42,7 @@ class _LoginState extends State<Login> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          height: screenHeight,
+          // height: screenHeight,
           color: Colors.grey[100],
           child: Column(
             children: <Widget>[
@@ -69,84 +82,78 @@ class _LoginState extends State<Login> {
                       topLeft: Radius.circular(90),
                     ), // Uniform circular radius
                   ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-                        padding: EdgeInsets.symmetric(horizontal: 15),
-                        child: TextField(
-                          decoration: InputDecoration(
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: _emailController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Email required";
+                            }
+                            if (!RegExp(
+                              r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                            ).hasMatch(value)) {
+                              return "Enter valid email";
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'email',
-                            hintText: 'Enter valid email id as abc@gmail.com',
+                            labelText: 'Email',
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 15.0,
-                          right: 15.0,
-                          top: 15,
-                          bottom: 0,
-                        ),
-                        //padding: EdgeInsets.symmetric(horizontal: 15),
-                        child: TextField(
+                        const SizedBox(height: 15),
+                        TextFormField(
+                          controller: _passwordController,
                           obscureText: true,
-                          decoration: InputDecoration(
+                          validator: (value) =>
+                              value!.length < 8 ? "Min 8 characters" : null,
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Password',
-                            hintText: 'Enter secure password',
                           ),
                         ),
-                      ),
-
-                      SizedBox(
-                        height: 65,
-                        width: 360,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 20.0),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF6747FF),
-                              foregroundColor: Colors.white,
-                            ),
-                            child: Text(
-                              'Submit ',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            onPressed: () {
-                              // print('Successfully log in ');
-                            },
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(250, 40),
+                            backgroundColor: const Color(0xFF6747FF),
+                            foregroundColor: Colors.white,
                           ),
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              debugPrint(_emailController.text);
+                              debugPrint(_passwordController.text);
+                            }
+                          },
+                          child: const Text("Submit"),
                         ),
-                      ),
+                        SizedBox(height: 50),
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Forgot your login details? '),
 
-                      SizedBox(height: 50),
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Forgot your login details? '),
-
-                            Padding(
-                              padding: const EdgeInsets.only(left: 1.0),
-                              child: InkWell(
-                                onTap: () {
-                                  // print('hello');
-                                },
-                                child: Text(
-                                  'Get help logging in.',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: const Color(0xFF6747FF),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 1.0),
+                                child: InkWell(
+                                  child: Text(
+                                    'Get help logging in.',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: const Color(0xFF6747FF),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
