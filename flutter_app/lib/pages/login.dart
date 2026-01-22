@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/config/api.dart';
+import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -18,13 +21,45 @@ class _LoginState extends State<Login> {
     _passwordController.dispose();
     super.dispose();
   }
-  // void sendData()async{
-  //   try{
 
-  //   }catch(e){
+  Future<String> sendData() async {
+    try {
+      final response = await http.post(
+        Uri.parse("${ApiConfig.baseUrl}/signin"),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({
+          "email": _emailController.text,
+          "password": _passwordController.text,
+        }),
+      );
+      final Map<String, dynamic> data = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        final path = data["path"]?.toString();
 
-  //   }
-  // }
+        if (path == null || path.isEmpty) {
+          return "Invalid server response";
+        }
+
+        final parts = path.split("/");
+
+        if (parts.length < 3) {
+          return "Invalid path format";
+        }
+
+        final actor = parts[1];
+        final id = parts[2];
+        if (actor != "user") {
+          return ('your not user');
+        }
+        return "login success $id";
+      } else {
+        return "server error somthing wrong";
+      }
+    } catch (e) {
+      return "server error: $e";
+    }
+  }
+
   //   bool isValidEmail(String email) {
   //   return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
   // }
@@ -122,10 +157,16 @@ class _LoginState extends State<Login> {
                             backgroundColor: const Color(0xFF6747FF),
                             foregroundColor: Colors.white,
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              debugPrint(_emailController.text);
-                              debugPrint(_passwordController.text);
+                              final messenger = ScaffoldMessenger.of(context);
+                              String msg = await sendData();
+                              messenger.showSnackBar(
+                                SnackBar(
+                                  content: Text(msg),
+                                  duration: Duration(seconds: 3),
+                                ),
+                              );
                             }
                           },
                           child: const Text("Submit"),
