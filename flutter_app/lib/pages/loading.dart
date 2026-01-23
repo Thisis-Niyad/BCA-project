@@ -12,7 +12,7 @@ class _LoadingState extends State<Loading> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
       Navigator.pushReplacementNamed(context, '/login');
     });
@@ -20,8 +20,8 @@ class _LoadingState extends State<Loading> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF6747FF),
+    return const Scaffold(
+      backgroundColor: Color(0xFF6747FF),
       body: Center(
         child: SpinKitSpinningLines(color: Colors.white, size: 90.0),
       ),

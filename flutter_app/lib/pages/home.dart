@@ -13,9 +13,9 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
-        title: Text('Pixel Pact'),
+        title: const Text('Pixel Pact'),
       ),
-      body: Text("hello"),
+      body: const Text("hello"),
     );
   }
 }

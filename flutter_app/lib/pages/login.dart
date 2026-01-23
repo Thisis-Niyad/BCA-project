@@ -70,7 +70,7 @@ class _LoginState extends State<Login> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xFF6747FF),
-        title: Text(
+        title: const Text(
           'Pixel Pact',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
@@ -84,16 +84,16 @@ class _LoginState extends State<Login> {
               Container(
                 color: Colors.white,
                 child: Container(
-                  decoration: BoxDecoration(
-                    color: const Color(
+                  decoration: const BoxDecoration(
+                    color: Color(
                       0xFF6747FF,
                     ), // Color must be inside BoxDecoration
                     borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(60),
                     ), // Uniform circular radius
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 50, 10, 80),
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(10, 50, 10, 80),
                     child: Center(
                       child: Text(
                         'Log In',
@@ -110,8 +110,8 @@ class _LoginState extends State<Login> {
               Container(
                 color: const Color(0xFF6747FF),
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(25, 30, 25, 30),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.fromLTRB(25, 30, 25, 30),
+                  decoration: const BoxDecoration(
                     color: Colors.white, // Color must be inside BoxDecoration
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(90),
@@ -164,28 +164,28 @@ class _LoginState extends State<Login> {
                               messenger.showSnackBar(
                                 SnackBar(
                                   content: Text(msg),
-                                  duration: Duration(seconds: 3),
+                                  duration: const Duration(seconds: 3),
                                 ),
                               );
                             }
                           },
                           child: const Text("Submit"),
                         ),
-                        SizedBox(height: 50),
-                        Center(
+                        const SizedBox(height: 50),
+                        const Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text('Forgot your login details? '),
 
                               Padding(
-                                padding: const EdgeInsets.only(left: 1.0),
+                                padding: EdgeInsets.only(left: 1.0),
                                 child: InkWell(
                                   child: Text(
                                     'Get help logging in.',
                                     style: TextStyle(
                                       fontSize: 14,
-                                      color: const Color(0xFF6747FF),
+                                      color: Color(0xFF6747FF),
                                     ),
                                   ),
                                 ),

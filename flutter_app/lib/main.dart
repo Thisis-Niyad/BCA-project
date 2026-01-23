@@ -21,10 +21,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => Loading(),
-        '/login': (context) => Login(),
-        '/home': (context) => Home(),
-        '/viewartist': (context) => ViewArtist(),
+        '/': (context) => const Loading(),
+        '/login': (context) => const Login(),
+        '/home': (context) => const Home(),
+        '/viewartist': (context) => const ViewArtist(),
       },
     );
   }
