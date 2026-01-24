@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/config/api.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -22,7 +23,7 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
-  Future<String> sendData() async {
+  Future<Map<String, dynamic>> sendData() async {
     try {
       final response = await http.post(
         Uri.parse("${ApiConfig.baseUrl}/signin"),
@@ -37,26 +38,37 @@ class _LoginState extends State<Login> {
         final path = data["path"]?.toString();
 
         if (path == null || path.isEmpty) {
-          return "Invalid server response";
+          const Map<String, dynamic> content = {
+            "msg": "Invalid server response",
+            "color": Colors.red,
+          };
+          return content;
         }
 
         final parts = path.split("/");
 
         if (parts.length < 3) {
-          return "Invalid path format";
+          return {"msg": "Invalid server response", "color": Colors.red};
         }
 
         final actor = parts[1];
         final id = parts[2];
         if (actor != "user") {
-          return ('your not user');
+          return {"msg": 'your not user', "color": Colors.red};
         }
-        return "login success $id";
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString("userId", id);
+        Future.delayed(const Duration(seconds: 2), () {
+          if (!mounted) return;
+          Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+        });
+
+        return {"msg": "login successful", "color": Colors.green};
       } else {
-        return "server error somthing wrong";
+        return {"msg": "server error somthing wrong", "color": Colors.red};
       }
     } catch (e) {
-      return "server error: $e";
+      return {"msg": "server error: e", "color": Colors.red};
     }
   }
 
@@ -160,11 +172,12 @@ class _LoginState extends State<Login> {
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
                               final messenger = ScaffoldMessenger.of(context);
-                              String msg = await sendData();
+                              Map<String, dynamic> msg = await sendData();
                               messenger.showSnackBar(
                                 SnackBar(
-                                  content: Text(msg),
-                                  duration: const Duration(seconds: 3),
+                                  backgroundColor: msg["color"],
+                                  content: Text(msg["msg"]),
+                                  duration: const Duration(seconds: 2),
                                 ),
                               );
                             }

@@ -3,7 +3,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_app/pages/home.dart';
 import 'package:flutter_app/pages/loading.dart';
 import 'package:flutter_app/pages/login.dart';
-import 'package:flutter_app/pages/view_artist.dart';
+// import 'package:flutter_app/pages/bottomNavigationPages/profile.dart';
+// import 'package:flutter_app/pages/view_artist.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const Loading(),
         '/login': (context) => const Login(),
         '/home': (context) => const Home(),
-        '/viewartist': (context) => const ViewArtist(),
+        // '/profile': (context) => const Profile(),
+        // '/viewartist': (context) => const ViewArtist(),
       },
     );
   }
