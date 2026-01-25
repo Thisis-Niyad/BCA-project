@@ -29,6 +29,7 @@ class _LoadingState extends State<Loading> {
       backgroundColor: Color(0xFF6747FF),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               "PIXEL PACT",

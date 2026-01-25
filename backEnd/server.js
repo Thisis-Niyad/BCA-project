@@ -8,6 +8,7 @@ import SignUp from "./routes/SignUp.js"
 import Admin from './routes/Admin.js'
 import Artist from './routes/Artist.js'
 import User from './routes/User.js'
+import UserApp from './routes/UserApp.js'
 import ArtistRegisteration from './routes/ArtistRegisteration.js'
 import Ratings from "./routes/Ratings.js"
 import cors from 'cors'
@@ -114,8 +115,9 @@ app.use("/signin", Login);
 app.use("/signup", SignUp);
 app.use("/admin", Admin);
 app.use("/artist", Artist);
-app.use("/user", User);
+app.use("/user", UserApp);
 app.use("/registeration", ArtistRegisteration)
+app.use("/app", UserApp)
 app.use("/rating", Ratings)
 
 app.get('/download/uploads/:folder/:filename', (req, res) => {
