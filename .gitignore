@@ -13,4 +13,6 @@ backEnd/uploads/Artwork_images
 backEnd/uploads/chatImages
 backEnd/uploads/images
 
+frontEnd/.env
+
 flutter_app/.env

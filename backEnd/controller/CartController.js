@@ -124,3 +124,39 @@ export const deleteCartItem = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 };
+
+
+export const updateCartItem = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const cartitems = req.body.cartItems;
+
+        const cart = await Cart.findOneAndUpdate(
+            { userId: id },
+            {
+                $set: {
+                    items: cartitems,
+                },
+            },
+            { new: true }
+        );
+
+
+
+        cart.totalPrice = cart.items.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+        );
+
+        await cart.save();
+
+
+        res.status(200).json({
+            msg: "cart has been updated",
+            cart,
+        });
+    } catch (err) {
+        console.error("cart error:", err);
+        res.status(500).json({ msg: "Server error" });
+    }
+}

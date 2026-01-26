@@ -115,7 +115,7 @@ app.use("/signin", Login);
 app.use("/signup", SignUp);
 app.use("/admin", Admin);
 app.use("/artist", Artist);
-app.use("/user", UserApp);
+app.use("/user", User);
 app.use("/registeration", ArtistRegisteration)
 app.use("/app", UserApp)
 app.use("/rating", Ratings)

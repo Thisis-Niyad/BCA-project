@@ -54,6 +54,7 @@ import UserViewArtistProfile from './scenes/User/ViewArtistPofile'
 import UserChatRoom from './scenes/User/UserChatRoom';
 import ArtistChatRoom from './scenes/Artist/ArtistChatRoom';
 import VeiwItemDetails from './scenes/User/ViewItemDetails';
+import CheckoutPage from './scenes/User/CheckuotPage';
 
 function App() {
   
@@ -108,6 +109,7 @@ function App() {
           <Route path="imagegeneration" element={<Imagegeneration/>}/>
           <Route path="chats" element={<UserChats/>}/>
           <Route path="chatroom/:chatroomId" element={<UserChatRoom/>}/>
+          <Route path="checkout" element={<CheckoutPage/>}/>
           <Route path="orders" element={<Orderdetails/>}/>
           <Route path="carts" element={<Carts/>}/>
           <Route path="payments" element={<UserPayments/>}/>

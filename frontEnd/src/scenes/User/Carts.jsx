@@ -18,7 +18,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import {tokens} from '../../Theme';
 import Api from '../../Api';
-import {useParams,Link} from 'react-router-dom'
+import {useParams,Link, useNavigate} from 'react-router-dom'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import AlertPopup from '../../Components/AlertPopup'
 
@@ -44,6 +44,7 @@ import AlertPopup from '../../Components/AlertPopup'
 
 function Carts() {
       const theme= useTheme()
+      const navigate= useNavigate();
       const [cartItems,setCartItem]=useState()
           const { id } = useParams();
           const [alert, setAlert] = useState({
@@ -74,7 +75,21 @@ const decrementQty = (id) => {
     )
   );
 };
-
+const updateCart= async () => {
+  try {
+    const response=await Api.put(`/user/${id}/updatecartitem/`,{cartItems})
+    if (response.status==200) {
+      navigate('../checkout',{state:{cartItems:cartItems}})
+    }
+  } catch (err) {
+    console.log(err);
+    setAlert({
+            show: true,
+            msg:err.status +" : "+ err.response?.data?.msg || "delete item failed",
+            severity: "warning",
+          });
+  }
+}
 const deleteItem =async (artworkId) => {
   try {
         const response=await Api.delete(`/user/${id}/deleteitem/${artworkId}`)
@@ -208,10 +223,16 @@ fetchCarts()},[id])
             </Stack>
 
             <Button
+              disabled={cartItems==""||cartItems==null}
               fullWidth
+              onClick={updateCart}
               variant="contained"
               size="large"
-              sx={{ mt: 1 }}
+              sx={{ mt: 1 ,
+                "&.Mui-disabled":{
+                  backgroundColor:"#6b6b6b !important"
+                }
+              }}
             >
               Proceed to Checkout
             </Button>
