@@ -5,7 +5,6 @@ import avatarOpen from "../../assets/faras1.png";
 import avatarClosed from "../../assets/hand3.png";
 
 export default function MonkeyAvatar({ showPassword, togglePassword }) {
-    console.log(showPassword);
     
   return (
     <Box
