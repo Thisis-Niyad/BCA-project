@@ -6,11 +6,17 @@ import {
   Divider,
   Button,
   Stack,
-  Avatar
+  Avatar,
+  useTheme
 } from "@mui/material";
+import {tokens} from '../../Theme'
 import { useNavigate,useLocation } from "react-router-dom";
+import Header from '../../Components/Header'
+
 
 const CheckoutPage = () => {
+  const theme= useTheme()
+      const colors =tokens(theme.palette.mode)
     const Location =useLocation()
     const {cartItems}= Location.state||{}
     console.log(cartItems);
@@ -44,15 +50,15 @@ const totalPrice=2000;
 
   return (
     <Box sx={{ maxWidth: 1100, mx: "auto", p: 3 }}>
-      <Typography variant="h5" fontWeight={700} mb={3}>
-        Checkout
-      </Typography>
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+                  <Header title="CheckOut" subtitle="_____________________________" /> 
+              </Box>
 
       <Stack direction={{ xs: "column", md: "row" }} spacing={3}>
         {/* LEFT SIDE */}
         <Box flex={2}>
           {/* Delivery Address */}
-          <Card sx={{ mb: 3, borderRadius: 3 }}>
+          <Card sx={{ mb: 3, borderRadius: 3,backgroundColor:colors.primary[400] }}>
             <CardContent>
               <Typography fontWeight={600} mb={1}>
                 Delivery Address
@@ -72,8 +78,8 @@ const totalPrice=2000;
 
                   <Button
                     size="small"
-                    sx={{ mt: 1 }}
-                    onClick={() => navigate("/profile")}
+                    sx={{ mt: 1 ,color:colors.greenAccent[400]}}
+                    onClick={() => navigate("../profile")}
                   >
                     Change Address
                   </Button>
@@ -96,7 +102,7 @@ const totalPrice=2000;
           </Card>
 
           {/* Order Items */}
-          <Card sx={{ borderRadius: 3 }}>
+          <Card sx={{ borderRadius: 3 ,backgroundColor:colors.primary[400]}}>
             <CardContent>
               <Typography fontWeight={600} mb={2}>
                 Order Summary
@@ -131,7 +137,7 @@ const totalPrice=2000;
 
         {/* RIGHT SIDE */}
         <Box flex={1}>
-          <Card sx={{ borderRadius: 3 }}>
+          <Card sx={{ borderRadius: 3 ,backgroundColor:colors.primary[400]}}>
             <CardContent>
               <Typography fontWeight={600} mb={2}>
                 Price Details

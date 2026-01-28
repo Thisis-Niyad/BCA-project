@@ -22,8 +22,8 @@ import AlertPopup from '../../Components/AlertPopup'
 
 const VeiwItemDetails = () => {
     const theme= useTheme()
-        const { id ,artworkId} = useParams();
     const colors =tokens(theme.palette.mode)
+    const { id ,artworkId} = useParams();
     const [alert, setAlert] = useState({
                 show: false,
                 msg: "",

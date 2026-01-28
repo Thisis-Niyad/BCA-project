@@ -58,7 +58,7 @@ export const tokens=(mode)=>({
                 600: "#535ac8",
                 700: "#3e4396",
                 800: "#2a2d64",
-                900: "#151632"
+                900: "linear-gradient(135deg, #1e1e2f, #3a3a5f)",
             },
         }
         :{
@@ -115,7 +115,7 @@ export const tokens=(mode)=>({
                 600: "#868dfb",
                 700: "#a4a9fc",
                 800: "#c3c6fd",
-                900: "#e1e2fe",
+                900: "linear-gradient(135deg, #aaa9a9, #fff3f3)"
             },
         }
     )
