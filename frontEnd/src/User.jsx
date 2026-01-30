@@ -12,8 +12,6 @@ import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined';
 import CommentIcon from '@mui/icons-material/Comment';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
-
-import PaidIcon from '@mui/icons-material/Paid';
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 
@@ -49,11 +47,6 @@ function User() {
     title: "Cart",
      to: "carts",
      Icon:<AddShoppingCartOutlinedIcon/>
-  },
-  {
-    title: "Payments",
-     to: "payments",
-     Icon:<PaidIcon/>
   },
   {
     title: "Report Issue",

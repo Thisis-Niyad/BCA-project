@@ -79,7 +79,7 @@ const updateCart= async () => {
   try {
     const response=await Api.put(`/user/${id}/updatecartitem/`,{cartItems})
     if (response.status==200) {
-      navigate('../checkout',{state:{cartItems:cartItems}})
+      navigate('../checkout',{state:{cart:response.data.cart,userProfile:response.data.user}})
     }
   } catch (err) {
     console.log(err);
@@ -210,7 +210,7 @@ fetchCarts()},[id])
 
             <Stack direction="row" justifyContent="space-between" mb={1}>
               <Typography>Delivery</Typography>
-              <Typography>Free</Typography>
+              <Typography>20</Typography>
             </Stack>
 
             <Divider sx={{ my: 2 }} />
@@ -218,7 +218,7 @@ fetchCarts()},[id])
             <Stack direction="row" justifyContent="space-between" mb={2}>
               <Typography fontWeight="bold">Total</Typography>
               <Typography fontWeight="bold">
-                ₹ {subtotal}
+                ₹ {subtotal +20}
               </Typography>
             </Stack>
 

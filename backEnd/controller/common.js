@@ -47,8 +47,9 @@ export const getProfileDetails = async (req, res) => {
 export const updateProfile = async (req, res) => {
     try {
         const { Name, email, phone, DOB, address, gender, state, town, pin } = req.body;
+        let imagePath
         if (req.file) {
-            const imagePath = req.file ? req.file.filename : "";
+            imagePath = req.file ? req.file.filename : "";
         }
 
         await actors.findByIdAndUpdate(req.params.id, {

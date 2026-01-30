@@ -18,18 +18,19 @@ const CheckoutPage = () => {
   const theme= useTheme()
       const colors =tokens(theme.palette.mode)
     const Location =useLocation()
-    const {cartItems}= Location.state||{}
-    console.log(cartItems);
+    const {cart,userProfile}= Location.state||{}
     
-    const userProfile = {
-  name: "Muhammed Niyad",
-  address: {
-    street: "Mavoor Road",
-    city: "Kozhikode",
-    state: "Kerala",
-    pincode: "673001"
-  }
-};
+//     const userProfile = {
+//   name: "Muhammed Niyad",
+//   phone:"9875422258",
+//   address: {
+//     street: "Mavoor Road",
+//     city: "Kozhikode",
+//     state: "Kerala",
+//     pincode: "673001"
+//   }
+// };
+console.log(userProfile);
 
 // const cartItems = [
 //   {
@@ -40,11 +41,11 @@ const CheckoutPage = () => {
 //     quantity: 1
 //   }
 // ];
-const totalPrice=2000;
   const navigate = useNavigate();
 
   const hasAddress =
     userProfile?.address &&
+    userProfile?.phone &&
     userProfile.address.street &&
     userProfile.address.city;
 
@@ -69,6 +70,9 @@ const totalPrice=2000;
                   <Typography variant="body2">
                     {userProfile.name}
                   </Typography>
+                  <Typography variant="body3">
+                    Phone No:{userProfile.phone}
+                  </Typography>
                   <Typography variant="body2" color="text.secondary">
                     {userProfile.address.street}, {userProfile.address.city}
                   </Typography>
@@ -92,7 +96,7 @@ const totalPrice=2000;
                   <Button
                     variant="contained"
                     sx={{ mt: 1 }}
-                    onClick={() => navigate("/profile")}
+                    onClick={() => navigate("../profile")}
                   >
                     Complete Your Profile
                   </Button>
@@ -108,7 +112,7 @@ const totalPrice=2000;
                 Order Summary
               </Typography>
 
-              {cartItems?.map((item) => (
+              {cart?.items.map((item) => (
                 <Box key={item.artworkId} mb={2}>
                   <Stack direction="row" spacing={2} alignItems="center">
                     <Avatar
@@ -144,12 +148,12 @@ const totalPrice=2000;
               </Typography>
 
               <Stack spacing={1}>
-                <PriceRow label="Subtotal" value={totalPrice} />
-                <PriceRow label="Delivery" value="FREE" />
+                <PriceRow label="Subtotal" value={cart?.totalPrice} />
+                <PriceRow label="Delivery" value="20" />
                 <Divider />
                 <PriceRow
                   label="Total Amount"
-                  value={`₹ ${totalPrice}`}
+                  value={`₹ ${cart?.totalPrice +20}`}
                   bold
                 />
               </Stack>
@@ -160,7 +164,7 @@ const totalPrice=2000;
                 size="large"
                 sx={{ mt: 3, borderRadius: 2 }}
                 disabled={!hasAddress}
-                onClick={() => navigate("/payment")}
+                onClick={() => navigate("../payment")}
               >
                 Proceed to Payment
               </Button>

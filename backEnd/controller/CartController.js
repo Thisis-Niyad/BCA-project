@@ -1,5 +1,6 @@
 import Cart from "../models/cart.js";
 import { ArtistWork } from "../models/ArtistWork.js";
+import actors from "../models/actors.js";
 import mongoose from "mongoose";
 
 export const addToCart = async (req, res) => {
@@ -142,7 +143,6 @@ export const updateCartItem = async (req, res) => {
         );
 
 
-
         cart.totalPrice = cart.items.reduce(
             (sum, item) => sum + item.price * item.quantity,
             0
@@ -150,10 +150,20 @@ export const updateCartItem = async (req, res) => {
 
         await cart.save();
 
-
+        const user = await actors.findById(id);
         res.status(200).json({
             msg: "cart has been updated",
             cart,
+            user: {
+                "name": user.name,
+                "phone": user.profileInfo.phoneNo,
+                "address": {
+                    "street": user.profileInfo.address,
+                    "city": user.profileInfo.town,
+                    "state": user.profileInfo.state,
+                    " pincode": user.profileInfo.pin
+                }
+            }
         });
     } catch (err) {
         console.error("cart error:", err);
