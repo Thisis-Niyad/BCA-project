@@ -38,17 +38,13 @@ class _LoginState extends State<Login> {
         final path = data["path"]?.toString();
 
         if (path == null || path.isEmpty) {
-          const Map<String, dynamic> content = {
-            "msg": "Invalid server response",
-            "color": Colors.red,
-          };
-          return content;
+          return {"msg": data["msg"], "color": Colors.red};
         }
 
         final parts = path.split("/");
 
         if (parts.length < 3) {
-          return {"msg": "Invalid server response", "color": Colors.red};
+          return {"msg": data["msg"], "color": Colors.red};
         }
 
         final actor = parts[1];
@@ -65,10 +61,10 @@ class _LoginState extends State<Login> {
 
         return {"msg": "login successful", "color": Colors.green};
       } else {
-        return {"msg": "server error somthing wrong", "color": Colors.red};
+        return {"msg": data["msg"], "color": Colors.red};
       }
     } catch (e) {
-      return {"msg": "server error: e", "color": Colors.red};
+      return {"msg": "server error: $e", "color": Colors.red};
     }
   }
 

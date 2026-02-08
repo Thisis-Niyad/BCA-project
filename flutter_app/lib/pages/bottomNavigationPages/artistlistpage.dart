@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_app/config/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_app/pages/artistprofilepage.dart';
 
 class ArtistListPage extends StatefulWidget {
   const ArtistListPage({super.key});
@@ -159,12 +160,12 @@ class ArtistCard extends StatelessWidget {
         ),
         trailing: const Icon(Icons.arrow_forward_ios, size: 16),
         onTap: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (_) => ArtistProfilePage(artistId: artistId),
-          //   ),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => ArtistProfilePage(artistId: artistId),
+            ),
+          );
         },
       ),
     );

@@ -142,9 +142,7 @@ class ArtworkCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (_) => ArtworkDetailPage(artworkId: workId),
-          ),
+          MaterialPageRoute(builder: (_) => ArtworkDetailsPage(workId: workId)),
         );
       },
       child: Container(
@@ -153,7 +151,7 @@ class ArtworkCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(18),
           boxShadow: [
             BoxShadow(
-              color: Colors.black..withValues(alpha: 0.8),
+              color: Colors.black.withValues(alpha: 0.8),
               blurRadius: 12,
               offset: const Offset(0, 6),
             ),
@@ -162,23 +160,28 @@ class ArtworkCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(18),
-              ),
-              child: Image.network(
-                '${ApiConfig.baseUrl}/$imageUrl',
-                height: 150,
-                width: double.infinity,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) =>
-                    const Icon(Icons.image_not_supported, size: 80),
+            // 🟢 Image takes flexible space
+            Expanded(
+              child: ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(18),
+                ),
+                child: Image.network(
+                  '${ApiConfig.baseUrl}/$imageUrl',
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) =>
+                      const Center(child: Icon(Icons.image_not_supported)),
+                ),
               ),
             ),
+
+            // 🟢 Content stays compact
             Padding(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     title,
@@ -186,15 +189,15 @@ class ArtworkCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 15,
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 4),
                   Text(
                     description,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
+                    style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
                   ),
                 ],
               ),

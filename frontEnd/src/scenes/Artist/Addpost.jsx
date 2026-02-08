@@ -74,7 +74,9 @@ const handleFormSubmit = async (values) => {
       m: "25px auto 32px" ,
       backgroundColor:colors.primary[400],
       borderRadius:"7px",
-      padding:"55px 45px"
+      padding:"55px 45px",
+      boxShadow:
+                'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px',
       }}>
       <Typography variant="h5" fontWeight={600} mb={3} sx={{color:colors.greenAccent[400]}}>
         Upload Artist Work
@@ -226,7 +228,7 @@ const handleFormSubmit = async (values) => {
               variant="contained"
               color="primary"
               fullWidth
-              sx={{ mt: 4, py: 1.5, fontSize: "16px",backgroundColor:colors.blueAccent[200] }}
+              sx={{ mt: 4, py: 1.5, fontSize: "16px", }}
               type="submit"
             >
               Upload Work
