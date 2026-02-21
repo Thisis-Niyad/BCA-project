@@ -79,7 +79,7 @@ function Viewartist() {
   return (
     <Box m="20px">
         <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Header title="Artits" subtitle="Track, review, and resolve complaints" /> 
+            <Header title="Artists" subtitle="Track, review, and resolve complaints" /> 
         </Box>
         <Box>
           <TableGridAcotrs Rows={usersRows} columns={columns}/>

@@ -11,16 +11,18 @@ class _CartPageState extends State<CartPage> {
   final List<Map<String, dynamic>> cartItems = [
     {
       'title': 'Digital Calligraphy Art',
-      'artist': 'Ayaan Artworks',
-      'price': 1200.0,
-      'image': 'https://picsum.photos/200/300?1',
+      'artist': 'Tony',
+      'price': 380.0,
+      'image':
+          'http://10.241.39.246:5000/uploads/Artwork_images/1770534062874_calligraphy (6).jpg',
       'quantity': 1,
     },
     {
       'title': 'Abstract NFT Art',
-      'artist': 'Pixel Queen',
-      'price': 2500.0,
-      'image': 'https://picsum.photos/200/300?2',
+      'artist': 'Tony',
+      'price': 400.0,
+      'image':
+          'http://10.241.39.246:5000/uploads/Artwork_images/1770534218483_calligraphy (26).jpg',
       'quantity': 1,
     },
   ];

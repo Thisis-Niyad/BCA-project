@@ -12,35 +12,15 @@ import {
 import {tokens} from '../../Theme'
 import { useNavigate,useLocation } from "react-router-dom";
 import Header from '../../Components/Header'
-
+import Api from '../../Api'
+import {useParams} from 'react-router-dom'
 
 const CheckoutPage = () => {
   const theme= useTheme()
       const colors =tokens(theme.palette.mode)
     const Location =useLocation()
     const {cart,userProfile}= Location.state||{}
-    
-//     const userProfile = {
-//   name: "Muhammed Niyad",
-//   phone:"9875422258",
-//   address: {
-//     street: "Mavoor Road",
-//     city: "Kozhikode",
-//     state: "Kerala",
-//     pincode: "673001"
-//   }
-// };
-console.log(userProfile);
-
-// const cartItems = [
-//   {
-//     artworkId: "123",
-//     title: "Arabic Calligraphy",
-//     image: "/uploads/art1.jpg",
-//     price: 1200,
-//     quantity: 1
-//   }
-// ];
+const { id } = useParams();
   const navigate = useNavigate();
 
   const hasAddress =
@@ -49,6 +29,17 @@ console.log(userProfile);
     userProfile.address.street &&
     userProfile.address.city;
 
+    const onCheckOut=async () => {
+      try {
+         const response= await Api.post(`/user/${id}/checkout`,cart)
+         if (response.status===200) {
+         navigate(`../payment/${response.data.id}`)
+         }
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
   return (
     <Box sx={{ maxWidth: 1100, mx: "auto", p: 3 }}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -117,7 +108,7 @@ console.log(userProfile);
                   <Stack direction="row" spacing={2} alignItems="center">
                     <Avatar
                       variant="rounded"
-                      src={item.image}
+                      src={`http://localhost:5000/${item.image}`}
                       sx={{ width: 64, height: 64 }}
                     />
                     <Box flex={1}>
@@ -164,7 +155,7 @@ console.log(userProfile);
                 size="large"
                 sx={{ mt: 3, borderRadius: 2 }}
                 disabled={!hasAddress}
-                onClick={() => navigate("../payment")}
+                onClick={onCheckOut}
               >
                 Proceed to Payment
               </Button>

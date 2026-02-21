@@ -4,7 +4,7 @@ import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import {Box, IconButton,useTheme} from "@mui/material"
 import { ColorModeContext, } from '../src/Theme'
-
+import PixelPixelPactLogo from './PixelPactlogo'
 function Navbar() {
   const theme =useTheme();
 
@@ -24,7 +24,7 @@ function Navbar() {
       <div className="container-fluid">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <Link className="navbar-brand" to="/">
-            logoimg
+            <PixelPixelPactLogo/>
           </Link>
 
           {/* Toggler Button */}

@@ -112,7 +112,7 @@ function App() {
           <Route path="checkout" element={<CheckoutPage/>}/>
           <Route path="orders" element={<Orderdetails/>}/>
           <Route path="carts" element={<Carts/>}/>
-          <Route path="payment" element={<UserPayments/>}/>
+          <Route path="payment/:orderId" element={<UserPayments/>}/>
           <Route path="report" element={<Report/>}>
               <Route index  element={<UserReportsStatus/>}/>
               <Route path="new" element={<UserNewReport/>}/>

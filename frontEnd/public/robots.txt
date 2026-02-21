@@ -1,0 +1,4 @@
+user-agent:*
+Disallow: /admin/
+
+hi faras ck
