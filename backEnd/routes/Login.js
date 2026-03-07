@@ -1,7 +1,8 @@
 import express from "express"
 import actors from '../models/actors.js'
 import bcrypt from "bcrypt";
-
+import jsonwebtoken from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -21,8 +22,8 @@ router.post("/", async (req, res) => {
             return res.status(401).json({ msg: "Password incorrect" });
         }
         const path = "/" + actor.role + "/" + actor._id;
-
-        return res.status(200).json({ path });
+        const token = jwt.sign({ id: actor._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+        return res.status(200).json({ path, token });
     } catch (err) {
         res.status(500).json({ msg: "Server error" });
 

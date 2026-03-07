@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import Api from './Api'
-import {Outlet,useParams} from 'react-router-dom'
+import {Outlet,useParams,useNavigate} from 'react-router-dom'
 import './sass/main.css'
 import Topbar from './scenes/global/Topbar'
 import SideBar from './scenes/global/SideBar'
@@ -12,8 +12,9 @@ import RecentActorsOutlinedIcon from '@mui/icons-material/RecentActorsOutlined';
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import PaidIcon from '@mui/icons-material/Paid';
 import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
-import LogoutIcon from '@mui/icons-material/Logout';
+
 function Admin() {
+  const navigate=useNavigate();
     var list = [
   {
     title: "Home",
@@ -45,27 +46,36 @@ function Admin() {
      to: "viewuser",
      Icon:<Groups2OutlinedIcon/>
   },
-    {
-    title: "LogOut",
-     to: "/",
-     Icon:<LogoutIcon/>
-  },
 ];
 const { id } = useParams();
 const [name,setName]=useState()
 const [image,setImage]=useState()
-useEffect(()=>{
-const SideBarProflieInfo=async()=>{
-  try {
-    const response=await Api.get(`/admin/${id}`)
-    setName(response.data.name)
-    setImage(response.data.Image)
-  } catch (err) {
-    console.log(err);
-    
-  }
-}
-SideBarProflieInfo()},[id])
+useEffect(() => {
+  const SideBarProfileInfo = async () => {
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/signin");
+      return;
+    }
+
+    try {
+      const response = await Api.get(`/admin/${id}`);
+
+      setName(response.data.name);
+      setImage(response.data.Image);
+      // setEmail(response.data.email);
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  SideBarProfileInfo();
+
+}, [id, navigate]);
+
   return (
     <>
    

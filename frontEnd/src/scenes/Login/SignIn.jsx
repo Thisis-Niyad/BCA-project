@@ -42,6 +42,7 @@ function SignIn() {
     try {
       const response= await Api.post('/signin',values)
       if (response.status===200) {
+        localStorage.setItem('token',response.data.token);
         navigate(response.data.path)
       }
     } catch (err) {

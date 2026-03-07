@@ -1,7 +1,7 @@
 import express from "express"
 import bcrypt from "bcrypt";
 import actors from '../models/actors.js'
-
+import jwt from 'jsonwebtoken'
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -23,7 +23,8 @@ router.post("/", async (req, res) => {
         });
 
         const response = await newUser.save();
-        res.status(201).json({ path: "/user/" + response.id });
+        const token = jwt.sign({ id: actor._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+        res.status(201).json({ path: "/user/" + response.id, token });
 
     } catch (err) {
         res.status(500).json({ msg: "Server error" });

@@ -2,12 +2,13 @@ import React ,{useState} from 'react'
 import {  Sidebar, Menu, MenuItem} from 'react-pro-sidebar'
 import unknownImg from "../../assets/unknown.jpg";
 import {Box,IconButton,Select,useTheme} from '@mui/material'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import {tokens} from '../../Theme'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 import { Typography } from "@mui/material";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Item=({title, to,Icon, selected , setSelected})=>{
     const theme =useTheme();
@@ -31,6 +32,7 @@ const SideBar = ({list,Name,Image}) => {
     const colors =tokens(theme.palette.mode);
     const [isCollapsed,setIsCollapsed]=useState(false);
     const [selected,setSelected]=useState("dashboard");
+    const navigate=useNavigate();
 
 
   return (
@@ -131,7 +133,16 @@ const SideBar = ({list,Name,Image}) => {
                                     setSelected={setSelected}
                                 />
                                 ))}
-
+                       <MenuItem
+        icon={<LogoutIcon/>}
+            style={{ color: colors.grey[300] }}
+            onClick={() => {
+              localStorage.removeItem('token')
+              navigate('/')
+            }}
+            >
+            <Typography>Log Out</Typography>
+        </MenuItem>
                     </Box>
                 </Menu>
             </Sidebar>

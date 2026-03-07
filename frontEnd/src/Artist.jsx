@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import {Outlet,useParams} from 'react-router-dom'
+import {Outlet,useParams,useNavigate} from 'react-router-dom'
 import './sass/main.css'
 import Topbar from './scenes/global/Topbar'
 import SideBar from './scenes/global/SideBar'
@@ -12,8 +12,9 @@ import PaidIcon from '@mui/icons-material/Paid';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import WorkIcon from '@mui/icons-material/Work';
 import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
-import LogoutIcon from '@mui/icons-material/Logout';
+
 function Artist() {
+    const navigate=useNavigate();
     var list = [
   {
     title: "Home",
@@ -50,27 +51,36 @@ function Artist() {
      to: "report",
      Icon:<FeedOutlinedIcon/>
   },
-    {
-    title: "LogOut",
-     to: "/",
-     Icon:<LogoutIcon/>
-  },
+
 ];
 const { id } = useParams();
 const [name,setName]=useState()
 const [image,setImage]=useState()
-useEffect(()=>{
-const SideBarProflieInfo=async()=>{
-  try {
-    const response=await Api.get(`/artist/${id}`)
-    setName(response.data.name)
-    setImage(response.data.Image)
-  } catch (err) {
-    console.log(err);
-    
-  }
-}
-SideBarProflieInfo()},[id])
+useEffect(() => {
+  const SideBarProfileInfo = async () => {
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/signin");
+      return;
+    }
+
+    try {
+      const response = await Api.get(`/artist/${id}`);
+
+      setName(response.data.name);
+      setImage(response.data.Image);
+      // setEmail(response.data.email);
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  SideBarProfileInfo();
+
+}, [id, navigate]);
   return (
      <>
       
