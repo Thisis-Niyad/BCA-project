@@ -6,6 +6,7 @@ import {
   TextField,
   Button,
   useTheme,
+  LinearProgress,
   Box,
 } from "@mui/material";
 import ArtistworkCard from "../../components/ArtistworkCard";
@@ -17,6 +18,7 @@ import {useParams} from 'react-router-dom'
 
 const Home = () => {
         const theme= useTheme()
+          const [loading, setLoading] = useState(true);
             const { id } = useParams();
         const colors =tokens(theme.palette.mode)
         const [artworksData,setArtworkData]=useState([]);
@@ -36,11 +38,12 @@ const Home = () => {
         } catch (err) {
           console.log(err);
         }
+        setLoading(false);
     }
   fetchArtWorkData()},[id])
 
 
-  
+  if (loading) return( <Box ><LinearProgress color="inherit"/></Box>)
   return (
     <>
     <Box

@@ -5,7 +5,7 @@ const orderWorkSchema = new mongoose.Schema(
         orderId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "order",
-            required: true,
+
             index: true,
         },
 

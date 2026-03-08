@@ -1,3 +1,5 @@
+import React,{useEffect,useState} from 'react'
+import {useParams} from 'react-router-dom'
 import {
   Box,
   Card,
@@ -13,9 +15,62 @@ import {
 import LockIcon from "@mui/icons-material/Lock";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import {tokens} from '../../Theme'
-const PaymentPage = ({ totalAmount }) => {
+import Api from '../../Api'
+import { paymentSchema } from '../../schemas/validation';
+import AlertPopup from '../../Components/AlertPopup';
+import {useNavigate} from 'react-router-dom'
+import { Formik } from 'formik'
+
+
+const PaymentPage = () => {
+    const { id ,orderId} = useParams();
+    const navigate=useNavigate();
+  const [totalAmount,setAmount]=useState();
+   const [alert, setAlert] = useState({
+      show: false,
+      msg: "",
+      severity: "error",
+    });
     const theme= useTheme()
         const colors =tokens(theme.palette.mode)
+            const initialValues={
+              cardno:"",
+              cardHolder:"",
+              expiry:"",
+              cvv:""
+            }
+       const handleSubmit = async (values) => {
+    try {
+      
+      const response= await Api.post(`user/${id}/paymentTransaction/${orderId}`,values)
+      if (response.status===201) {
+         setAlert({
+        show: true,
+        msg:"Payment Success full",
+        severity: "success",
+      });
+      setTimeout(()=>{ navigate(`../orders`)},3000)
+      }
+    } catch (err) {
+     console.log(err);
+ 
+    }
+  }
+        useEffect(() => {
+          
+          const setTotal = async () => {
+            try {
+              const response = await Api.get(`/user/${id}/payment/${orderId}`);
+              setAmount(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  setTotal();
+
+}, [id, orderId]);
+
   return (
     <Box sx={{ minHeight: "100vh", py: 5 }}>
       <Box sx={{ maxWidth: 420, mx: "auto" }}>
@@ -84,13 +139,27 @@ const PaymentPage = ({ totalAmount }) => {
                 </Typography>
               </Stack>
             </Box>
-
+<Formik
+            onSubmit={handleSubmit}
+            initialValues={initialValues}
+            validationSchema={paymentSchema}
+            validateOnChange={false}
+            validateOnBlur={false}
+          >
+            {({ values, errors, touched, handleBlur, handleChange, handleSubmit})=>(
+            <form onSubmit={handleSubmit}>
             {/* Card Form */}
             <Stack spacing={2}>
               <TextField
                 label="Card Number"
                 placeholder="1234 5678 9012 3456"
                 fullWidth
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.cardno}
+                error={!!touched.cardno && !!errors.cardno}
+                helperText={touched.cardno && errors.cardno}
+                name="cardno"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -102,6 +171,12 @@ const PaymentPage = ({ totalAmount }) => {
 
               <TextField
                 label="Card Holder Name"
+                name="cardHolder"
+                onBlur={handleBlur}
+                error={!!touched.cardHolder && !!errors.cardHolder}
+                helperText={touched.cardHolder && errors.cardHolder}
+                onChange={handleChange}
+                value={values.cardHolder}
                 placeholder="Muhammed Niyad"
                 fullWidth
               />
@@ -109,20 +184,32 @@ const PaymentPage = ({ totalAmount }) => {
               <Stack direction="row" spacing={2}>
                 <TextField
                   label="Expiry"
+                  name="expiry"
+                  onBlur={handleBlur}
+                onChange={handleChange}
+                error={!!touched.expiry && !!errors.expiry}
+                helperText={touched.expiry && errors.expiry}
+                  value={values.expiry}
                   placeholder="MM/YY"
                   fullWidth
                 />
                 <TextField
                   label="CVV"
+                  name="cvv"
+                  error={!!touched.cvv && !!errors.cvv}
+                helperText={touched.cvv && errors.cvv}
+                  value={values.cvv}
                   placeholder="123"
                   type="password"
+                  onBlur={handleBlur}
+                onChange={handleChange}
                   fullWidth
                 />
               </Stack>
             </Stack>
 
             <Divider sx={{ my: 3 }} />
-
+ 
             {/* Total */}
             <Stack
               direction="row"
@@ -140,6 +227,7 @@ const PaymentPage = ({ totalAmount }) => {
             {/* Pay Button */}
             <Button
               variant="contained"
+              type="submit"
               size="large"
               fullWidth
               sx={{
@@ -150,7 +238,9 @@ const PaymentPage = ({ totalAmount }) => {
             >
               Pay ₹ {totalAmount}
             </Button>
-
+                      </form>
+           )}
+</Formik>
             {/* Security Note */}
             <Stack
               direction="row"
@@ -165,6 +255,8 @@ const PaymentPage = ({ totalAmount }) => {
             </Stack>
           </CardContent>
         </Card>
+            <AlertPopup Alertshow={alert.show} msg={alert.msg} severity={alert.severity} setAlert={setAlert}/>
+        
       </Box>
     </Box>
   );

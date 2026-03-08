@@ -9,7 +9,7 @@ import { uploadchatImg } from "../middleWare/uploadChatImages.js";
 import { userHome } from "../controller/HomeController.js";
 import { viewWork } from "../controller/ViewWork.js";
 import { addToCart, deleteCartItem, getCart, updateCartItem } from "../controller/CartController.js";
-import { checkout } from "../controller/OrderDetails.js";
+import { checkout, getAmount, getUserOrders, postPayment } from "../controller/OrderDetails.js";
 
 const router = express.Router();
 
@@ -32,4 +32,7 @@ router.get("/:id/carts", getCart)
 router.put("/:id/updatecartitem", updateCartItem)
 router.delete("/:id/deleteitem/:artworkId", deleteCartItem)
 router.post("/:id/checkout", checkout)
-export default router
+router.get("/:id/payment/:orderId", getAmount)
+router.post("/:id/paymentTransaction/:orderId", postPayment)
+router.get('/:id/orders', getUserOrders)
+export default router 

@@ -25,36 +25,6 @@ import AlertPopup from '../Components/AlertPopup'
 import { useNavigate } from "react-router-dom";
 
 
-// const artist = {
-//   name: "Ameen Calligrapher",
-//   profileImg: "https://via.placeholder.com/150",
-//   bio: "Professional Arabic & modern calligraphy artist with 6+ years experience.",
-//   location: "Kerala, India",
-//   rating: 4.5,
-//   totalReviews: 128,
-//   skills: ["Arabic", "Modern", "Islamic"],
-// };
-
-// const works = [
-//   {
-//     id: 1,
-//     title: "Golden Ayah",
-//     price: "₹4,500",
-//     image: "https://via.placeholder.com/300",
-//   },
-//   {
-//     id: 2,
-//     title: "Modern Typography",
-//     price: "₹3,000",
-//     image: "https://via.placeholder.com/300",
-//   },
-//   {
-//     id: 3,
-//     title: "Classic Script",
-//     price: "₹5,200",
-//     image: "https://via.placeholder.com/300",
-//   },
-// ];
 
 export default function ArtistProfilePage({artist ,works}) {
      const theme= useTheme()

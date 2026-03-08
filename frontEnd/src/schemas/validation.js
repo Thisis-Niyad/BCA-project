@@ -104,3 +104,20 @@ export const AddPostSchema = yup.object({
     .positive("must be postive")
     .min(50.00, "must be at least 50.00"),
 });
+
+export const paymentSchema = yup.object({
+  cardno: yup.string()
+    .required(" required")
+    .matches(/^[0-9]+$/, 'must be only digits')
+    .min(16, 'must be exactly 16 digits')
+    .max(16, 'must be exactly 16 digits'),
+  cardHolder: yup.string().required("required"),
+  cvv: yup.string()
+    .required(" required")
+    .matches(/^[0-9]+$/, 'must be only digits')
+    .min(3, 'must be exactly 16 digits')
+    .max(3, 'must be exactly 16 digits'),
+  expiry: yup.string()
+    .required("expiry date is required")
+    .matches(/^(0[1-9]|[0-2])\/\d{2}$/, 'invalid')
+})

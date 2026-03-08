@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import { Box, Grid, Typography, Paper,useTheme } from "@mui/material";
+import { Box, Grid, Typography, Paper,useTheme,LinearProgress } from "@mui/material";
 import PeopleIcon from "@mui/icons-material/People";
 import BrushIcon from "@mui/icons-material/Brush";
 import ReportProblemIcon from "@mui/icons-material/ReportProblem";
@@ -29,6 +29,7 @@ const StatCard = ({ title, value, icon }) => {
 )};
 
 const AdminHome = () => {
+   const [loading, setLoading] = useState(true);
   const initialValues={
     noofComplaints: 0, 
     noofUser: 0, 
@@ -56,9 +57,10 @@ const AdminHome = () => {
         } catch (err) {
           console.log(err);
         }
+        setLoading(false)
     }
   fetchData()},[id])
-
+  if (loading) return( <Box ><LinearProgress color="inherit"/></Box>)
   return (
     <Box m="20px">
       {/* Header */}

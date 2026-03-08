@@ -31,8 +31,11 @@ const { id } = useParams();
 
     const onCheckOut=async () => {
       try {
-         const response= await Api.post(`/user/${id}/checkout`,cart)
-         if (response.status===200) {
+        console.log(cart);
+         const response= await Api.post(`/user/${id}/checkout`,{cart}) 
+         
+         if (response.status===201) {
+          console.log(response.data.id)
          navigate(`../payment/${response.data.id}`)
          }
       } catch (error) {

@@ -1,4 +1,4 @@
- import React from "react";
+ import React,{useState,useEffect} from "react";
 import {
   Box,
   Grid,
@@ -12,6 +12,7 @@ import {
   Divider,
   CardMedia,
   useTheme,
+  LinearProgress,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import UploadIcon from "@mui/icons-material/Upload";
@@ -21,6 +22,10 @@ import {tokens} from '../../Theme'
 export default function ArtistHome() {
   const theme= useTheme()
   const colors =tokens(theme.palette.mode)
+   const [loading, setLoading] = useState(true);
+    useEffect(()=>{setTimeout(()=>{setLoading(false)},2500)},[])
+
+    if (loading) return( <Box ><LinearProgress color="inherit"/></Box>)
   return (
     <>
     <Box sx={{ p: 3 }}>

@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import Header from '../../Components/Header'
-import {Box,Button,Rating,Typography} from '@mui/material'
+import {Box,Button,Rating,Typography,LinearProgress} from '@mui/material'
 import Api from '../../Api'
 import {useParams} from 'react-router-dom'
 import AlertPopup from '../../Components/AlertPopup'
@@ -10,6 +10,7 @@ import unknownImg from '../../assets/unknown.jpg'
 function Viewartist() {
  const { id } = useParams();
  const [usersRows, setUsersRows] = useState();
+  const [loading, setLoading] = useState(true);
  const [alert, setAlert] = useState({show: false,msg: "",severity: "error",});
  
   useEffect(()=>{
@@ -21,6 +22,7 @@ function Viewartist() {
                   } catch (err) {
                     console.log(err);
                   }
+                  setLoading(false)
                 }
               fetchUsersRows()},[id])
 
@@ -77,6 +79,7 @@ function Viewartist() {
                }}
              ]  
   return (
+      <Box>  { loading?  <Box ><LinearProgress color="inherit"/></Box>:""}
     <Box m="20px">
         <Box display="flex" justifyContent="space-between" alignItems="center">
             <Header title="Artists" subtitle="Track, review, and resolve complaints" /> 
@@ -87,7 +90,7 @@ function Viewartist() {
                 <AlertPopup Alertshow={alert.show} msg={alert.msg} severity={alert.severity} 
                 setAlert={setAlert}/>
                 
-    </Box>
+    </Box></Box>
   )
 }
 
