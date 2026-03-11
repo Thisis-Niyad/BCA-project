@@ -1,0 +1,26 @@
+[{
+  "_id": {
+    "$oid": "6953ecbbb16ef3979d9aa804"
+  },
+  "artistId": {
+    "$oid": "692973c1c337cdeda52f2e2a"
+  },
+  "userId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "artistName": "Tony Stark",
+  "userName": "Aadu Thoma",
+  "userProfile": "",
+  "artistProfile": "",
+  "createdAt": {
+    "$date": "2025-12-30T15:16:11.761Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-09T16:48:12.604Z"
+  },
+  "__v": 0,
+  "lastMessage": "good morning",
+  "lastMessageAt": {
+    "$date": "2026-02-09T16:48:12.604Z"
+  }
+}]

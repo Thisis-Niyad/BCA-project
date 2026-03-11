@@ -1,0 +1,26 @@
+[{
+  "_id": {
+    "$oid": "69ad36d23371372d5a5812b9"
+  },
+  "artworkId": {
+    "$oid": "6988354a491ed569cdb23ade"
+  },
+  "artistId": {
+    "$oid": "692973c1c337cdeda52f2e2a"
+  },
+  "title": "qoute \"follow your dreams \"",
+  "price": 400,
+  "quantity": 2,
+  "workStatus": "PENDING",
+  "artistPaymentStatus": "UNPAID",
+  "createdAt": {
+    "$date": "2026-03-08T08:44:02.807Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-08T08:44:02.930Z"
+  },
+  "__v": 0,
+  "orderId": {
+    "$oid": "69ad36d23371372d5a5812bb"
+  }
+}]

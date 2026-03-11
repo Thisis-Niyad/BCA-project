@@ -1,0 +1,463 @@
+[{
+  "_id": {
+    "$oid": "6957ead7ae18a9b23ebe0d03"
+  },
+  "chatroomId": {
+    "$oid": "6953ecbbb16ef3979d9aa804"
+  },
+  "senderId": {
+    "$oid": "692973c1c337cdeda52f2e2a"
+  },
+  "messageType": "text",
+  "role": "artist",
+  "text": "gh",
+  "image": null,
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-02T15:57:11.963Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-02T15:57:11.963Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6957eaddae18a9b23ebe0d05"
+  },
+  "chatroomId": {
+    "$oid": "6953ecbbb16ef3979d9aa804"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "gg",
+  "image": null,
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-02T15:57:17.358Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-02T15:57:17.358Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6957fab480addba5e8377a95"
+  },
+  "chatroomId": {
+    "$oid": "6953ecbbb16ef3979d9aa804"
+  },
+  "senderId": {
+    "$oid": "692973c1c337cdeda52f2e2a"
+  },
+  "messageType": "image",
+  "role": "artist",
+  "image": "uploads\\ChatImages\\1767373492212_1764250512116.jpg",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-02T17:04:52.948Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-02T17:04:52.948Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695bf37906a244caa342ee9e"
+  },
+  "chatroomId": {
+    "$oid": "6953ecbbb16ef3979d9aa804"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "hello",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-05T17:23:05.869Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-05T17:23:05.869Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695bf45d40a889a98c8911c5"
+  },
+  "chatroomId": {
+    "$oid": "6953ecbbb16ef3979d9aa804"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "how r u",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-05T17:26:53.739Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-05T17:26:53.739Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695bf50140a889a98c8911d4"
+  },
+  "chatroomId": {
+    "$oid": "6953ecbbb16ef3979d9aa804"
+  },
+  "senderId": {
+    "$oid": "692973c1c337cdeda52f2e2a"
+  },
+  "messageType": "image",
+  "role": "artist",
+  "image": "uploads\\ChatImages\\1767634177287_360_F_559871209_pbXlOVArUal3mk6Ce60JuP13kmuIRCth.jpg",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-05T17:29:37.383Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-05T17:29:37.383Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e72b211faf61d5b3a9021"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T14:50:26.783Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T14:50:26.783Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e741f11faf61d5b3a9023"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "A dark brow frame containing an islamic calligraphy art work with blue arabic calligraphy spelling subhanallah on a brown background",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T14:56:31.743Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T14:56:31.743Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e748dd95efacb95c41e0f"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "A dark brow frame containing an islamic calligraphy art work with blue arabic calligraphy spelling subhanallah on a brown background",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T14:58:21.296Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T14:58:21.296Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e75a728fcbff7328a23c9"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "A dark brow frame containing an islamic calligraphy art work with blue arabic calligraphy spelling subhanallah on a brown background",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T15:03:03.238Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T15:03:03.238Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e7a38fccad463c986433c"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "A dark brow frame containing an islamic calligraphy art work with blue arabic calligraphy spelling subhanallah on a brown background",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T15:22:32.362Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T15:22:32.362Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e7d1f7f06cfe8534221c6"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "A dark brow frame containing an islamic calligraphy art work with blue arabic calligraphy spelling subhanallah on a brown background",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T15:34:55.104Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T15:34:55.104Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e7d2e7f06cfe8534221c8"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "695e7c5cb7feb07ae43c673f"
+  },
+  "messageType": "image",
+  "role": "AI",
+  "image": "/uploads/images/1767800110706.png",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T15:35:10.799Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T15:35:10.799Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e7e2930734fef29564675"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "A dark brow frame containing an islamic calligraphy art work with blue arabic calligraphy spelling subhanallah on a brown background",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T15:39:21.591Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T15:39:21.591Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e7e3a30734fef29564677"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "695e7c5cb7feb07ae43c673f"
+  },
+  "messageType": "image",
+  "role": "AI",
+  "image": "/uploads/images/1767800378167.png",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T15:39:38.746Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T15:39:38.746Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e7ec130734fef29564679"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "A dark brow frame containing an islamic calligraphy art work with blue arabic calligraphy spelling subhanallah on a brown background",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T15:41:53.480Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T15:41:53.480Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e7ecf30734fef2956467b"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "695e7c5cb7feb07ae43c673f"
+  },
+  "messageType": "image",
+  "role": "AI",
+  "image": "/uploads/images/1767800527807.png",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T15:42:07.828Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T15:42:07.828Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e7fd3e113dc0c506777bb"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "A dark brow frame containing an islamic calligraphy art work with blue arabic calligraphy spelling subhanallah on a brown background",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T15:46:27.584Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T15:46:27.584Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e7fe2e113dc0c506777bd"
+  },
+  "chatroomId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "senderId": {
+    "$oid": "695e7c5cb7feb07ae43c673f"
+  },
+  "messageType": "image",
+  "role": "AI",
+  "image": "uploads/images/1767800802383.png",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-01-07T15:46:42.578Z"
+  },
+  "updatedAt": {
+    "$date": "2026-01-07T15:46:42.578Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "698a0fc0fc9ef71ff60412f2"
+  },
+  "chatroomId": {
+    "$oid": "6953ecbbb16ef3979d9aa804"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "howdy",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-02-09T16:48:01.737Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-09T16:48:01.737Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "698a0fccfc9ef71ff60412f5"
+  },
+  "chatroomId": {
+    "$oid": "6953ecbbb16ef3979d9aa804"
+  },
+  "senderId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "messageType": "text",
+  "role": "user",
+  "text": "good morning",
+  "seen": false,
+  "createdAt": {
+    "$date": "2026-02-09T16:48:12.597Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-09T16:48:12.597Z"
+  },
+  "__v": 0
+}]

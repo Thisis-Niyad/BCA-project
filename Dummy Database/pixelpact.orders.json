@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "69ad36d23371372d5a5812bb"
+  },
+  "userId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "orderNumber": "ORD-1772959442874",
+  "amount": 800,
+  "payment": {
+    "status": "SUCCESS"
+  },
+  "orderStatus": "CREATED",
+  "deliveryStatus": "PENDING",
+  "items": [
+    {
+      "$oid": "69ad36d23371372d5a5812b9"
+    }
+  ],
+  "expiresAt": {
+    "$date": "2026-03-08T08:59:02.874Z"
+  },
+  "createdAt": {
+    "$date": "2026-03-08T08:44:02.889Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-08T12:45:29.655Z"
+  },
+  "__v": 0
+}]

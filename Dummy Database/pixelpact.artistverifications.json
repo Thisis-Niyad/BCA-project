@@ -1,0 +1,442 @@
+[{
+  "_id": {
+    "$oid": "6933ec06484b1b8bfeeabd52"
+  },
+  "email": "tonystark1@gmail.com",
+  "phoneNo": "8976896544",
+  "DOB": {
+    "$date": "2000-10-10T18:30:00.000Z"
+  },
+  "address": "dfghjk",
+  "state": "zz",
+  "town": "x",
+  "pin": "650533",
+  "artPortfolioLinks": [
+    "https://www.google.com/"
+  ],
+  "certificate": {
+    "filename": "1765010438503-fathiAdhaar.pdf",
+    "path": "uploads\\registerationFiles\\1765010438503-fathiAdhaar.pdf"
+  },
+  "workImages": [
+    {
+      "filename": "1765010438669-Dart1.jpg",
+      "path": "uploads\\registerationFiles\\1765010438669-Dart1.jpg",
+      "_id": {
+        "$oid": "6933ec06484b1b8bfeeabd53"
+      }
+    },
+    {
+      "filename": "1765010438687-dart2.jpg",
+      "path": "uploads\\registerationFiles\\1765010438687-dart2.jpg",
+      "_id": {
+        "$oid": "6933ec06484b1b8bfeeabd54"
+      }
+    },
+    {
+      "filename": "1765010438714-dart3.jpg",
+      "path": "uploads\\registerationFiles\\1765010438714-dart3.jpg",
+      "_id": {
+        "$oid": "6933ec06484b1b8bfeeabd55"
+      }
+    },
+    {
+      "filename": "1765010438739-dart4.jpg",
+      "path": "uploads\\registerationFiles\\1765010438739-dart4.jpg",
+      "_id": {
+        "$oid": "6933ec06484b1b8bfeeabd56"
+      }
+    },
+    {
+      "filename": "1765010438756-dart5.jpg",
+      "path": "uploads\\registerationFiles\\1765010438756-dart5.jpg",
+      "_id": {
+        "$oid": "6933ec06484b1b8bfeeabd57"
+      }
+    }
+  ],
+  "status": "Approved",
+  "createdAt": {
+    "$date": "2025-12-06T08:40:38.893Z"
+  },
+  "__v": 0,
+  "name": "adil"
+},
+{
+  "_id": {
+    "$oid": "69340df766e2038fac3aebd4"
+  },
+  "email": "tonystark1@gmail.com",
+  "phoneNo": "8976896544",
+  "DOB": {
+    "$date": "2000-10-10T18:30:00.000Z"
+  },
+  "address": "dfghjk",
+  "state": "zz",
+  "town": "x",
+  "pin": "650533",
+  "artPortfolioLinks": [
+    "https://www.google.com/"
+  ],
+  "certificate": {
+    "filename": "1765019125741-fathiAdhaar.pdf",
+    "path": "uploads\\registerationFiles\\1765019125741-fathiAdhaar.pdf"
+  },
+  "workImages": [
+    {
+      "filename": "1765019126280-Dart1.jpg",
+      "path": "uploads\\registerationFiles\\1765019126280-Dart1.jpg",
+      "_id": {
+        "$oid": "69340df766e2038fac3aebd5"
+      }
+    },
+    {
+      "filename": "1765019126361-dart2.jpg",
+      "path": "uploads\\registerationFiles\\1765019126361-dart2.jpg",
+      "_id": {
+        "$oid": "69340df766e2038fac3aebd6"
+      }
+    },
+    {
+      "filename": "1765019126462-dart3.jpg",
+      "path": "uploads\\registerationFiles\\1765019126462-dart3.jpg",
+      "_id": {
+        "$oid": "69340df766e2038fac3aebd7"
+      }
+    },
+    {
+      "filename": "1765019126550-dart4.jpg",
+      "path": "uploads\\registerationFiles\\1765019126550-dart4.jpg",
+      "_id": {
+        "$oid": "69340df766e2038fac3aebd8"
+      }
+    },
+    {
+      "filename": "1765019126773-dart5.jpg",
+      "path": "uploads\\registerationFiles\\1765019126773-dart5.jpg",
+      "_id": {
+        "$oid": "69340df766e2038fac3aebd9"
+      }
+    }
+  ],
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-12-06T11:05:27.249Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69340e395c47cce563f76b21"
+  },
+  "email": "tonystark1@gmail.com",
+  "phoneNo": "8976896544",
+  "DOB": {
+    "$date": "2000-10-10T18:30:00.000Z"
+  },
+  "address": "dfghjk",
+  "state": "zz",
+  "town": "x",
+  "pin": "650533",
+  "artPortfolioLinks": [
+    "https://www.google.com/"
+  ],
+  "certificate": {
+    "filename": "1765019192933-fathiAdhaar.pdf",
+    "path": "uploads\\registerationFiles\\1765019192933-fathiAdhaar.pdf"
+  },
+  "workImages": [
+    {
+      "filename": "1765019193145-Dart1.jpg",
+      "path": "uploads\\registerationFiles\\1765019193145-Dart1.jpg",
+      "_id": {
+        "$oid": "69340e395c47cce563f76b22"
+      }
+    },
+    {
+      "filename": "1765019193152-dart2.jpg",
+      "path": "uploads\\registerationFiles\\1765019193152-dart2.jpg",
+      "_id": {
+        "$oid": "69340e395c47cce563f76b23"
+      }
+    },
+    {
+      "filename": "1765019193166-dart3.jpg",
+      "path": "uploads\\registerationFiles\\1765019193166-dart3.jpg",
+      "_id": {
+        "$oid": "69340e395c47cce563f76b24"
+      }
+    },
+    {
+      "filename": "1765019193169-dart4.jpg",
+      "path": "uploads\\registerationFiles\\1765019193169-dart4.jpg",
+      "_id": {
+        "$oid": "69340e395c47cce563f76b25"
+      }
+    },
+    {
+      "filename": "1765019193323-dart5.jpg",
+      "path": "uploads\\registerationFiles\\1765019193323-dart5.jpg",
+      "_id": {
+        "$oid": "69340e395c47cce563f76b26"
+      }
+    }
+  ],
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-12-06T11:06:33.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69340e8660627a69924b436d"
+  },
+  "email": "tonystark1@gmail.com",
+  "phoneNo": "8976896544",
+  "DOB": {
+    "$date": "2000-10-10T18:30:00.000Z"
+  },
+  "address": "dfghjk",
+  "state": "zz",
+  "town": "x",
+  "pin": "650533",
+  "artPortfolioLinks": [
+    "https://www.google.com/"
+  ],
+  "certificate": {
+    "filename": "1765019270120-fathiAdhaar.pdf",
+    "path": "uploads\\registerationFiles\\1765019270120-fathiAdhaar.pdf"
+  },
+  "workImages": [
+    {
+      "filename": "1765019270249-Dart1.jpg",
+      "path": "uploads\\registerationFiles\\1765019270249-Dart1.jpg",
+      "_id": {
+        "$oid": "69340e8660627a69924b436e"
+      }
+    },
+    {
+      "filename": "1765019270255-dart2.jpg",
+      "path": "uploads\\registerationFiles\\1765019270255-dart2.jpg",
+      "_id": {
+        "$oid": "69340e8660627a69924b436f"
+      }
+    },
+    {
+      "filename": "1765019270291-dart3.jpg",
+      "path": "uploads\\registerationFiles\\1765019270291-dart3.jpg",
+      "_id": {
+        "$oid": "69340e8660627a69924b4370"
+      }
+    },
+    {
+      "filename": "1765019270298-dart4.jpg",
+      "path": "uploads\\registerationFiles\\1765019270298-dart4.jpg",
+      "_id": {
+        "$oid": "69340e8660627a69924b4371"
+      }
+    },
+    {
+      "filename": "1765019270307-dart5.jpg",
+      "path": "uploads\\registerationFiles\\1765019270307-dart5.jpg",
+      "_id": {
+        "$oid": "69340e8660627a69924b4372"
+      }
+    }
+  ],
+  "status": "Rejected",
+  "createdAt": {
+    "$date": "2025-12-06T11:07:50.380Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69340ea660627a69924b4375"
+  },
+  "email": "tonystark71@gmail.com",
+  "phoneNo": "8976896544",
+  "DOB": {
+    "$date": "2000-10-10T18:30:00.000Z"
+  },
+  "address": "dfghjk",
+  "state": "zz",
+  "town": "x",
+  "pin": "650533",
+  "artPortfolioLinks": [
+    "https://www.google.com/"
+  ],
+  "certificate": {
+    "filename": "1765019301730-fathiAdhaar.pdf",
+    "path": "uploads\\registerationFiles\\1765019301730-fathiAdhaar.pdf"
+  },
+  "workImages": [
+    {
+      "filename": "1765019302083-Dart1.jpg",
+      "path": "uploads\\registerationFiles\\1765019302083-Dart1.jpg",
+      "_id": {
+        "$oid": "69340ea660627a69924b4376"
+      }
+    },
+    {
+      "filename": "1765019302104-dart2.jpg",
+      "path": "uploads\\registerationFiles\\1765019302104-dart2.jpg",
+      "_id": {
+        "$oid": "69340ea660627a69924b4377"
+      }
+    },
+    {
+      "filename": "1765019302137-dart3.jpg",
+      "path": "uploads\\registerationFiles\\1765019302137-dart3.jpg",
+      "_id": {
+        "$oid": "69340ea660627a69924b4378"
+      }
+    },
+    {
+      "filename": "1765019302141-dart4.jpg",
+      "path": "uploads\\registerationFiles\\1765019302141-dart4.jpg",
+      "_id": {
+        "$oid": "69340ea660627a69924b4379"
+      }
+    },
+    {
+      "filename": "1765019302157-dart5.jpg",
+      "path": "uploads\\registerationFiles\\1765019302157-dart5.jpg",
+      "_id": {
+        "$oid": "69340ea660627a69924b437a"
+      }
+    }
+  ],
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-12-06T11:08:22.179Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6934106b123561858af58abd"
+  },
+  "email": "tonystark1@gmail.com",
+  "phoneNo": "8976896544",
+  "DOB": {
+    "$date": "2025-12-03T18:30:00.000Z"
+  },
+  "address": "fff",
+  "state": "zz",
+  "town": "koyilandy",
+  "pin": "554662",
+  "artPortfolioLinks": [
+    "https://www.google.com/"
+  ],
+  "certificate": {
+    "filename": "1765019755283-ashrafAdhar.pdf",
+    "path": "uploads\\registerationFiles\\1765019755283-ashrafAdhar.pdf"
+  },
+  "workImages": [
+    {
+      "filename": "1765019755686-Dart1.jpg",
+      "path": "uploads\\registerationFiles\\1765019755686-Dart1.jpg",
+      "_id": {
+        "$oid": "6934106b123561858af58abe"
+      }
+    },
+    {
+      "filename": "1765019755731-dart2.jpg",
+      "path": "uploads\\registerationFiles\\1765019755731-dart2.jpg",
+      "_id": {
+        "$oid": "6934106c123561858af58abf"
+      }
+    },
+    {
+      "filename": "1765019755734-dart3.jpg",
+      "path": "uploads\\registerationFiles\\1765019755734-dart3.jpg",
+      "_id": {
+        "$oid": "6934106c123561858af58ac0"
+      }
+    },
+    {
+      "filename": "1765019755769-dart4.jpg",
+      "path": "uploads\\registerationFiles\\1765019755769-dart4.jpg",
+      "_id": {
+        "$oid": "6934106c123561858af58ac1"
+      }
+    },
+    {
+      "filename": "1765019755786-dart5.jpg",
+      "path": "uploads\\registerationFiles\\1765019755786-dart5.jpg",
+      "_id": {
+        "$oid": "6934106c123561858af58ac2"
+      }
+    }
+  ],
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-12-06T11:15:56.087Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69341652123561858af58ac5"
+  },
+  "email": "adilsafvan77@gmail.com",
+  "phoneNo": "8976896544",
+  "DOB": {
+    "$date": "2000-12-11T18:30:00.000Z"
+  },
+  "address": "hh",
+  "state": "zz",
+  "town": "cc",
+  "pin": "650533",
+  "artPortfolioLinks": [
+    "https://www.google.com/"
+  ],
+  "certificate": {
+    "filename": "1765021265381-fathiHssCert 20.07.42.pdf",
+    "path": "uploads\\registerationFiles\\1765021265381-fathiHssCert 20.07.42.pdf"
+  },
+  "workImages": [
+    {
+      "filename": "1765021265673-fathiSignatureImage 2025-.jpg",
+      "path": "uploads\\registerationFiles\\1765021265673-fathiSignatureImage 2025-.jpg",
+      "_id": {
+        "$oid": "69341652123561858af58ac6"
+      }
+    },
+    {
+      "filename": "1765021265674-certificate of AI with diffusion Models_page-0001.jpg",
+      "path": "uploads\\registerationFiles\\1765021265674-certificate of AI with diffusion Models_page-0001.jpg",
+      "_id": {
+        "$oid": "69341652123561858af58ac7"
+      }
+    },
+    {
+      "filename": "1765021265901-certificate.png",
+      "path": "uploads\\registerationFiles\\1765021265901-certificate.png",
+      "_id": {
+        "$oid": "69341652123561858af58ac8"
+      }
+    },
+    {
+      "filename": "1765021266046-Dart1.jpg",
+      "path": "uploads\\registerationFiles\\1765021266046-Dart1.jpg",
+      "_id": {
+        "$oid": "69341652123561858af58ac9"
+      }
+    },
+    {
+      "filename": "1765021266123-dart2.jpg",
+      "path": "uploads\\registerationFiles\\1765021266123-dart2.jpg",
+      "_id": {
+        "$oid": "69341652123561858af58aca"
+      }
+    }
+  ],
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-12-06T11:41:06.864Z"
+  },
+  "__v": 0
+}]

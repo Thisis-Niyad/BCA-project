@@ -1,0 +1,31 @@
+[{
+  "_id": {
+    "$oid": "696cfa79e8be44521b51a007"
+  },
+  "userId": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "items": [
+    {
+      "artworkId": {
+        "$oid": "6988354a491ed569cdb23ade"
+      },
+      "artistId": {
+        "$oid": "692973c1c337cdeda52f2e2a"
+      },
+      "title": "qoute \"follow your dreams \"",
+      "image": "uploads\\Artwork_images\\1770534218483_calligraphy (26).jpg",
+      "price": 400,
+      "quantity": 2
+    }
+  ],
+  "totalPrice": 800,
+  "status": "active",
+  "createdAt": {
+    "$date": "2026-01-18T15:21:30.132Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-08T06:33:44.603Z"
+  },
+  "__v": 10
+}]

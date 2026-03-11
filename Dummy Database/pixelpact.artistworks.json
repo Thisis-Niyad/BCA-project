@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "698834b5491ed569cdb23ad6"
+  },
+  "artistId": {
+    "$oid": "692973c1c337cdeda52f2e2a"
+  },
+  "title": "Mashallah",
+  "description": "mashallah wrtten in arabic with dark red ink",
+  "imagePath": "uploads\\Artwork_images\\1770534062874_calligraphy (6).jpg",
+  "imageHash": "9b67e1fc5b7cfc07ea0034b0c2deb31c8b5d245811eaed81d372cb22546d1eac",
+  "workRating": 0,
+  "ratingCount": 0,
+  "price": 379,
+  "keywords": [
+    "arabic",
+    "black frame",
+    "mashallah",
+    "tony's calligraphy"
+  ],
+  "createdAt": {
+    "$date": "2026-02-08T07:01:09.432Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-08T07:01:09.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6988354a491ed569cdb23ade"
+  },
+  "artistId": {
+    "$oid": "692973c1c337cdeda52f2e2a"
+  },
+  "title": "qoute \"follow your dreams \"",
+  "description": "qoute \"follow your dreams they konw the way\"",
+  "imagePath": "uploads\\Artwork_images\\1770534218483_calligraphy (26).jpg",
+  "imageHash": "6900ec50bf77674cb694641096515ab8fdfad727394f49ee56668c4085be9865",
+  "workRating": 0,
+  "ratingCount": 0,
+  "price": 400,
+  "keywords": [
+    "engilish",
+    "qoute",
+    "english calligraphy"
+  ],
+  "createdAt": {
+    "$date": "2026-02-08T07:03:38.673Z"
+  },
+  "updatedAt": {
+    "$date": "2026-02-08T07:03:38.673Z"
+  },
+  "__v": 0
+}]

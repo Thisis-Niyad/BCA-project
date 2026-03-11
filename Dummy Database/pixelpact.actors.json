@@ -1,0 +1,201 @@
+[{
+  "_id": {
+    "$oid": "6922fd63a5cec3474fb71236"
+  },
+  "name": "Muhammed Niyad",
+  "email": "muhammedniyad720@gmail.com",
+  "password": "$2b$10$jZTDAkO3fQhkwFh4Z0Sg9.m6yJKeXgAsQgqLkxYZZyKdCyl/DNDTC",
+  "role": "admin",
+  "profileInfo": {
+    "dob": {
+      "$date": "2004-10-03T18:30:00.000Z"
+    },
+    "gender": "male",
+    "phoneNo": "8606079774",
+    "state": "kerala",
+    "town": "koyilandy",
+    "pin": 650533,
+    "address": "Koyilandy,mubarak road,mabrook",
+    "profileImg": "1764245507187_Grey-hat.jpg"
+  }
+},
+{
+  "_id": {
+    "$oid": "69230efc1988e11cf3b71236"
+  },
+  "name": "Faras ck",
+  "email": "farasckcfaras@gmail.com",
+  "password": "$2b$10$OHXGyIfYzytsgEruuGPogOxpYCoVtgD2yh1jlEEE8crgdz41aACae",
+  "role": "admin",
+  "profileInfo": {
+    "dob": {
+      "$date": "2004-01-12T18:30:00.000Z"
+    },
+    "gender": "male",
+    "state": "kerala",
+    "town": "koyilandy",
+    "pin": 456123,
+    "address": "ss",
+    "profileImg": "1764254122344_photo.jpg"
+  }
+},
+{
+  "_id": {
+    "$oid": "692310211988e11cf3b71237"
+  },
+  "name": "Adil Safvan",
+  "email": "adilsafvan7@gmail.com",
+  "password": "$2b$10$D.CSmLjhixLqI87X.pf34ewUroiqUPl4ew/LRhOU5WeejKp9GdC2y",
+  "role": "admin",
+  "profileInfo": {
+    "dob": {
+      "$date": "2005-11-26T18:30:00.000Z"
+    },
+    "gender": "male",
+    "state": "kerala",
+    "town": "cc",
+    "pin": 650533,
+    "address": "kk",
+    "profileImg": "1764253258161_1764250775265.jpg"
+  }
+},
+{
+  "_id": {
+    "$oid": "692310211988e11cf3b71238"
+  },
+  "name": "Ebrahim Basil",
+  "email": "ebrahimbasil123@gmail.com",
+  "password": "$2b$10$fRXcWH.Uop9aIrvEXqWN2.mldp3g.1bYGJUiji206UsGYmhqeyoKW",
+  "role": "admin",
+  "profileInfo": {
+    "dob": {
+      "$date": "2005-11-26T18:30:00.000Z"
+    },
+    "gender": "male",
+    "state": "kerala",
+    "town": "koyilandy",
+    "pin": 650533,
+    "address": "km",
+    "profileImg": "1764253525390_1764250512112.jpg"
+  }
+},
+{
+  "_id": {
+    "$oid": "692973c1c337cdeda52f2e2a"
+  },
+  "name": "Tony Stark",
+  "email": "tonystark1@gmail.com",
+  "password": "$2b$10$wjU3mTybyXtMY/W3oNuP7uxbzpY3YdFevE0Fd67W6DDDmhYoNseHK",
+  "role": "artist",
+  "profileInfo": {
+    "phoneNo": "8976896544",
+    "dob": {
+      "$date": "2000-10-10T18:30:00.000Z"
+    },
+    "address": "dfghjk",
+    "state": "zz",
+    "town": "x",
+    "pin": 650533
+  },
+  "__v": 0,
+  "isBlocked": false,
+  "artistRating": 12,
+  "ratingCount": 3
+},
+{
+  "_id": {
+    "$oid": "692fe1674f8303503440c70d"
+  },
+  "name": "Adil",
+  "email": "Adil7@gmail.com",
+  "password": "$2b$10$HbGeOL0E7tyOmoqp8qF.DO1tkLHklaz3Y1I./NBUGSeGXDrKvKZnC",
+  "role": "user",
+  "isBlocked": true,
+  "profileInfo": {
+    "phoneNo": "",
+    "address": "",
+    "gender": "",
+    "state": "",
+    "town": "",
+    "pin": null,
+    "dob": null,
+    "profileImg": ""
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6936c2fc4302db2c94b76799"
+  },
+  "name": "Aadu Thoma",
+  "email": "aaduthoma1@gmail.com",
+  "password": "$2b$10$Xn5tZ85UXW2mJRn0anGKQuUJJB8C2ygt8Mas1gZg1DII0jXTgeMm6",
+  "role": "user",
+  "isBlocked": false,
+  "profileInfo": {
+    "dob": {
+      "$date": "2026-01-13T18:30:00.000Z"
+    },
+    "gender": "male",
+    "phoneNo": "9875556787",
+    "state": "zz",
+    "town": "koyilandy",
+    "pin": 554662,
+    "address": "qwertyuio",
+    "profileImg": ""
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69555a9d3ff4afa8d499228a"
+  },
+  "name": "James Bond",
+  "email": "jamesbond1@gamil.com",
+  "password": "$2b$10$1kuw4.8dv99OKXuBLtA6E.0gBRZADi0s/KoyTu3MtVBqH1NCPRoWG",
+  "role": "user",
+  "isBlocked": false,
+  "artistRating": 0,
+  "ratingCount": 0,
+  "profileInfo": {
+    "phoneNo": "",
+    "address": "",
+    "gender": "",
+    "state": "",
+    "town": "",
+    "pin": null,
+    "dob": null,
+    "profileImg": ""
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "695e7c5cb7feb07ae43c673f"
+  },
+  "name": "AI",
+  "role": "AI"
+},
+{
+  "_id": {
+    "$oid": "6984dd4f94e6328ba1f798c7"
+  },
+  "name": "AMINA",
+  "email": "amina1@gmail.com",
+  "password": "$2b$10$v3ygYPlxGyyWN2VTgAmDGuTRgl79KC78wcHPJ2bxa173eRdLEqZva",
+  "role": "user",
+  "isBlocked": false,
+  "artistRating": 0,
+  "ratingCount": 0,
+  "profileInfo": {
+    "phoneNo": "",
+    "address": "",
+    "gender": "",
+    "state": "",
+    "town": "",
+    "pin": null,
+    "dob": null,
+    "profileImg": ""
+  },
+  "__v": 0
+}]
