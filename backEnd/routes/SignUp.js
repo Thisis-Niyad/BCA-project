@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
         });
 
         const response = await newUser.save();
-        const token = jwt.sign({ id: actor._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+        const token = jwt.sign({ id: response._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
         res.status(201).json({ path: "/user/" + response.id, token });
 
     } catch (err) {
